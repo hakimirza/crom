@@ -49,6 +49,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'itemManagement';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+//Item Management
+$route['single_item'] = 'itemManagement/singleItem';
+$route['supplier'] = 'itemManagement/supplier';
+$route['promotion'] = 'itemManagement/promotion';
+$route['inventory'] = 'itemManagement/inventory';
+
+//Supplier Management
+$route['database_supplier'] = 'supplierManagement/supplierDb';
+$route['negotiation'] = 'supplierManagement/negotiation';
+
+//Logistic Management
+$route['tracking_order'] = 'logisticManagement/trackingOrder';
+$route['logistic_maintenance'] = 'logisticManagement/logisticMaintenance';
+
+//CR Management
+$route['customer_registration'] = 'cRManagement/customer_registration';
+$route['customer_view'] = 'cRManagement/customer_view';
+
+// KPI Statistik
+$route['principal_map'] = 'kPIStatistik/principal_map';
+$route['demografi'] = 'kPIStatistik/demografi';
+$route['transaction'] = 'kPIStatistik/transaction';
+$route['profitloss'] = 'kPIStatistik/profitloss';
+
+// User Management
+$route['user_registration'] = 'userManagement/user_registration';
+$route['user_view'] = 'userManagement/user_view';
+
+// Akun Management
+$route['akun_manage'] = 'akunManagement/akun_manage';
