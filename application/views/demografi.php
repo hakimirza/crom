@@ -1,8 +1,8 @@
-<?php
-$this->load->view('template/page_head');
-$this->load->view('template/header');
-$this->load->view('template/sidebar_left');
-?>
+ <?php
+ $this->load->view('template/page_head');
+ $this->load->view('template/header');
+ $this->load->view('template/sidebar_left');
+ ?>
  <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -90,7 +90,52 @@ $this->load->view('template/sidebar_left');
         </section>
     </section>
     <!--main content end-->
-    <?php
-    $this->load->view('template/page_end2');
+  <?php
+ $this->load->view('template/page_end2');
+ ?>
+<!--Morris Chart-->
+<script src="assets/js/morris-chart/morris.js"></script>
+<script src="assets/js/morris-chart/raphael-min.js"></script>
+<script src="assets/js/morris.init.js"></script>
+<!--Google Map-->
+<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
+<script src="assets/js/google-map/maplace.js"></script>
+<script src="assets/js/google-map/data/points.js"></script>
+<script>
+    $(function ()
+    {
+        $("#wizard").steps({
+            headerTag: "h2",
+            bodyTag: "section",
+            transitionEffect: "slideLeft"
+        });
 
-?>
+        $("#wizard-vertical").steps({
+            headerTag: "h2",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            stepsOrientation: "vertical"
+        });
+    });
+
+    //ul list example
+    new Maplace({
+        locations: LocsB,
+        map_div: '#gmap-list',
+        controls_type: 'list',
+        controls_title: 'Choose a location:'
+    }).Load();
+
+    new Maplace({
+        locations: LocsB,
+        map_div: '#gmap-tabs',
+        controls_div: '#controls-tabs',
+        controls_type: 'list',
+        controls_on_map: false,
+        show_infowindow: false,
+        start: 1,
+        afterShow: function(index, location, marker) {
+            $('#info').html(location.html);
+        }
+    }).Load();
+</script>

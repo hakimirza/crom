@@ -15,27 +15,19 @@
 <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
 <!--Sparkline Chart-->
 <script src="assets/js/sparkline/jquery.sparkline.js"></script>
-<!--jQuery Flot Chart-->
+<!--jQuery Flot Chart
 <script src="assets/js/flot-chart/jquery.flot.js"></script>
 <script src="assets/js/flot-chart/jquery.flot.tooltip.min.js"></script>
 <script src="assets/js/flot-chart/jquery.flot.resize.js"></script>
 <script src="assets/js/flot-chart/jquery.flot.pie.resize.js"></script>
 <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
-<!--Chart JS-->
+<!--Chart JS
 <script src="assets/js/chart-js/Chart.js"></script>
-<script src="assets/js/chartjs.init.js"></script>
-<!--Morris Chart-->
-<script src="assets/js/morris-chart/morris.js"></script>
-<script src="assets/js/morris-chart/raphael-min.js"></script>
-<script src="assets/js/morris.init.js"></script>
+<script src="assets/js/chartjs.init.js"></script>-->
 <!-- jQuery File Upload Dependencies -->
 <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
 <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
 <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
-<!--Google Map-->
-<script src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.7"></script>
-<script src="assets/js/google-map/maplace.js"></script>
-<script src="assets/js/google-map/data/points.js"></script>
 <!--dynamic table-->
 <script type="text/javascript" language="javascript" src="assets/js/advanced-datatable/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
@@ -47,44 +39,7 @@
 <!--common script init for all pages-->
 <script src="assets/js/scripts.js"></script>
 
-<script>
-    $(function ()
-    {
-        $("#wizard").steps({
-            headerTag: "h2",
-            bodyTag: "section",
-            transitionEffect: "slideLeft"
-        });
 
-        $("#wizard-vertical").steps({
-            headerTag: "h2",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            stepsOrientation: "vertical"
-        });
-    });
-
-    //ul list example
-    new Maplace({
-        locations: LocsB,
-        map_div: '#gmap-list',
-        controls_type: 'list',
-        controls_title: 'Choose a location:'
-    }).Load();
-
-    new Maplace({
-        locations: LocsB,
-        map_div: '#gmap-tabs',
-        controls_div: '#controls-tabs',
-        controls_type: 'list',
-        controls_on_map: false,
-        show_infowindow: false,
-        start: 1,
-        afterShow: function(index, location, marker) {
-            $('#info').html(location.html);
-        }
-    }).Load();
-</script>
 <script type="text/javascript">
 	function chatVisibility(){
 		pg = document.getElementById('chatBox');

@@ -1,8 +1,8 @@
-<?php
-   $this->load->view('template/page_head');
-$this->load->view('template/header');
-$this->load->view('template/sidebar_left');
-?>
+ <?php
+ $this->load->view('template/page_head');
+ $this->load->view('template/header');
+ $this->load->view('template/sidebar_left');
+ ?>
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -112,6 +112,29 @@ $this->load->view('template/sidebar_left');
     </section>
     <!--main content end-->
 <?php
-$this->load->view('template/page_end2');
+ $this->load->view('template/page_end2');
+ ?>
 
-?>
+
+
+<!--Easy Pie Chart-->
+<script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="assets/js/sparkline/jquery.sparkline.js"></script>
+<!--jQuery Flot Chart-->
+<script src="assets/js/flot-chart/jquery.flot.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.pie.resize.js"></script>
+<!--jQuery Flot Chart-->
+<script src="assets/js/flot-chart/jquery.flot.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="assets/js/flot-chart/jquery.flot.pie.resize.js"></script>
+<!--Morris Chart-->
+<script src="assets/js/morris-chart/morris.js"></script>
+<script src="assets/js/morris-chart/raphael-min.js"></script>
+<script src="assets/js/morris.init.js"></script>
+<!--Chart JS-->
+<script src="assets/js/chart-js/Chart.js"></script>
+<script src="assets/js/chartjs.init.js"></script>

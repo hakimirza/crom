@@ -1,8 +1,8 @@
-<?php
-$this->load->view('template/page_head');
-$this->load->view('template/header');
-$this->load->view('template/sidebar_left');
-?>
+ <?php
+ $this->load->view('template/page_head');
+ $this->load->view('template/header');
+ $this->load->view('template/sidebar_left');
+ ?>
 <!-- main content start -->
   <section id="main-content">
       <section class="wrapper">
@@ -155,6 +155,26 @@ $this->load->view('template/sidebar_left');
   </section>
 <!-- main content end -->
 <?php
-$this->load->view('template/page_end2');
+ $this->load->view('template/page_end2');
+ ?>
 
-?>
+
+<script>
+    $(function ()
+    {
+        $("#wizard").steps({
+            headerTag: "h2",
+            bodyTag: "section",
+            transitionEffect: "slideLeft"
+        });
+
+        $("#wizard-vertical").steps({
+            headerTag: "h2",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            stepsOrientation: "vertical"
+        });
+    });
+
+
+</script>

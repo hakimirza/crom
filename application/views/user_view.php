@@ -1,8 +1,8 @@
-<?php
-$this->load->view('template/page_head');
-$this->load->view('template/header');
-$this->load->view('template/sidebar_left');
-?>
+ <?php
+ $this->load->view('template/page_head');
+ $this->load->view('template/header');
+ $this->load->view('template/sidebar_left');
+ ?>
 <!-- main content start -->
   <section id="main-content">
       <section class="wrapper">
@@ -65,7 +65,6 @@ $this->load->view('template/sidebar_left');
       </section>
   </section>
 <!-- main content end -->
-<?php
-$this->load->view('template/page_end2');
-
-?>
+ <?php
+ $this->load->view('template/page_end2');
+ ?>

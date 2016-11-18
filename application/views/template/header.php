@@ -1,3 +1,8 @@
+<?php 
+$this->login_lib->cek_login(); 
+$username = $this->session->userdata('username');
+?>
+
 <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
@@ -202,13 +207,13 @@
                         <a data-toggle="dropdown" class="dropdown-toggle icon-user" href="#">
                             <!--<img alt="" src="images/avatar1_small.jpg">-->
                             <i class="fa fa-user"></i>
-                            <span class="username">Admin CROM</span>
+                            <span class="username"><?= $username ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.php"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="login/logout"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
