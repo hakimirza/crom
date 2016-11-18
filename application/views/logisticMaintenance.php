@@ -101,7 +101,7 @@
                                     </div>
                                     <div id="preOrder" class="tab-pane">
                                         <div class="well">
-                                            Rasio Order
+                                            Rasio Order (under construction)
                                         </div>
                                     </div>
                                 </div>

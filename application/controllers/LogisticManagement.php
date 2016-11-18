@@ -33,4 +33,8 @@ class LogisticManagement extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
+	public function showInvoice($page = 'invoiceOrder'){
+		$this->load->view($page);
+	}
+
 }

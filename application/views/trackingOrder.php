@@ -57,9 +57,9 @@
                                     <li class="active">
                                         <a data-toggle="tab" href="#daftarProduk">TRACKING ORDER</a>
                                     </li>
-                                    <li class="">
+                                   <!--  <li class="">
                                         <a data-toggle="tab" href="#preOrder">PRE ORDER</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </header>
                             <div class="panel-body">
@@ -69,97 +69,143 @@
                                             <div class="panel-body">
                                                 <div class="adv-table editable-table ">
                                                     <div class="clearfix">
-                                                        <div class="btn-group pull-right">
-                                                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-print"></i> Cetak <i class="fa fa-angle-down"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu pull-right">
-                                                                <li><a href="#">Print</a></li>
-                                                                <li><a href="#">Save as PDF</a></li>
-                                                                <li><a href="#">Export to Excel</a></li>
-                                                            </ul>
-                                                        </div>
+
+
+                                                        <div class="pull-right">
+                                                            Completed orders : 
+                                                            <div class="btn-group">
+                                                             <button type="button" class="btn btn-primary active" title="show" id="showCompleted"><i class="fa fa-eye"></i></button>
+                                                             <button type="button" class="btn btn-default" title="hide" id="hideCompleted"><i class="fa fa-eye-slash"></i></button>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="btn-group">
+                                                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-print"></i> Cetak <i class="fa fa-angle-down"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Print</a></li>
+                                                            <li><a href="#">Save as PDF</a></li>
+                                                            <li><a href="#">Export to Excel</a></li>
+                                                        </ul>
                                                     </div>
-                                                    <div class="space15"></div>
-                                                    <table class="table table-striped table-hover table-bordered" id="editable-sample">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>User</th>
-                                                                <th>Judul Order</th>
-                                                                <th>ID Order</th>
-                                                                <th>Tanggal Order</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <?php include "data/dataOrder.php" ?>
-                                                        </tbody>
-                                                    </table>
+
                                                 </div>
+                                                <div class="space15"></div>
+                                                <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Warung</th>
+                                                            <th>Subjek Order</th>
+                                                            <th>ID Order</th>
+                                                            <th>Tanggal Order</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php include "data/dataOrders.php"; ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </section>
-                                    </div>
-                                    <div id="preOrder" class="tab-pane">
-                                        <div class="well">
-                                            Pre Order
                                         </div>
+                                    </section>
+                                </div>
+                                <div id="preOrder" class="tab-pane">
+                                    <div class="well">
+                                        Pre Order
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </div>
-                <!-- page end-->
-            </section>
+            </div>
+            <!-- page end-->
         </section>
-        <!--main content end-->
-        <!--right sidebar start-->
-        <!--right sidebar end-->
-
     </section>
+    <!--main content end-->
+    <!--right sidebar start-->
+    <!--right sidebar end-->
 
-    <!-- Placed js at the end of the document so the pages load faster -->
+</section>
 
-    <!--Core js-->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-migrate.js"></script>
+<!-- Placed js at the end of the document so the pages load faster -->
 
-    <script src="assets/bs3/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <!--Easy Pie Chart-->
-    <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
-    <!--Sparkline Chart-->
-    <script src="assets/js/sparkline/jquery.sparkline.js"></script>
-    
-    <!--editable table-->
-    <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
+<!--Core js-->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-migrate.js"></script>
 
-    <!--common script init for all pages-->
-    <script src="assets/js/scripts.js"></script>
+<script src="assets/bs3/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="assets/js/jquery.nicescroll.js"></script>
+<!--Easy Pie Chart-->
+<script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="assets/js/sparkline/jquery.sparkline.js"></script>
 
-    <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
+<!--editable table-->
+<script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
-    <!-- jQuery File Upload Dependencies -->
-    <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
+<!--common script init for all pages-->
+<script src="assets/js/scripts.js"></script>
 
-    <!-- Our main JS file -->
-    <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
-    <!--script for this page only-->
-    <script src="assets/js/table-order-hide.js"></script>
+<!-- jQuery File Upload Dependencies -->
+<script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
 
-    <!-- END JAVASCRIPTS -->
-    <script>
-        jQuery(document).ready(function() {
-            EditableTable.init();
+<!-- Our main JS file -->
+<script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+
+<!--script for this page only-->
+<script src="assets/js/table-order-hide.js"></script>
+
+<!-- END JAVASCRIPTS -->
+<script>
+    jQuery(document).ready(function() {
+
+        EditableTable.init();
+
+        $('#hideCompleted').click(function(){
+
+            $('tr td:last-child').each(
+                function(){
+
+                    if (parseInt($(this).find('label').text(),10) == 3){
+
+                       $(this).closest('tr').hide();
+                   }
+               });
+
+            $('#hideCompleted').removeClass('btn-default');
+            $('#hideCompleted').addClass('btn-primary','active');
+            $('#showCompleted').removeClass('btn-primary','active');
+            $('#showCompleted').addClass('btn-default');
         });
-    </script>
+
+        $('#showCompleted').click(function(){
+
+            $('tr td:last-child').each(
+                function(){
+
+                    if (!$(this).closest('tr').is(":visible")){
+
+                       $(this).closest('tr').show();
+                   }
+               });
+
+            $('#hideCompleted').removeClass('btn-primary','active');
+            $('#hideCompleted').addClass('btn-default');
+            $('#showCompleted').removeClass('btn-default');
+            $('#showCompleted').addClass('btn-primary','active');
+        });
+    });
+</script>
 
 </body>
 </html>

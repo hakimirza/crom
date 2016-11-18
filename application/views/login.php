@@ -4,8 +4,8 @@
 <?php
 if($this->session->userdata('id_login') != '') {
 
-      redirect(base_url('welcome'));
-    }
+  redirect(base_url('welcome'));
+}
 
 $galat = $this->session->flashdata('galat');
 ?>
@@ -43,7 +43,7 @@ $galat = $this->session->flashdata('galat');
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
   <body class="login-body">
 
@@ -54,24 +54,23 @@ $galat = $this->session->flashdata('galat');
       <h2 class="form-signin-heading">LOGIN CROM</h2>
       <div class="login-wrap">
         <div class="user-login-info">
-        <?php
-        if (validation_errors()!=NULL || $galat != "") {
-          echo "<div class='alert alert-danger'>";
-          echo validation_errors();
-          echo $galat;
-          echo "</div>";
-        }
-        ?>
+          <?php
+          if (validation_errors()!=NULL || $galat != "") {
+            echo "<div class='alert alert-danger'>";
+            echo validation_errors();
+            echo $galat;
+            echo "</div>";
+          }
+          ?>
           <input type="text" class="form-control" placeholder="NIP" autofocus name="nip">
           <input type="password" class="form-control" placeholder="Password" name="password">
         </div>
-        <label class="checkbox">
+        <!-- <label class="checkbox"> -->
           <!-- <input type="checkbox" value="remember-me" name="remember-me"> Ingat saya -->
           <span class="pull-right">
             <a data-toggle="modal" href="#myModal"> Lupa Password?</a>
-
           </span>
-        </label>
+        <!-- </label> -->
         <button class="btn btn-lg btn-login btn-block" type="submit" value="Login" name="submit">Log in</button>
 
       </div>
