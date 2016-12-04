@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserManagement extends CI_Controller {
+class Human extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,12 +20,39 @@ class UserManagement extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->user_registration();
+		$this->profile();
 	}
 
-	public function user_registration($page = 'user_registration'){
-		$data['namaFile'] = $page;
+	public function upload($page = 'upload_human'){
+
+		$data = array(
+			'namaFile' => $page
+			);
 		$this->load->view($page, $data);
+	}
+
+	public function upload_batch(){
+		
+	}
+
+	public function update($page = 'update_human'){
+		
+		$data = array(
+			'namaFile' => $page
+			);
+		$this->load->view($page, $data);
+	}
+
+	public function userRegistration($page = 'user_registration'){
+		
+		$data = array(
+			'namaFile' => $page
+			);
+		$this->load->view($page, $data);
+	}
+
+	public function search(){
+
 	}
 
 }

@@ -84,14 +84,10 @@
 
                                                             <!-- thumbnail -->
                                                             <div class="col-md-6">
-
                                                                 <img src=<?= $imgsrc1 ?> class="img-responsive img-rounded" alt="Shop's Photo">
-
                                                             </div>
                                                             <div class="col-md-6">
-
                                                                 <img src=<?= $imgsrc2 ?> class="img-responsive img-rounded" alt="Owner Photo">
-
                                                             </div>
 
                                                             <div class="col-md-12"><br></div> <!-- blankspace -->

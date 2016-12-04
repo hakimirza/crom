@@ -42,8 +42,8 @@ class Customer extends CI_Controller {
 			'Last Total Purchase Qty' => '200'
 			);
 
-		$data['namaFile'] = $page;
 		$data = array(
+			
 			'namaFile' => $page,
 			'imgsrc1' => '"assets/images/product_img.png"',
 			'imgsrc2' => '"assets/images/product_img.png"',

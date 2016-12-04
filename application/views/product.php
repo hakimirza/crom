@@ -110,7 +110,7 @@
                                         </div>
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form id="upload" method="post" action="prduct/upload_prod" enctype="multipart/form-data">
+                                                <form id="upload" method="post" action="product/upload_prod" enctype="multipart/form-data">
                                                     <div id="drop">
                                                         Drop Here
 
