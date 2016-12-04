@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
 
@@ -8,14 +9,13 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <title>Supplier Database</title>
+    <title>Product List</title>
 
     <!--Core CSS -->
     <link href="assets/bs3/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap-reset.css" rel="stylesheet">
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-    <link href="assets/css/bootstrap-switch.css" rel="stylesheet"/>
     <link href="assets/js/mini-upload-form/assets/css/bucketmin.css" rel="stylesheet" />
 
     <!--editable table-->
@@ -43,9 +43,13 @@
         <?php 
         $this->load->view('template/header');
         $this->load->view('template/sidebar_left');
+
+        $sup = array("Mie Sedap", "Beng-Beng", "Coca-Cola", "Very Long Named Item");
+        $price = array("111", "222", "333", "444");
+
         ?>
         <!--sidebar end-->
-
+        
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
@@ -56,10 +60,10 @@
                             <header class="panel-heading tab-bg-dark-navy-blue ">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a data-toggle="tab" href="#daftarProduk">SUPPLIER DATABASE</a>
+                                        <a data-toggle="tab" href="#daftarProduk">DAFTAR PRODUK</a>
                                     </li>
                                     <li class="">
-                                        <a data-toggle="tab" href="#tambahSupplier">TAMBAH SUPPLIER</a>
+                                        <a data-toggle="tab" href="#tambahProduk">TAMBAH PRODUK</a>
                                     </li>
                                 </ul>
                             </header>
@@ -70,11 +74,6 @@
                                             <div class="panel-body">
                                                 <div class="adv-table editable-table ">
                                                     <div class="clearfix">
-                                                        <div class="btn-group">
-                                                            <button id="editable-sample_new" class="btn btn-primary">
-                                                                Tambah Baru <i class="fa fa-plus"></i>
-                                                            </button>
-                                                        </div>
                                                         <div class="btn-group pull-right">
                                                             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-print"></i> Cetak <i class="fa fa-angle-down"></i>
                                                             </button>
@@ -85,34 +84,33 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="space15"></div>
-                                                    <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                                                    <div class="space15"><br></div>
+                                                    <table class="table table-striped table-hover table-bordered" id="table-sortable">
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>ID</th>
-                                                                <th>Supplier Name</th>
-                                                                <th>Status</th>
-                                                                <th>Balance (Rp)</th>
-                                                                <th><i class="fa fa-caret-down"></i></th>
-                                                                <th><i class="fa fa-caret-down"></i></th>
+                                                                <th>Nama Produk</th>
+                                                                <th>Harga 1 (Rp)</th>
+                                                                <th>Promo</th>
+                                                                <th>Harga 2 (Rp)</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $this->load->view('data/dataSupDb') ?>
+                                                            <?php $this->load->view('data/dataProduct') ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </section>
                                     </div>
-                                    <div id="tambahSupplier" class="tab-pane">
+                                    <div id="tambahProduk" class="tab-pane">
                                         <div class="well">
                                             Tambah produk dengan mengunggah file excel sesuai <b><a title="unduh file standar excel" href="#">format</a></b>
                                         </div>
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                                                <form id="upload" method="post" action="prduct/upload_prod" enctype="multipart/form-data">
                                                     <div id="drop">
                                                         Drop Here
 
@@ -167,21 +165,16 @@
 
     <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
-    <script src="assets/js/toggle-init.js"></script>
-
     <!-- jQuery File Upload Dependencies -->
     <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
     <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
     <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
 
-    <!-- Switch -->
-    <script src="assets/js/bootstrap-switch.js"></script>
-
     <!-- Our main JS file -->
     <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
 
     <!--script for this page only-->
-    <script src="assets/js/table-supDb-editable.js"></script>
+    <script src="assets/js/table-order.js"></script>
 
     <!-- END JAVASCRIPTS -->
     <script>

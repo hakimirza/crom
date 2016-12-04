@@ -54,14 +54,11 @@ for ($i=1; $i < 20 ; $i++) {
     echo '
     <tr>
         <td>'.$i.'</td>
-        <td>'.$cod.'</td>
+        <td><a data-toggle="modal" href="#modal'.$cod.'" title="Detail">'.$cod.'</a></td>
         <td>'.$prod.'</td>
-        <td><a data-toggle="modal" href="#modal'.$cod.'" class="btn btn-default btn-round btn-xs" href="javascript:;" title="Detail"><i class="fa fa-info"></i></a></td>
         <td>'.number_format($harga1).'</td>
         <td>'.$diskon.'</td>
         <td>'.number_format($harga2).'</td>
-        <td><a class="edit" href="javascript:;"><i class="fa fa-pencil" title="Edit"></i></a></td>
-        <td><a class="delete" href="javascript:;"><i class="fa fa-trash-o" title="Hapus"></i></a></td>
         '.modal($arr).'
     </tr>
     ';

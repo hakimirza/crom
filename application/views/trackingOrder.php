@@ -90,8 +90,10 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="space15"></div>
-                                                <table class="table table-striped table-hover table-bordered" id="editable-sample">
+
+                                                <div class="space15"><br></div>
+
+                                                <table class="table table-striped table-hover table-bordered" id="table-sortable">
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
@@ -163,7 +165,7 @@
 <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
 
 <!--script for this page only-->
-<script src="assets/js/table-order-hide.js"></script>
+<script src="assets/js/table-order.js"></script>
 
 <!-- END JAVASCRIPTS -->
 <script>
@@ -173,7 +175,7 @@
 
         $('#hideCompleted').click(function(){
 
-            $('tr td:last-child').each(
+            $('#table-sortable tr td:last-child').each(
                 function(){
 
                     if (parseInt($(this).find('label').text(),10) == 3){
@@ -183,14 +185,14 @@
                });
 
             $('#hideCompleted').removeClass('btn-default');
-            $('#hideCompleted').addClass('btn-primary','active');
+            $('#hideCompleted').addClass('btn-danger','active');
             $('#showCompleted').removeClass('btn-primary','active');
             $('#showCompleted').addClass('btn-default');
         });
 
         $('#showCompleted').click(function(){
 
-            $('tr td:last-child').each(
+            $('#table-sortable tr td:last-child').each(
                 function(){
 
                     if (!$(this).closest('tr').is(":visible")){
@@ -199,7 +201,7 @@
                    }
                });
 
-            $('#hideCompleted').removeClass('btn-primary','active');
+            $('#hideCompleted').removeClass('btn-danger','active');
             $('#hideCompleted').addClass('btn-default');
             $('#showCompleted').removeClass('btn-default');
             $('#showCompleted').addClass('btn-primary','active');

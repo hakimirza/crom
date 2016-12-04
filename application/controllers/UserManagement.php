@@ -28,9 +28,4 @@ class UserManagement extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
-	public function user_view($page = 'user_view'){
-		$data['namaFile'] = $page;
-		$this->load->view($page, $data);
-	}
-
 }

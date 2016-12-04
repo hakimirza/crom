@@ -27,8 +27,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$data['namaFile'] = "singleItem";
-		$this->load->view("singleItem", $data);
+		$data['namaFile'] = "dashboard";
+		$this->load->view("dashboard", $data);
 	}
 
 }

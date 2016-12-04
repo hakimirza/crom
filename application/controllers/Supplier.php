@@ -1,7 +1,8 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class ItemManagement extends CI_Controller {
+class Supplier extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,28 +19,20 @@ class ItemManagement extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	
 	public function index()
 	{
-		$this->singleItem();
+		$this->profile();
 	}
 
-	public function singleItem($page = 'singleItem'){
+	public function profile($page = 'supplier'){
 		$data['namaFile'] = $page;
 		$this->load->view($page, $data);
 	}
 
-	public function supplier($page = 'supplier'){
+	public function negotiation($page = 'negotiation'){
 		$data['namaFile'] = $page;
 		$this->load->view($page, $data);
 	}
 
-	public function promotion($page = 'promotion'){
-		$data['namaFile'] = $page;
-		$this->load->view($page, $data);
-	}
-
-	public function inventory($page = 'inventory'){
-		$data['namaFile'] = $page;
-		$this->load->view($page, $data);
-	}
 }

@@ -12,12 +12,12 @@ class Login_lib {
  // Fungsi login
 	public function login($nip, $password) {
 
-		$query = $this->ci->db->get_where('admin', array('nip' => $nip, 'password' => md5($password)));
+		$query = $this->ci->db->get_where('pegawai', array('id_pegawai' => $nip, 'password' => md5($password)));
 		if($query->num_rows() == 1) {
 
-			$row = $this->ci->db->query('SELECT username FROM admin where nip = "'.$nip.'"');
+			$row = $this->ci->db->query('SELECT nama FROM pegawai where id_pegawai = "'.$nip.'"');
 			$admin = $row->row();
-			$username = $admin->username;
+			$username = $admin->nama;
 			$this->ci->session->set_userdata('nip', $nip);
 			$this->ci->session->set_userdata('id_login', uniqid(rand()));
 			$this->ci->session->set_userdata('username', $username);

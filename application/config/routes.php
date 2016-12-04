@@ -53,33 +53,36 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-//Item Management
-$route['single_item'] = 'itemManagement/singleItem';
-$route['supplier'] = 'itemManagement/supplier';
-$route['promotion'] = 'itemManagement/promotion';
-$route['inventory'] = 'itemManagement/inventory';
+//Dashboard
+$route['dashboard'] = 'dashboard/main';
+$route['region_view'] = 'dashboard/regionView';
 
-//Supplier Management
-$route['database_supplier'] = 'supplierManagement/supplierDb';
-$route['negotiation'] = 'supplierManagement/negotiation';
+//item management
+$route['product'] = 'product/details';
+$route['upload_prod'] = 'product/upload';
 
-//Logistic Management
-$route['tracking_order'] = 'logisticManagement/trackingOrder';
-$route['logistic_maintenance'] = 'logisticManagement/logisticMaintenance';
+//supplier management
+$route['supplier'] = 'supplier/profile';
+$route['negotiation'] = 'supplier/negotiation';
 
-//CR Management
-$route['customer_registration'] = 'cRManagement/customer_registration';
-$route['customer_view'] = 'cRManagement/customer_view';
+//logistic management
+$route['logistic'] = 'logistic/profile';
+$route['upload_logistic'] = 'logistic/upload';
+$route['inventory'] = 'logistic/inventory';
 
-// KPI Statistik
-$route['principal_map'] = 'kPIStatistik/principal_map';
-$route['demografi'] = 'kPIStatistik/demografi';
-$route['transaction'] = 'kPIStatistik/transaction';
-$route['profitloss'] = 'kPIStatistik/profitloss';
+//shop management
+$route['shop'] = 'shop/profile';
+$route['stat_shop'] = 'shop/stat_shop';
 
-// User Management
-$route['user_registration'] = 'userManagement/user_registration';
-$route['user_view'] = 'userManagement/user_view';
+//customer management
+$route['customer'] = 'customer/profile';
+$route['stat_customer'] = 'customer/stat';
+$route['loyalty'] = 'customer/loyalty';
 
-// Akun Management
-$route['akun_manage'] = 'akunManagement/akun_manage';
+//human management
+$route['upload_human'] = 'human/upload';
+$route['update_human'] = 'human/update';
+
+
+$route['tracking_order'] = 'logistic/trackingOrder';
+$route['user_registration'] = 'human/userRegistration';

@@ -8,7 +8,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <title>Supplier Profile</title>
+    <title>Region View</title>
 
     <!--Core CSS -->
     <link href="assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                             <header class="panel-heading tab-bg-dark-navy-blue ">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a data-toggle="tab" href="#dashboard">SUPPLIER PROFILE</a>
+                                        <a data-toggle="tab" href="#main">REGION VIEW</a>
                                     </li>
                                     <li>
                                         <a data-toggle="tab" href="#stat">STATISTIC</a>
@@ -64,67 +64,67 @@
                             </header>
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div id="dashboard" class="tab-pane active">
+                                    <div id="main" class="tab-pane active">
                                         <div class="well">
-                                            Working on Progress ...
-                                        </div>
+                                        Working on Progress ...
                                     </div>
-                                    <div id="stat" class="tab-pane">
+                                </div>
+                                <div id="stat" class="tab-pane">
                                         <div class="well">
-                                            Working on Progress ...
-                                        </div>
+                                        Working on Progress ...
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </div>
-                <!-- page end-->
-            </section>
+            </div>
+            <!-- page end-->
         </section>
-        <!--main content end-->
-        <!--right sidebar start-->
-        <!--right sidebar end-->
-
     </section>
+    <!--main content end-->
+    <!--right sidebar start-->
+    <!--right sidebar end-->
 
-    <!-- Placed js at the end of the document so the pages load faster -->
+</section>
 
-    <!--Core js-->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-migrate.js"></script>
+<!-- Placed js at the end of the document so the pages load faster -->
 
-    <script src="assets/bs3/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <!--Easy Pie Chart-->
-    <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
-    <!--Sparkline Chart-->
-    <script src="assets/js/sparkline/jquery.sparkline.js"></script>
+<!--Core js-->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-migrate.js"></script>
 
-    <!--editable table-->
-    <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
+<script src="assets/bs3/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="assets/js/jquery.nicescroll.js"></script>
+<!--Easy Pie Chart-->
+<script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="assets/js/sparkline/jquery.sparkline.js"></script>
 
-    <!--common script init for all pages-->
-    <script src="assets/js/scripts.js"></script>
+<!--editable table-->
+<script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
-    <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
+<!--common script init for all pages-->
+<script src="assets/js/scripts.js"></script>
 
-    <!-- jQuery File Upload Dependencies -->
-    <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
-    <!-- Our main JS file -->
-    <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+<!-- jQuery File Upload Dependencies -->
+<script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
+<script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
 
-    <!--script for this page only-->
-    <script src="assets/js/table-order-hide.js"></script>
+<!-- Our main JS file -->
+<script src="assets/js/mini-upload-form/assets/js/script.js"></script>
 
-    <!-- END JAVASCRIPTS -->
+<!--script for this page only-->
+<script src="assets/js/table-order-hide.js"></script>
+
+<!-- END JAVASCRIPTS -->
 
 </body>
 </html>
