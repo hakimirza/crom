@@ -122,7 +122,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<input type="text" class="form-control input-md" name="nik" placeholder="Nomor Induk">
+												<input type="text" class="form-control input-md" name="nik" placeholder="Nomor Induk" autofocus="">
 											</div>
 										</div>
 
@@ -427,6 +427,10 @@
 			setTimeout(function() {
 				categorize();
 			}, 1);
+
+			document.getElementById("prev").src = "";
+			document.getElementById("fotodiri").value = "";
+			$('#cancel-img').hide();
 		});
 
 		//3. Preview pre-uploaded foto
@@ -445,7 +449,7 @@
 
 $('#cancel-img').hide();
 
-$('#reset', '#cancel-img').click(function(){
+$('#cancel-img').click(function(){
 
 	document.getElementById("prev").src = "";
 	document.getElementById("fotodiri").value = "";
