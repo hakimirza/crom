@@ -83,6 +83,8 @@ $route['loyalty'] = 'customer/loyalty';
 $route['upload_human'] = 'human/upload';
 $route['update_human'] = 'human/update';
 
+//ticketing
+$route['ticket'] = 'ticket';
 
 $route['tracking_order'] = 'logistic/trackingOrder';
 $route['user_registration'] = 'human/userRegistration';

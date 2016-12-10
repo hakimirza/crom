@@ -68,40 +68,29 @@
                     <div class="col-md-12">
                         <section class="panel">
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h3>Data Supplier - PT Maju Mapan Jaya</h3>
-                                    </div>
-                                    <br>
-                                    <?= form_open(base_url('#'), 'class = "form-inline"'); ?>
-                                    <div class="col-md-5">
-                                        <i class="fa fa-search fa-lg"></i>  
-                                        <input type="text" size="10" class="form-control" placeholder="ID-Supplier" autofocus name="idsup">
-                                        <input type="text" size="30" class="form-control" placeholder="Supplier's Name" name="namesup">
-                                    </div>
-                                    <?= form_close()?>
-                                    <div class="col-md-1">
-                                        <div class="dropdown">
-                                            <a data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-bars fa-lg"></i>
-                                            </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li><a id="editSup" href="#">Edit</a></li>
-                                                <li><a href="negotiation" target="_blank">Upload</a></li>
-                                                <li><a href="#">Export to Excel</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div class="col-md-6">
+                                    <h3>Data Supplier - PT Maju Mapan Jaya</h3>
                                 </div>
                                 <br>
-
-                                <!-- tampilkan row ini jika data supplier belum mendapat APPROVAL -->
-                                <div class="row">
-                                    <div class="col-md-10 col-md-offset-1 alert alert-warning">
-                                        <strong>Warning!</strong> This supplier data is not approved yet. <a role="button" data-toggle="modal" href="#modal-appr" href="#" title="Klik untuk melakukan approval"><strong>Approve now?</strong></a>
+                                    <?= form_open(base_url('#'), 'class = "form-inline"'); ?>
+                                                        <div class="col-md-5">
+                                                            <i class="fa fa-search fa-lg"></i>  
+                                                            <input type="text" size="10" class="form-control" placeholder="ID-Logistic" autofocus name="idlog">
+                                                            <input type="text" size="30" class="form-control" placeholder="Logistic's Name" name="namelog">
+                                                        </div>
+                                                        <?= form_close()?>
+                                <div class="col-md-1">
+                                    <div class="dropdown">
+                                        <a data-target="#" href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-bars fa-lg"></i>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="#">Edit</a></li>
+                                            <li><a href="negotiation" target="_blank">Upload</a></li>
+                                            <li><a href="#">Export to Excel</a></li>
+                                        </ul>
                                     </div>
                                 </div>
-                                
                             </div>
                         </section>
                     </div>
@@ -609,90 +598,56 @@
                 <?= form_close()?> 
                 <!-- single form end -->
 
-                <!-- modal approval -->
-                <div class="modal fade bs-example-modal-sm" id="modal-appr" tabindex="-1" role="dialog" >
-                  <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Supplier Approval</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="#">
-                            <div class="row">
-                                <div class="form-group">
-                                    <label class="col-md-4 col-md-offset-1 control-label">User ID</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="supername" placeholder="supervisor's id">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 col-md-offset-1 control-label">Password</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="password" name="superpass" placeholder="supervisor's password">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Approve</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <!-- page end-->
+            </section>
+        </section>
+        <!--main content end-->
+        <!--right sidebar start-->
+        <!--right sidebar end-->
 
-        <!-- page end-->
     </section>
-</section>
-<!--main content end-->
-<!--right sidebar start-->
-<!--right sidebar end-->
 
-</section>
+    <!-- Placed js at the end of the document so the pages load faster -->
 
-<!-- Placed js at the end of the document so the pages load faster -->
+    <!--Core js-->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-migrate.js"></script>
 
-<!--Core js-->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/jquery-migrate.js"></script>
+    <script src="assets/bs3/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <!--Easy Pie Chart-->
+    <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+    <!--Sparkline Chart-->
+    <script src="assets/js/sparkline/jquery.sparkline.js"></script>
 
-<script src="assets/bs3/js/bootstrap.min.js"></script>
-<script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-<script src="assets/js/jquery.nicescroll.js"></script>
-<!--Easy Pie Chart-->
-<script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
-<!--Sparkline Chart-->
-<script src="assets/js/sparkline/jquery.sparkline.js"></script>
+    <!-- data-mask -->
+    <script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
 
-<!-- data-mask -->
-<script type="text/javascript" src="assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <!-- date picker -->
+    <script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
-<!-- date picker -->
-<script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <!--editable table-->
+    <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
-<!--editable table-->
-<script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
+    <!--common script init for all pages-->
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/cust-datepicker-init.js"></script>
 
-<!--common script init for all pages-->
-<script src="assets/js/scripts.js"></script>
-<script src="assets/js/cust-datepicker-init.js"></script>
+    <!-- specific script for this page -->
+    <script>
+        $(document).ready(function() {
 
-<!-- specific script for this page -->
-<script>
-    $(document).ready(function() {
+            $('#form-nego input, select, textarea, button').attr('readonly', true).attr('disabled', true);
+            $('select[name="pay-mode"]').val("2");
 
-        $('#form-nego').find(':input').attr('readonly', true).attr('disabled', true);
-        $('select[name="pay-mode"]').val("2");
+        });
+    </script>
 
-    });
-</script>
-
-<!-- END JAVASCRIPTS -->
+    <!-- END JAVASCRIPTS -->
 
 </body>
 </html>

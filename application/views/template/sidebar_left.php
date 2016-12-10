@@ -48,7 +48,7 @@ $active = 'class="active"';
                     </a>
                     <ul class="sub">
                         <li <?php if($namaFile == "supplier") echo $active; ?>><a href="supplier">Supplier Profile</a></li>
-                        <li <?php if($namaFile == "negotiation") echo $active; ?>><a href="negotiation">Negotiation Management</a></li>
+                        <li <?php if($namaFile == "negotiation") echo $active; ?>><a href="negotiation">Upload Negotiation</a></li>
                     </ul>
                 </li>
 
@@ -101,7 +101,7 @@ $active = 'class="active"';
                 </li>
 
                 <li class="sub-menu">
-                    <a href="promo" <?php if($namaFile == "ticketing") echo $active; ?>>
+                    <a href="ticket" <?php if($namaFile == "ticket") echo $active; ?>>
                         <i class="fa fa-ticket"></i>
                         <span>Ticketing Management</span>
                     </a>

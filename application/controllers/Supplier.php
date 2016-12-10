@@ -35,4 +35,12 @@ class Supplier extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
+	public function upload_batch(){
+
+	}
+
+	public function upload(){
+
+	}
+
 }
