@@ -70,14 +70,17 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h3>Data Supplier - PT Maju Mapan Jaya</h3>
+                                        <h3 id="title_supplier">Data Supplier - </h3>
                                     </div>
                                     <br>
                                     <?= form_open(base_url('#'), 'class = "form-inline"'); ?>
                                     <div class="col-md-5">
                                         <i class="fa fa-search fa-lg"></i>  
-                                        <input type="text" size="10" class="form-control" placeholder="ID-Supplier" autofocus name="idsup">
-                                        <input type="text" size="30" class="form-control" placeholder="Supplier's Name" name="namesup">
+                                        <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-Supplier" autofocus name="idsup">
+                                        <input id="search_name" list="languages" type="text" size="30" class="form-control" placeholder="Supplier's Name" name="namesup">
+                                        <datalist id="languages">
+
+                                        </datalist>
                                     </div>
                                     <?= form_close()?>
                                     <div class="col-md-1">
@@ -94,20 +97,17 @@
                                     </div>
                                 </div>
                                 <br>
-
                                 <!-- tampilkan row ini jika data supplier belum mendapat APPROVAL -->
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1 alert alert-warning">
                                         <strong>Warning!</strong> This supplier data is not approved yet. <a role="button" data-toggle="modal" href="#modal-appr" href="#" title="Klik untuk melakukan approval"><strong>Approve now?</strong></a>
                                     </div>
                                 </div>
-                                
                             </div>
                         </section>
                     </div>
                 </div>          
                 <!-- head section end -->
-
                 <!-- single form start -->
                 <?= form_open(base_url('#'), array('class' => 'form-horizontal', 'id' => 'form-nego')); ?>
                 <div class="row" id="supplier-single-form">
@@ -121,10 +121,8 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row">
-
-                                    <div class="col-md-6"> <!-- top left panel -->
-
+                                <!--<div class="row">
+                                    <div class="col-md-6"> < top left panel >
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Supplier Type</label>
                                             <div class="col-md-9">
@@ -160,21 +158,18 @@
                                                 <input type="text" maxlength="4" class="form-control input-md" name="remit" placeholder="1234">
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">English Name</label>
                                             <div class="col-md-7">
                                                 <input type="text" maxlength="35" class="form-control input-md" name="en-name" placeholder="Corporation Name Inc.">
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Local Name</label>
                                             <div class="col-md-7">
                                                 <input type="text" maxlength="35" class="form-control input-md" name="loc-name" placeholder="PT Nama Perusahaan">
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Prefix of Name</label>
                                             <div class="col-md-9">
@@ -185,7 +180,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Activity Location</label>
                                             <div class="col-md-7">
@@ -195,7 +189,7 @@
 
                                     </div>
 
-                                    <div class="col-md-6"> <!-- top right panel -->
+                                    <div class="col-md-6"> < top right panel >
 
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Address</label>
@@ -276,19 +270,18 @@
 
                                     </div>
                                     
-                                </div>
-                            </div>
+                                </div>-->
+                            </div> 
                         </section>
 
                     </div>
 
                     <div class="col-md-6" id="payment-panels"> <!-- mid left panels -->
-
                         <section class="panel">
                             <div class="panel-body">
                                 <a href="#payment-panels"><h3><i class="fa fa-credit-card"> </i> Payment Data</h3></a>
                                 <hr>
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="col-md-12">
 
                                         <div class="form-group">
@@ -358,8 +351,8 @@
                                         </div>
 
                                     </div>
-                                </div>
-                            </div>
+                                </div>-->
+                            </div> 
                         </section>
                     </div>
 
@@ -369,7 +362,7 @@
                             <div class="panel-body">
                                 <a href="#order-panels"><h3><i class="fa fa-truck"> </i> Order & Delivery Schedule</h3></a>
                                 <hr>
-                                <div class="row">
+                                <!--<div class="row">
                                     <div class="col-md-12">
 
                                         <div class="form-group">
@@ -481,7 +474,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </section>
                     </div>
@@ -492,9 +485,9 @@
                             <div class="panel-body">
                                 <a href="#stop-panels"><h3><i class="fa fa-power-off"> </i> Stop Payment / Business Data</h3></a>
                                 <hr>
-                                <div class="row">
+                                <!--<div class="row">
 
-                                    <div class="col-md-4"> <!-- low left panel -->
+                                    <div class="col-md-4"> <low left panel>
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Dept Concern</label>
@@ -531,7 +524,7 @@
 
                                     </div>
 
-                                    <div class="col-md-4"> <!-- low mid panel -->
+                                    <div class="col-md-4"> <low mid panel>
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Stop Payment Reason</label>
@@ -570,7 +563,7 @@
 
                                     </div>
 
-                                    <div class="col-md-4"> <!-- low right panel -->
+                                    <div class="col-md-4"> < low right panel >
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label">Stop Business Reason</label>
@@ -600,7 +593,7 @@
 
                                     </div>
 
-                                </div>
+                                </div>-->
                             </div>
                         </section>
                     </div>
@@ -685,9 +678,80 @@
 <!-- specific script for this page -->
 <script>
     $(document).ready(function() {
+        dis();
+        function dis(){
+            $('#form-nego').find(':input').attr('readonly', true).attr('disabled', true);
+            $('select[name="pay-mode"]').val("2");
+        }
 
-        $('#form-nego').find(':input').attr('readonly', true).attr('disabled', true);
-        $('select[name="pay-mode"]').val("2");
+        $( "#search_id" ).keyup(function(e) {
+            e.preventDefault();
+            var data=document.getElementById("search_id").value;
+            $.ajax({
+                url : 'supplier_search',
+                data : 'id='+data,
+                type : 'POST',
+                success : function(hasil){
+                        res=hasil.split("::");
+                        document.getElementById("title_supplier").innerHTML="Data Supplier - "+res[0];
+                        document.getElementById("supplier-single-form").innerHTML=res[1];
+                        dis();
+                },
+            });
+
+
+        });
+        function cobaSearch(){
+            alert("ok");
+        }
+        $( "#search_name" ).keyup(function(e) {
+            e.preventDefault();
+            var data=document.getElementById("search_name").value;
+
+            $.ajax({
+                url : 'supplier_search',
+                data : 'name='+data,
+                type : 'POST',
+                success : function(hasil){
+                    //alert(hasil);
+                        document.getElementById("languages").innerHTML=hasil;
+                  //      document.getElementById("search_name").value=data;
+                },
+            });
+        });
+
+        document.querySelector('input[list="languages"]').addEventListener('input', onInput);
+
+        function onInput(e) {
+           var input = e.target,
+               val = input.value;
+               list = input.getAttribute('list'),
+               options = document.getElementById(list).childNodes;
+
+          for(var i = 0; i < options.length; i++) {
+            if(options[i].innerText === val) {
+              
+                data=val.split(" : ");
+                $.ajax({
+                    url : 'supplier_search',
+                    data : 'id='+data[1],
+                    type : 'POST',
+                    success : function(hasil){
+                            res=hasil.split("::");
+                            document.getElementById("title_supplier").innerHTML="Data Supplier - "+res[0];
+                            document.getElementById("supplier-single-form").innerHTML=res[1];
+                            document.getElementById("search_name").value=data[0];
+                            document.getElementById("search_id").value=data[1];
+                            dis();
+                    },
+                });
+
+              break;
+            }
+          }
+        }
+        
+
 
     });
 </script>

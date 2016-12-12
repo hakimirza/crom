@@ -68,8 +68,93 @@ class Product extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
-	public function upload($page = 'upload_prod'){
-
+	public function upload_prod($page = 'upload_prod'){
+		$data['namaFile'] = $page;
+		$this->load->view($page, $data);
 	}
+
+	public function upload_product_batch(){
+		$fileOp=explode("_", $_FILES["file"]["name"]);
+		$target_dir = "data/excel_product/";
+		$target_file = $target_dir . basename($fileOp[1]);
+		$uploadOk = 1;
+		if (file_exists($target_file)) {
+				echo "nama file telah ada";
+				$uploadOk = 0;
+		}
+
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		if ($_FILES["file"]["size"] > 500000) {
+		    echo "maaf ukuran file terlalu besar";
+		    $uploadOk = 0;
+		}
+		// format file yg dimungkinkan
+		if($imageFileType != "xls") {
+		    echo "maaf hanya xls yang dimungkinkan";
+		    $uploadOk = 0;
+		}
+		// error file
+		if ($uploadOk == 0) {
+		    echo "gagal upload file";
+
+		// file siap diupload jika semua ok
+		} else {
+			
+		    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+				$data["namaFile"]=$target_file."";
+				$data["sizeRow"]=(int)$fileOp[0];
+				$data["kode"]="produk";
+				$page="data/Classes/upload/dataItem1";
+				$this->load->view($page, $data);
+		    } else {
+		        echo "gagal upload file";
+		    }
+		}
+	}
+
+	public function cetakpdf_produk(){
+		include 'cetakPdf.php';
+		$dataCetak=$_POST['dataCetak'];
+		$arrDataCetak=explode(":",$dataCetak);
+		$arrMulti=array();
+		$arrHeaderCetak=explode(";",$_POST['headerCetak']);
+
+		for($i=0; $i<count($arrDataCetak); $i++){
+			$arrTemp=explode(";",$arrDataCetak[$i]);
+			array_push($arrMulti,$arrTemp);
+		}
+
+		$pdf=new cetakpf();
+			$headers=array();
+			$wCol=explode(";",$_POST['wCol']);
+			$hCol=explode(";",$_POST['hCol']);;
+
+		for($i=0; $i<count($arrHeaderCetak); $i++){
+			$arrTemp=array("label"=>$arrHeaderCetak[$i], "length"=>30, "align"=>"L");
+			array_push($headers,$arrTemp);
+		}
+
+		$pdf->setJudul($_POST['judulCetak']);
+		$pdf->setOptionCol($wCol,$hCol);
+		$pdf->setData($arrMulti);
+		$pdf->setHeader($headers);
+		$pdf->makePdf();
+	}
+
+	public function upload_single_product(){
+		//echo $_POST['idProduk'];
+		$query="INSERT INTO produk(id_produk,main_supp,alt1_supp,alt2_supp,dept_code,item_name,local_name,short_name,stopMonthYearStart,stopEndDate,stop_reason,specific_item,sensitiveness,type_of_sale,season_code,lot_size,qty_pack,stock_unit,order_weight,weigth,on_scale,dc_sup,vat,sub_code,ie_barcode,org_bar_type_1,org_bar_no_1,org_bar_no_2,npp,nsp,last_date_npp) value (".$this->cekNull($_POST['idProduk']).",".$this->cekNull($_POST['mainSupp']).",".$this->cekNull($_POST['alt1Supp']).",".$this->cekNull($_POST['alt2Supp']).",".$this->cekNull($_POST['deptCode']).",".$this->cekNull($_POST['itemName']).",".$this->cekNull($_POST['localName']).",".$this->cekNull($_POST['shortName']).",".$this->cekNull($_POST['stopMonthYearStart']).",".$this->cekNull($_POST['stopEndDate']).",".$this->cekNull($_POST['stopReason']).",".$this->cekNull($_POST['specificItem']).",".$this->cekNull($_POST['sensitiveness']).",".$this->cekNull($_POST['type_of_sale']).",".$this->cekNull($_POST['season_code']).",".$this->cekNull($_POST['lot_size']).",".$this->cekNull($_POST['qty_pack']).",".$this->cekNull($_POST['stock_unit']).",".$this->cekNull($_POST['order_weight']).",".$this->cekNull($_POST['weigth']).",".$this->cekNull($_POST['on_scale']).",".$this->cekNull($_POST['dc_sup']).",".$this->cekNull($_POST['vat']).",".$this->cekNull($_POST['sub_code']).",".$this->cekNull($_POST['ie_barcode']).",".$this->cekNull($_POST['org_bar_type_1']).",".$this->cekNull($_POST['org_bar_no_1']).",".$this->cekNull($_POST['org_bar_no_2']).",".$this->cekNull($_POST['npp']).",".$this->cekNull($_POST['nsp']).",".$this->cekNull($_POST['last_date_npp']).") ";
+
+		$this->db->query($query);
+		echo "data berhasil diupload";
+	}
+	public function cekNull($data){
+		if($data==""){
+			$data="NULL";
+			return $data;
+		}
+		return "'".$data."'";
+	}
+
 
 }
