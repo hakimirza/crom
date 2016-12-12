@@ -59,32 +59,43 @@ $route['region_view'] = 'dashboard/regionView';
 
 //item management
 $route['product'] = 'product/details';
-$route['upload_prod'] = 'product/upload';
+$route['upload_prod'] = 'product/upload_prod';
+$route['upload_product_batch'] = 'product/upload_product_batch';
+$route['cetakpdf_produk'] = 'product/cetakpdf_produk';
+$route['upload_single_product'] = 'product/upload_single_product';
 
 //supplier management
 $route['supplier'] = 'supplier/profile';
 $route['negotiation'] = 'supplier/negotiation';
+$route['supplier_search'] = 'supplier/supplier_search';
+$route['upload_negotiation_batch'] = 'supplier/upload_batch';
+$route['upload_single_negotiation'] = 'supplier/upload_single_negotiation';
 
 //logistic management
 $route['logistic'] = 'logistic/profile';
+$route['logistic_search'] = 'logistic/search';
 $route['upload_logistic'] = 'logistic/upload';
 $route['inventory'] = 'logistic/inventory';
 
 //shop management
 $route['shop'] = 'shop/profile';
 $route['stat_shop'] = 'shop/stat_shop';
+$route['shop_search'] = 'shop/shop_search';
 
 //customer management
 $route['customer'] = 'customer/profile';
 $route['stat_customer'] = 'customer/stat';
 $route['loyalty'] = 'customer/loyalty';
+$route['customer_search'] = 'customer/customer_search';
 
 //human management
 $route['upload_human'] = 'human/upload';
 $route['update_human'] = 'human/update';
+$route['upload_batch'] = 'human/upload_batch';
 
 //ticketing
 $route['ticket'] = 'ticket';
+$route['cetakpdf_ticket']='ticket/cetakpdf_ticket';
 
 $route['tracking_order'] = 'logistic/trackingOrder';
 $route['user_registration'] = 'human/userRegistration';
