@@ -155,7 +155,9 @@ $this->load->view('template/sidebar_left');
 								<p>Personal Information</p>
 								<br>
 								<div class="row">
+
 									<?=form_open_multipart(base_url('human/simpan'), 'class = "form-horizontal" method = "POST" enctype="multipart/form-data"');?>
+                  
 									<div class="col-md-6"> <!-- left main col -->
 
 										<div class="form-group">

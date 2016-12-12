@@ -25,6 +25,25 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet" />
 
+    <style type="text/css">
+        .form-control{
+            color: #000;
+        }
+
+        .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+            background-color: #f9f9f9;
+        }
+
+        .cust-modal-header{
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .kanan{
+            float : right;
+        }
+    </style>
+
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]>
     <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -60,16 +79,16 @@
                             <header class="panel-heading tab-bg-dark-navy-blue ">
                                 <ul class="nav nav-tabs">
                                     <li class="active">
-                                        <a data-toggle="tab" href="#daftarProduk">DAFTAR PRODUK</a>
+                                        <a data-toggle="tab" href="#tab1">DAFTAR PRODUK</a>
                                     </li>
                                     <li class="">
-                                        <a data-toggle="tab" href="#tambahProduk">TAMBAH PRODUK</a>
+                                        <a data-toggle="tab" href="#tab2">UNUSED TAB</a>
                                     </li>
                                 </ul>
                             </header>
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div id="daftarProduk" class="tab-pane active">
+                                    <div id="tab1" class="tab-pane active">
                                         <section class="panel">
                                             <div class="panel-body">
                                                 <div class="adv-table editable-table ">
@@ -104,84 +123,321 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $this->load->view('data/dataProduct') ?>
+                                                            <?php 
+                                                            for ($i=1; $i < 20 ; $i++) {
+
+                                                                $cod = substr(md5($i), 0, 5);
+                                                                $prod = $sup[rand(0,3)];
+                                                                $harga1 = rand(10000,5000000);
+                                                                $diskon = rand(0,100);
+                                                                $harga2 = $harga1-($harga1*$diskon/100);
+                                                                $arr = array($cod,$prod,$harga1,$diskon,$harga2);
+
+                                                                echo '
+                                                                <tr>
+                                                                    <td>'.$i.'</td>
+                                                                    <td><a data-toggle="modal" href="#modalUpdateItem" title="Detail">'.$cod.'</a></td>
+                                                                    <td>'.$prod.'</td>
+                                                                    <td>'.number_format($harga1).'</td>
+                                                                    <td>'.$diskon.'</td>
+                                                                    <td>'.number_format($harga2).'</td>
+                                                                </tr>
+                                                                ';
+
+                                                            }
+                                                            ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </section>
                                     </div>
-                                    <div id="tambahProduk" class="tab-pane">
+                                    <div id="tab2" class="tab-pane">
                                         <div class="well">
-                                            Tambah produk dengan mengunggah file excel sesuai <b><a title="unduh file standar excel" href="#">format</a></b>
+                                            ...
                                         </div>
-                                        <section class="panel">
-                                            <div class="panel-body">
-                                                <form id="upload" method="post" action="product/upload_prod" enctype="multipart/form-data">
-                                                    <div id="drop">
-                                                        Drop Here
-
-                                                        <a>Browse</a>
-                                                        <input type="file" name="upl" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple />
-                                                    </div>
-
-                                                    <ul>
-                                                        <!-- The file uploads will be shown here -->
-                                                    </ul>
-
-                                                </form>
-                                            </div>
-                                        </section>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
-                <!-- page end-->
+
+                <!-- MODAL donk -->
+                <div class="modal bs-example-modal-sm" id="modalUpdateItem" tabindex="-1" role="dialog" data-backdrop="static">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header cust-modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <b class="kanan">Nama Produk &nbsp; </b>
+                                <header class="tab">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a data-toggle="tab" href="#prodMain">Product Maintenance</a>
+                                        </li>
+                                        <li class="">
+                                            <a data-toggle="tab" href="#supMain">Item Supplier Maintenance</a>
+                                        </li>
+                                    </ul>
+                                </header>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="tab-content">
+                                    <div id="prodMain" class="tab-pane active">
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <div class="row">
+
+                                                    <form action="#" class="form-horizontal">
+
+                                                        <div class="col-md-6">
+
+                                                            <div class="form-group">
+                                                            <label class="col-md-3 control-label">Address</label>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" name="provinsi">
+                                                                        <option value="11">DKI Jakarta</option>
+                                                                        <option value="12">Banten</option>
+                                                                        <option value="13">Jawa Barat</option>
+                                                                    </select>
+                                                                    <span class="help-block">Provinsi</span>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" name="kota">
+                                                                        <option value="1112">Bandung</option>
+                                                                        <option value="1113">Serang</option>
+                                                                        <option value="1114">Cirebon</option>
+                                                                    </select>
+                                                                    <span class="help-block">Kota</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">CP</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control input-md" name="cp" maxlength="100" placeholder="Contact Person's Name">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+
+                                                            <div class="form-group">
+                                                            <label class="col-md-3 control-label">Address</label>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" name="provinsi">
+                                                                        <option value="11">DKI Jakarta</option>
+                                                                        <option value="12">Banten</option>
+                                                                        <option value="13">Jawa Barat</option>
+                                                                    </select>
+                                                                    <span class="help-block">Provinsi</span>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" name="kota">
+                                                                        <option value="1112">Bandung</option>
+                                                                        <option value="1113">Serang</option>
+                                                                        <option value="1114">Cirebon</option>
+                                                                    </select>
+                                                                    <span class="help-block">Kota</span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-3 control-label">CP</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control input-md" name="cp" maxlength="100" placeholder="Contact Person's Name">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-12"> <!-- submit -->
+                                                            <div class="row">
+                                                                <div class="col-md-2 col-md-offset-7">
+                                                                    <button class="btn btn-danger btn-block" type="reset" id="reset"><i class="fa fa-times"></i> Clear</button>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <button class="btn btn-primary btn-block" type="submit" id="submit"><i class="fa fa-check"></i> Update</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                    <div id="supMain" class="tab-pane">
+                                        <section class="panel">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item list-group-item-info">
+                                                                <div class="row">
+                                                                    <div class="col-md-9">
+                                                                        <h4>Nama Produk</h4>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <h6 class="kanan">ID : 000000001</h6>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <form action="#" class="form-horizontal">
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-4 control-label">MAIN Supplier</label>
+                                                                                <div class="col-md-8">
+                                                                                    <select class="form-control" name="main-sup">
+                                                                                        <option value="">-</option>
+                                                                                        <option value="1">PT Maju Mapan Jaya</option>
+                                                                                        <option value="2" selected="">PT Mundur Teratur</option>
+                                                                                        <option value="3">PT Terbang Tinggi Jaya</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-4 control-label">Alt. Supplier 1</label>
+                                                                                <div class="col-md-8">
+                                                                                    <select class="form-control" name="alt-sup1">
+                                                                                        <option value="">-</option>
+                                                                                        <option value="1">PT Maju Mapan Jaya</option>
+                                                                                        <option value="2">PT Mundur Teratur</option>
+                                                                                        <option value="3">PT Terbang Tinggi Jaya</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label class="col-md-4 control-label">Alt. Supplier 2</label>
+                                                                                <div class="col-md-8">
+                                                                                    <select class="form-control" name="alt-sup2">
+                                                                                        <option value="">-</option>
+                                                                                        <option value="1">PT Maju Mapan Jaya</option>
+                                                                                        <option value="2">PT Mundur Teratur</option>
+                                                                                        <option value="3">PT Terbang Tinggi Jaya</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-md-3 col-md-offset-5">
+                                                                                    <button class="btn btn-danger btn-sm btn-block" type="reset"><i class="fa fa-times"></i> Clear</button>
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <button class="btn btn-primary btn-sm btn-block" type="submit"><i class="fa fa-check"></i> Update</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item">
+                                                                <form class="form-horizontal">
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-3 control-label">Search</label>
+                                                                        <div class="col-md-5">
+                                                                            <input type="text" class="form-control" maxlength="5" name="search-sup" placeholder="Supplier ID">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <table class="table table-striped">
+                                                                    <thead></thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th>Name</th>
+                                                                            <td>PT Maju Mapan Jaya</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Code</th>
+                                                                            <td>010101</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Type</th>
+                                                                            <td>C - Commercial</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Address</th>
+                                                                            <td>Jl. Kurawa No. 99, Tangerang</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th>Activity Loc</th>
+                                                                            <td>Jabodetabek</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- page end-->
+                </section>
             </section>
+            <!--main content end-->
+            <!--right sidebar start-->
+            <!--right sidebar end-->
+
         </section>
-        <!--main content end-->
-        <!--right sidebar start-->
-        <!--right sidebar end-->
 
-    </section>
+        <!-- Placed js at the end of the document so the pages load faster -->
 
-    <!-- Placed js at the end of the document so the pages load faster -->
+        <!--Core js-->
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery-migrate.js"></script>
 
-    <!--Core js-->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-migrate.js"></script>
+        <script src="assets/bs3/js/bootstrap.min.js"></script>
+        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+        <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <!--Easy Pie Chart-->
+        <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+        <!--Sparkline Chart-->
+        <script src="assets/js/sparkline/jquery.sparkline.js"></script>
 
-    <script src="assets/bs3/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
-    <!--Easy Pie Chart-->
-    <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
-    <!--Sparkline Chart-->
-    <script src="assets/js/sparkline/jquery.sparkline.js"></script>
-    
-    <!--editable table-->
-    <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
+        <!--editable table-->
+        <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
-    <!--common script init for all pages-->
-    <script src="assets/js/scripts.js"></script>
+        <!--common script init for all pages-->
+        <script src="assets/js/scripts.js"></script>
 
-    <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
+        <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
-    <!-- jQuery File Upload Dependencies -->
-    <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
-    <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
+        <!-- jQuery File Upload Dependencies -->
+        <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
+        <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
+        <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
 
-    <!-- Our main JS file -->
-    <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+        <!-- Our main JS file -->
+        <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
 
-    <!--script for this page only-->
-    <script src="assets/js/table-order.js"></script>
+        <!--script for this page only-->
+        <script src="assets/js/table-order.js"></script>
 
     <!-- END JAVASCRIPTS -->
     <script>
@@ -226,5 +482,5 @@
         });
     </script>
 
-</body>
-</html>
+    </body>
+    </html>
