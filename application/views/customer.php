@@ -77,18 +77,18 @@
 
                                                             <!-- title -->
                                                             <div class="col-md-12">
-                                                                <h1>
+                                                                <h1 id="customer_title">
                                                                     <?= $identitas['Name'] ?>
                                                                 </h1>
                                                             </div>
 
                                                             <!-- thumbnail -->
-                                                            <div class="col-md-6">
+                                                            <div id="img1" class="col-md-6">
                                                                 <img src=<?= $imgsrc1 ?> class="img-responsive img-rounded" alt="Logistic's logo">
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div id="img2" class="col-md-6">
                                                                 <img src=<?= $imgsrc2 ?> class="img-responsive img-rounded" alt="Logistic's map area">
-                                                            </div>
+                                                            </div >
                                                             <div class="col-md-12"> </div> <!-- blankspace -->
 
                                                             <div class="col-md-12">
@@ -129,9 +129,13 @@
                                                         <!-- search form -->
                                                         <?= form_open(base_url('customer/search'), 'class = "form-inline"'); ?>
                                                         <div class="col-md-9">
-                                                            <input type="text" size="10" class="form-control" placeholder="ID-customer" autofocus name="idcust">
-                                                            <input type="text" class="form-control" placeholder="Customer's Name" name="namecust">
-                                                            <button class="btn btn-primary" type="submit" id="viewButton"><i class="fa fa-search"></i></button>
+                                                        
+                                                            <i class="fa fa-search fa-lg"></i>  
+                                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-customer" autofocus name="idcust">
+                                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Customer's Name" name="namecust">
+                                                            <datalist id="languages">
+
+                                                            </datalist>
                                                         </div>
                                                         <?= form_close()?>
                                                         <div class="col-md-3">
@@ -173,7 +177,7 @@
                                                         <div class="col-md-12">
                                                             <h3>Identity</h3>
                                                             <table class="table table-striped table-hover table-bordered">
-                                                                <tbody>
+                                                                <tbody id="searchResult">
                                                                     <?php
                                                                     foreach ($identitas as $key => $value) {
 
@@ -256,6 +260,76 @@
     $(document).ready(function() {
 
         EditableTable.init();
+
+         $( "#search_id" ).keyup(function(e) {
+            e.preventDefault();
+            var data=document.getElementById("search_id").value;
+            $.ajax({
+                url : 'customer_search',
+                data : 'id='+data,
+                type : 'POST',
+                success : function(hasil){
+                        res=hasil.split("::");
+                        document.getElementById("customer_title").innerHTML=res[0];
+                        document.getElementById("img1").innerHTML=res[1];
+                        document.getElementById("searchResult").innerHTML=res[2];
+                },
+            });
+
+
+        });
+        function cobaSearch(){
+            alert("ok");
+        }
+        $( "#search_name" ).keyup(function(e) {
+            e.preventDefault();
+            var data=document.getElementById("search_name").value;
+
+            $.ajax({
+                url : 'customer_search',
+                data : 'name='+data,
+                type : 'POST',
+                success : function(hasil){
+                    //alert(hasil);
+                        document.getElementById("languages").innerHTML=hasil;
+                  //      document.getElementById("search_name").value=data;
+                },
+            });
+        });
+
+        document.querySelector('input[list="languages"]').addEventListener('input', onInput);
+
+        function onInput(e) {
+           var input = e.target,
+               val = input.value;
+               list = input.getAttribute('list'),
+               options = document.getElementById(list).childNodes;
+
+          for(var i = 0; i < options.length; i++) {
+            if(options[i].innerText === val) {
+              
+                data=val.split(" : ");
+                $.ajax({
+                    url : 'customer_search',
+                    data : 'id='+data[1],
+                    type : 'POST',
+                    success : function(hasil){
+                            res=hasil.split("::");
+                            document.getElementById("customer_title").innerHTML=res[0];
+                            document.getElementById("img1").innerHTML=res[1];
+                            document.getElementById("searchResult").innerHTML=res[2];
+                            document.getElementById("search_name").value=data[0];
+                            document.getElementById("search_id").value=data[1];
+                    },
+                });
+
+              break;
+            }
+          }
+        }
+
+
+        
     });
 </script>
 

@@ -132,11 +132,17 @@
 								<div class="row">
 									
 									<div class="col-md-6"> <!-- top left panel -->
+										<div class="form-group">
+											<label class="col-md-3 control-label">ID Supplier</label>
+											<div class="col-md-5">
+												<input type="text" class="form-control input-md" name="idSupplier" placeholder="ID Supplier">
+											</div>
+										</div>
 
 										<div class="form-group">
 											<label class="col-md-3 control-label">Supplier Type</label>
 											<div class="col-md-9">
-												<select class="form-control" name="supp-type" style="width: initial;">
+												<select id="selSuppType" class="form-control" name="supp-type" style="width: initial;">
 													<option value="C">C - Commercial</option>
 													<option value="I">I - Internal</option>
 													<option value="E">E - Expense</option>
@@ -154,7 +160,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Specific Supplier</label>
 											<div class="col-md-9">
-												<select class="form-control" name="supp-spec" style="width: initial;">
+												<select id="selSuppSpec" class="form-control" name="supp-spec" style="width: initial;">
 													<option value="1">Direct</option>
 													<option value="2">Wholesale</option>
 													<option value="3">Import</option>
@@ -186,7 +192,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Prefix of Name</label>
 											<div class="col-md-9">
-												<select class="form-control" name="prfx-name" style="width: initial;">
+												<select id="selPrfxName" class="form-control" name="prfx-name" style="width: initial;">
 													<option value="000">000</option>
 													<option value="001">001</option>
 													<option value="002">002</option>
@@ -219,7 +225,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label"></label>
 											<div class="col-md-4">
-												<select class="form-control" name="provinsi">
+												<select id="selProvinsi" class="form-control" name="provinsi">
 													<option value="11">DKI Jakarta</option>
 													<option value="12">Banten</option>
 													<option value="13">Jawa Barat</option>
@@ -227,7 +233,7 @@
 												<span class="help-block">Provinsi</span>
 											</div>
 											<div class="col-md-4">
-												<select class="form-control" name="kota">
+												<select id="selKota" class="form-control" name="kota">
 													<option value="1112">Bandung</option>
 													<option value="1113">Serang</option>
 													<option value="1114">Cirebon</option>
@@ -239,7 +245,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label"></label>
 											<div class="col-md-4">
-												<select class="form-control" name="kecamatan">
+												<select id="selKecamatan" class="form-control" name="kecamatan">
 													<option value="111211">Manggarai</option>
 													<option value="111212">Jatinegara</option>
 													<option value="111213">Senen</option>
@@ -247,7 +253,7 @@
 												<span class="help-block">Kecamatan</span>
 											</div>
 											<div class="col-md-4">
-												<select class="form-control" name="kelurahan">
+												<select id="selKelurahan" class="form-control" name="kelurahan">
 													<option value="1112120001">Kebon Sayur</option>
 													<option value="1112120002">Bidaracina</option>
 													<option value="1112120003">Senayan</option>
@@ -310,7 +316,7 @@
 												<span class="help-block">SCC Payment Days</span>
 											</div>
 											<div class="col-md-3">
-												<select class="form-control" name="end-month">
+												<select id="selEndMonth" class="form-control" name="end-month">
 													<option value="0">NO</option>
 													<option value="1">YES</option>
 												</select>
@@ -333,7 +339,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Payment Mode</label>
 											<div class="col-md-3">
-												<select class="form-control" name="pay-mode" style="width: initial;">
+												<select id="selPayMode" class="form-control" name="pay-mode" style="width: initial;">
 													<option value="1">Cheque</option>
 													<option value="2">Bank Transfer</option>
 													<option value="3">Cash</option>
@@ -392,39 +398,39 @@
 											<div class="col-md-2">
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="sun"> Sun
+														<input id="orderDay1" name="day-order[]" type="checkbox" value="sun"> Sun
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="mon"> Mon
+														<input id="orderDay2" name="day-order[]" type="checkbox" value="mon"> Mon
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="tue"> Tue
+														<input id="orderDay3" name="day-order[]" type="checkbox" value="tue"> Tue
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="wed"> Wed
+														<input id="orderDay4" name="day-order[]" type="checkbox" value="wed"> Wed
 													</label>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="thu"> Thu
+														<input id="orderDay5" name="day-order[]" type="checkbox" value="thu"> Thu
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="fri"> Fri
+														<input id="orderDay6" name="day-order[]" type="checkbox" value="fri"> Fri
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-order[]" type="checkbox" value="sat"> Sat
+														<input id="orderDay7" name="day-order[]" type="checkbox" value="sat"> Sat
 													</label>
 												</div>
 											</div>
@@ -435,39 +441,39 @@
 											<div class="col-md-2">
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="sun"> Sun
+														<input id="deliveryDay1" name="day-deliver[]" type="checkbox" value="sun"> Sun
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="mon"> Mon
+														<input id="deliveryDay2" name="day-deliver[]" type="checkbox" value="mon"> Mon
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="tue"> Tue
+														<input id="deliveryDay3" name="day-deliver[]" type="checkbox" value="tue"> Tue
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="wed"> Wed
+														<input id="deliveryDay4" name="day-deliver[]" type="checkbox" value="wed"> Wed
 													</label>
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="thu"> Thu
+														<input id="deliveryDay5" name="day-deliver[]" type="checkbox" value="thu"> Thu
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="fri"> Fri
+														<input id="deliveryDay6" name="day-deliver[]" type="checkbox" value="fri"> Fri
 													</label>
 												</div>
 												<div class="checkbox">
 													<label>
-														<input name="day-deliver[]" type="checkbox" value="sat"> Sat
+														<input id="deliveryDay7" name="day-deliver[]" type="checkbox" value="sat"> Sat
 													</label>
 												</div>
 											</div>
@@ -514,7 +520,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Payment</label>
 											<div class="col-md-6">
-												<select class="form-control" name="stop-pay" style="width: initial;">
+												<select id="selStopPay" class="form-control" name="stop-pay" style="width: initial;">
 													<option value="0">NO</option>
 													<option value="1">YES</option>
 												</select>
@@ -524,7 +530,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Payment Reason</label>
 											<div class="col-md-6">
-												<select class="form-control" name="stop-pay-reason1" style="width: initial;">
+												<select id="selStopPayReason1" class="form-control" name="stop-pay-reason1" style="width: initial;">
 													<option value="">-</option>
 													<option value="2">Stop Business</option>
 													<option value="3">Pending A/R</option>
@@ -544,7 +550,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Payment Reason</label>
 											<div class="col-md-6">
-												<select class="form-control" name="stop-pay-reason2" style="width: initial;">
+												<select id="selStopPayReason2" class="form-control" name="stop-pay-reason2" style="width: initial;">
 													<option value="">-</option>
 													<option value="3">Pending A/R</option>
 													<option value="4">Seasonal Supplier</option>
@@ -557,7 +563,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Business</label>
 											<div class="col-md-8">
-												<select class="form-control" name="stop-bus-all" style="width: initial;">
+												<select id="selStopBusAll" class="form-control" name="stop-bus-all" style="width: initial;">
 													<option value="0">NO</option>
 													<option value="1">YES</option>
 												</select>
@@ -568,7 +574,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Business</label>
 											<div class="col-md-8">
-												<select class="form-control" name="stop-bus-spec" style="width: initial;">
+												<select id="selStopBusSpec" class="form-control" name="stop-bus-spec" style="width: initial;">
 													<option value="0">NO</option>
 													<option value="1">YES</option>
 												</select>
@@ -583,7 +589,7 @@
 										<div class="form-group">
 											<label class="col-md-4 control-label">Stop Business Reason</label>
 											<div class="col-md-6">
-												<select class="form-control" name="stop-pay-reason2" style="width: initial;">
+												<select id="selStopBusReason" class="form-control" name="stop-pay-reason2" style="width: initial;">
 													<option value="">-</option>
 													<option value="0">CROM Decision</option>
 													<option value="1">Supplier Decision</option>
@@ -700,7 +706,110 @@
 			});
 
 			// $('#form-nego input, select, textarea, button').attr('readonly', true).attr('disabled', true);
+
+			$("input[type=file]").bind("change", function() {
+		      var file_data = this.files[0];
+		      var form_data = new FormData();
+		      form_data.append('file', file_data, '1000_'+file_data['name']);
+
+		      $.ajax({
+		        url: 'upload_negotiation_batch', 
+		        dataType: 'text', 
+		        cache: false,
+		        contentType: false,
+		        processData: false,
+		        data: form_data,
+		        type: 'post',
+		        success: function(hasil){
+		          alert(hasil);
+		          window.open('negotiation',"_self");
+		        }
+		      });
+		    });
+
+		     $( "#form-nego" ).submit(function(e) {
+		    	e.preventDefault();
+		    	
+		    	//$('#check_id').val();
+				var data="";
+
+				data= data+"selSuppType="+$("#selSuppType option:selected" ).text();
+				data=data+"&idSupplier="+$("input[name=idSupplier]").val();
+		    	data=data+"&npwp="+$("input[name=npwp]").val();
+		    	data=data+"&selSuppSpec="+$( "#selSuppSpec option:selected" ).text();
+		    	data=data+"&remit="+$("input[name=remit]").val();
+		    	data=data+"&enName="+$("input[name=en-name]").val();
+		    	data=data+"&locName="+$("input[name=loc-name]").val();
+		    	data=data+"&prfxName="+$( "#selPrfxName option:selected" ).text();
+		    	data=data+"&actLoc="+$("input[name=act-loc]").val();
+		    	data=data+"&alamatDetil="+$("textarea[name=alamat-detil]").val();
+		    	data=data+"&kodePos="+$("input[name=kodepos]").val();
+		    	data=data+"&provinsi="+$( "#selProvinsi option:selected" ).text();
+		    	data=data+"&kota="+$( "#selKota option:selected" ).text();
+		    	data=data+"&kecamatan="+$( "#selKecamatan option:selected" ).text();
+		    	data=data+"&kelurahan="+$( "#selKelurahan option:selected" ).text();
+		    	data=data+"&phone="+$("input[name=phone]").val();
+		    	data=data+"&fax="+$("input[name=fax]").val();
+		    	data=data+"&email="+$("input[name=email]").val();
+		    	data=data+"&cp="+$("input[name=cp]").val();
+		    	data=data+"&payDay="+$("input[name=pay-day]").val();
+		    	data=data+"&sccPayDay="+$("input[name=scc-pay-day]").val();
+		    	data=data+"&endMonth="+$("#selEndMonth option:selected" ).text();
+		    	data=data+"&servicePenalty="+$("input[name=service-penalty]").val();
+		    	data=data+"&deliveryPenalty="+$("input[name=delivery-penalty]").val();
+		    	data=data+"&payMode="+$("#selPayMode option:selected" ).text();
+		    	data=data+"&bankName="+$("input[name=bank-name]").val();
+		    	data=data+"&accNum="+$("input[name=acc-num]").val();
+		    	data=data+"&chequeTitle="+$("input[name=cheque-title]").val();
+		    	data=data+"&chequeMailing="+$("input[name=cheque-mailing]").val();
+		    	data=data+"&cutOffTime="+$("input[name=cut-off-time]").val();
+		    	var cekOD="";
+		    	if ($('#orderDay1').is(":checked")){cekOD +="1";}
+		    	if ($('#orderDay2').is(":checked")){cekOD +="2";}
+		    	if ($('#orderDay3').is(":checked")){cekOD +="3";}
+		    	if ($('#orderDay4').is(":checked")){cekOD +="4";}
+		    	if ($('#orderDay5').is(":checked")){cekOD +="5";}
+		    	if ($('#orderDay6').is(":checked")){cekOD +="6";}
+		    	if ($('#orderDay7').is(":checked")){cekOD +="7";}
+		    	data=data+"&orderDay="+cekOD;
+		    	var delD="";
+		    	if ($('#deliveryDay1').is(":checked")){delD +="1";}
+		    	if ($('#deliveryDay2').is(":checked")){delD +="2";}
+		    	if ($('#deliveryDay3').is(":checked")){delD +="3";}
+		    	if ($('#deliveryDay4').is(":checked")){delD +="4";}
+		    	if ($('#deliveryDay5').is(":checked")){delD +="5";}
+		    	if ($('#deliveryDay6').is(":checked")){delD +="6";}
+		    	if ($('#deliveryDay7').is(":checked")){delD +="7";}
+		    	data=data+"&deliveryDay="+delD;
+		    	data=data+"&orderPeriod="+$("input[name=order-period]").val();
+		    	data=data+"&supplierEan="+$("input[name=supplier-ean]").val();
+		    	data=data+"&deptConcern="+$("input[name=dept-concern]").val();
+		    	data=data+"&stopPay="+$("#selStopPay option:selected" ).text();
+		    	data=data+"&stopPayReason1="+$("#selStopPayReason1 option:selected" ).text();
+		    	data=data+"&stopPayReason2="+$("#selStopPayReason2 option:selected" ).text();
+		    	data=data+"&stopBusAll="+$("#selStopBusAll option:selected" ).text();
+		    	data=data+"&stopBusSpec="+$("#selStopBusSpec option:selected" ).text();
+		    	data=data+"&stopBusReason="+$("#selStopBusReason option:selected" ).text();
+		    	data=data+"&startStop="+$("input[name=start-stop]").val();
+		    	data=data+"&endStop="+$("input[name=end-stop]").val();
+
+	    		//alert(data);
+
+	  			$.ajax({
+		        url : 'upload_single_negotiation', 
+		        data : data,
+		        type : 'POST',
+		        success: function(hasil){
+		          alert(hasil);
+		          //window.open('single_item',"_self");
+		        }
+		      });
+			
+			});
+			
 		});
+
+		
 	</script>
 
 	<!-- END JAVASCRIPTS -->
