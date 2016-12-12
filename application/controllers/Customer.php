@@ -58,7 +58,95 @@ class Customer extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
-	public function search(){
+	public function customer_search(){
+		if(isset($_POST['id'])){
+			$id= $_POST['id'];
+			$query="SELECT * FROM customer WHERE CONCAT(id_customer,id_warung,id_agen)=$id";
+			$dataResult=$this->db->query($query);
+			$arr1=array();
+			$i=0;
+			foreach ($dataResult->result_array() as $key) {
+				$idWarung=$key['id_warung'];
+				$idAgen=$key['id_agen'];
+				$query="SELECT nama_warung FROM warung WHERE id_warung=$idWarung AND id_agen=$idAgen";
+				$dataResult2=$this->db->query($query);
+				$namaWarung="";
+				foreach ($dataResult2->result_array() as $key2) {
+					$namaWarung=$key2['nama_warung'];
+				}
+				$urlKtp='<img src='.$key['url_ktp'].' class="img-responsive img-rounded" alt="Logistics logo">';
+				echo $key['nama']."::".$urlKtp."::
+	            <tr>
+	                <th>Customer ID</th>
+	                <td>".$key['id_customer']."</td>
+	            </tr>
+	            <tr>
+	                <th>Register Date</th>
+	                <td>".$key['registered_date']."</td>
+	            </tr>
+	             <tr>
+	                <th>Name</th>
+	                <td>".$key['nama']."</td>
+	            </tr>
+	            <tr>
+	                <th>Place of Birth</th>
+	                <td>".$key["tempat_lahir"]."</td>
+	            </tr>
+	            <tr>
+	                <th>Date of Birth</th>
+	                <td>".$key["tgl_lahir"]."</td>
+	            </tr>
+	            <tr>
+	                <th>Income</th>
+	                <td>".$key['pendapatan_min']." - ".$key['pendapatan_max']."</td>
+	            </tr>
+	            <tr>
+	                <th>Occupation</th>
+	                <td>".$key['pekerjaan']."</td>
+	            </tr>
+	            <tr>
+	                <th>Phone / Mobile Number</th>
+	                <td>".$key['no_telp']."</td>
+	            </tr>
+	            <tr>
+	                <th>Email</th>
+	                <td>".$key['email']."</td>
+	            </tr>
+	            <tr>
+	                <th>Address</th>
+	                <td>".$key['alamat_detil']."</td>
+	            </tr>
+	             <tr>
+	                <th>Shop Name</th>
+	                <td>".$namaWarung."</td>
+	            </tr>
+	            <tr>
+	                <th>Shop ID</th>
+	                <td>".$idWarung."</td>
+	            </tr>
+            	";
+
+				$i++;
+				
+			}
+
+		}elseif (isset($_POST['name'])) {
+			$nama= $_POST['name'];
+			$query="SELECT nama,id_customer,id_warung,id_agen FROM customer WHERE nama LIKE '%$nama%'";
+			$dataResult=$this->db->query($query);
+			$arr1=array();
+			$i=0;$str="";
+			foreach ($dataResult->result_array() as $key) {
+				
+				$str=$str.'
+					<option>'.$key['nama']." : ".$key['id_customer'].$key['id_warung'].$key['id_agen'].'</option>
+				';
+				
+				$i++;
+				if($i==10){break;}
+			}
+			echo $str;	
+		}
 
 	}
 
@@ -70,5 +158,6 @@ class Customer extends CI_Controller {
 	public function loyalty($page = 'loyalty'){
 
 	}
+
 
 }

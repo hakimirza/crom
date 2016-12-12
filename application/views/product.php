@@ -98,10 +98,17 @@
                                                             </button>
                                                             <ul class="dropdown-menu pull-right">
                                                                 <li><a href="#">Print</a></li>
-                                                                <li><a href="#">Save as PDF</a></li>
+                                                                <li><a id="cetak_pdf" href="javascript:;">Save as PDF</a></li>
                                                                 <li><a href="#">Export to Excel</a></li>
                                                             </ul>
                                                         </div>
+<form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
+<input type="hidden" id="dataCetak" name="dataCetak" value="" />
+<input type="hidden" id="headerCetak" name="headerCetak" value="" />
+<input type="hidden" id="judulCetak" name="judulCetak" value="" />
+<input type="hidden" id="wCol" name="wCol" value="" />
+<input type="hidden" id="hCol" name="hCol" value="" />
+</form>
                                                     </div>
                                                     <div class="space15"><br></div>
                                                     <table class="table table-striped table-hover table-bordered" id="table-sortable">
@@ -432,12 +439,48 @@
         <!--script for this page only-->
         <script src="assets/js/table-order.js"></script>
 
-        <!-- END JAVASCRIPTS -->
-        <script>
-            jQuery(document).ready(function() {
-                EditableTable.init();
-            });
-        </script>
+    <!-- END JAVASCRIPTS -->
+    <script>
+        jQuery(document).ready(function() {
+            EditableTable.init();
+
+            $('#cetak_pdf').click(function(e){
+                e.preventDefault();
+              var test=getDataTabelforPrint();
+              var testData="";
+              for(i=0; i<test.length; i++){
+                if(i !=test.length-1){
+                testData +=test[i]+":";}
+                else{testData +=test[i];}
+              }
+
+              document.getElementById("dataCetak").value=testData;
+              document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
+              document.getElementById("judulCetak").value="Data Produk";
+              document.getElementById("wCol").value="8;20;20;50;15;20";
+              document.getElementById("hCol").value="5;5;5;5;5;5";
+
+              window.open('', 'TheWindow');
+              document.getElementById('TheForm').submit();
+            })
+
+            function getDataTabelforPrint(){
+                var lengthTable = document.getElementById("table-sortable").rows.length;
+                  var dataTabel=[];
+                  for(j=1; j<lengthTable; j++){
+                    var dataItem="";
+                    var x = document.getElementById("table-sortable").rows[j].cells;
+                    for(i=0; i<6; i++){ // ==================perlu diubah setiap pdf yg baru
+                        dataItem +=";"+(x[i].innerHTML);
+                    }
+                    dataItem=dataItem.substr(1);
+                    dataTabel[j-1]=dataItem;
+                  }
+                return(dataTabel);
+            }
+
+        });
+    </script>
 
     </body>
     </html>

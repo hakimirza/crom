@@ -67,16 +67,55 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+   $('#input_prov').change(function(){
+	    $('#input_kota').after('<span class="loading">Loading Daftar Kota..</span>');
+		$.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url() . 'human/getDaftarKota'; ?>",
+                        data: "id=" +$(this).val(),
+                        success: function(response) {
+                        $('.loading').remove();
+                        $("#input_kota").html(response);
+      }});
+   });
+   $('#input_kota').change(function(){
+	    $('#input_kec').after('<span class="loading">Loading Daftar Kecamatan..</span>');
+		$.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url() . 'human/getDaftarKecamatan'; ?>",
+                        data: "id=" +$(this).val(),
+                        success: function(response) {
+                        $('.loading').remove();
+                        $("#input_kec").html(response);
+      }});
+   });
+   $('#input_kec').change(function(){
+	    $('#input_kel').after('<span class="loading">Loading Daftar Kelurahan..</span>');
+		$.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url() . 'human/getDaftarKelurahan'; ?>",
+                        data: "id=" +$(this).val(),
+                        success: function(response) {
+                        $('.loading').remove();
+                        $("#input_kel").html(response);
+      }});
+   });
+
+});
+</script>
 </head>
 
 <body>
 
 	<section id="container" >
 		<!--header start-->
-		<?php 
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar_left');
-		?>
+		<?php
+$this->load->view('template/header');
+$this->load->view('template/sidebar_left');
+?>
 		<!--sidebar end-->
 
 		<!--main content start-->
@@ -84,6 +123,7 @@
 			<section class="wrapper">
 				<!-- page start-->
 				<div class="row">
+						<?php echo $this->session->flashdata('pesan') ?>
 					<div class="col-md-8 col-md-offset-2">
 						<section class="panel">
 							<div class="panel-body">
@@ -91,7 +131,7 @@
 								<p>Silakan upload file excel sesuai <a href="#" title="Download file excel"><b>format</b></a></p>
 								<br>
 								<div class="row">
-									<?= form_open(base_url('human/upload_batch'), 'class = "form"'); ?>
+									<?=form_open(base_url('human/upload_batch'), 'class = "form"');?>
 									<div class="col-md-6">
 										<input type="file" name="batchupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="file" />
 										<div class="input-group">
@@ -104,7 +144,7 @@
 									<div class="col-md-2 col-md-offset-4">
 										<button class="btn btn-primary" type="submit" id="submitBatch"><i class="fa fa-check"></i> Submit</button>
 									</div>
-									<?= form_close()?> 
+									<?=form_close()?>
 								</div>
 							</div>
 						</section>
@@ -115,14 +155,15 @@
 								<p>Personal Information</p>
 								<br>
 								<div class="row">
-									<?= form_open(base_url('human/upload'), array('class' => 'form-horizontal', 'id' => 'form-human')); ?>
 
+									<?=form_open_multipart(base_url('human/simpan'), 'class = "form-horizontal" method = "POST" enctype="multipart/form-data"');?>
+                  
 									<div class="col-md-6"> <!-- left main col -->
 
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<input type="text" class="form-control input-md" name="nik" placeholder="Nomor Induk" autofocus="">
+												<input type="text" class="form-control input-md" name="nip" placeholder="Nomor Induk" autofocus="">
 											</div>
 										</div>
 
@@ -150,10 +191,11 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<select class="form-control" name="prov">
+												<select class="form-control" name="input_prov" id="input_prov" name="prov">
 													<option value="">Provinsi</option>
-													<option value="">2</option>
-													<option value="">3</option>
+													<?php foreach ($provinsi as $prov) {
+	echo "<option value='" . $prov->id_prov . "'>" . $prov->nama . "</option>";
+}?>
 												</select>
 											</div>
 										</div>
@@ -161,10 +203,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<select class="form-control" name="kota">
-													<option value="">Kota</option>
-													<option value="">2</option>
-													<option value="">3</option>
+												<select class="form-control" name="input_kota" id="input_kota" name="kota">
 												</select>
 											</div>
 										</div>
@@ -172,10 +211,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<select class="form-control" name="kelurahan">
-													<option value="">Kelurahan</option>
-													<option value="">2</option>
-													<option value="">3</option>
+												<select class="form-control" name="input_kec"id="input_kec" name="kec">
 												</select>
 											</div>
 										</div>
@@ -183,13 +219,11 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<select class="form-control" name="kec">
-													<option value="">Kecamatan</option>
-													<option value="">2</option>
-													<option value="">3</option>
+												<select class="form-control" name="input_kel" id="input_kel" name="kelurahan">
 												</select>
 											</div>
 										</div>
+
 
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
@@ -219,13 +253,13 @@
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-4 radio">
 												<label>
-													<input type="radio" name="jk" value="male">
+													<input type="radio" name="jk" value="0">
 													Laki-laki
 												</label>
 											</div>
 											<div class="col-md-4 radio">
 												<label>
-													<input type="radio" name="jk" value="male">
+													<input type="radio" name="jk" value="1">
 													Perempuan
 												</label>
 											</div>
@@ -239,9 +273,12 @@
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
 												<select class="form-control" name="agama">
-													<option value="">Agama</option>
-													<option value="">2</option>
-													<option value="">3</option>
+													<option value="">Pilih Agama</option>
+													<option value="1">Islam</option>
+													<option value="2">Kristen</option>
+													<option value="3">Hindu</option>
+													<option value="4">Budha</option>
+													<option value="5">Konghucu</option>
 												</select>
 											</div>
 										</div>
@@ -250,9 +287,9 @@
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
 												<select class="form-control" name="kawin">
-													<option value="">Status Kawin</option>
-													<option value="">2</option>
-													<option value="">3</option>
+													<option value="">Pilih Status Kawin</option>
+													<option value="0">Kawin</option>
+													<option value="1">Belum Kawin</option>
 												</select>
 											</div>
 										</div>
@@ -260,7 +297,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Label</label>
 											<div class="col-md-9">
-												<input type="number" class="form-control input-md" name="phone" placeholder="Phone Number">
+												<input type="text" class="form-control input-md" name="phone" placeholder="Phone Number">
 											</div>
 										</div>
 
@@ -277,21 +314,20 @@
 											<label class="col-md-3 control-label">Category</label>
 											<div class="col-md-9">
 												<select class="form-control" name="cat" id="category">
-													<option value="crom">CROM</option>
-													<option value="log">Logistic</option>
-													<option value="agent">Agent</option>
-													<option value="princ">Principal</option>
+													<option value="1">Agent</option>
+													<option value="2">Principal</option>
+													<option value="3">Logistik</option>
+													<option value="4">CROM</option>
 												</select>
 											</div>
 										</div>
 
 										<div class="form-group">
-											<label class="col-md-3 control-label" id="subcat-label">Level</label>
+											<label class="col-md-3 control-label">Level</label>
 											<div class="col-md-9">
-												<select class="form-control" name="level" id="subcat-form">
-													<option value="">A</option>
-													<option value="">B</option>
-													<option value="">C</option>
+												<select class="form-control" name="level" id="level">
+													<option value="">Pilih Level</option>
+													<option value="1">1</option>
 												</select>
 											</div>
 										</div>
@@ -308,7 +344,7 @@
 										<div class="form-group">
 											<label class="col-md-3 control-label">Foto</label>
 											<div class="col-md-9">
-												<input type="file" id="fotodiri" name="foto" accept="image/*">
+												<input type="file" id="fotodiri" name="file_foto" accept="image/*">
 											</div>
 											<div class="col-md-4 col-md-offset-5">
 
@@ -332,7 +368,7 @@
 										<button class="btn btn-primary" type="submit" id="submitUpload"><i class="fa fa-check"></i> Submit</button>
 									</div>
 
-									<?= form_close()?> 
+									<?=form_close()?>
 								</div>
 							</div>
 						</section>
@@ -455,6 +491,31 @@ $('#cancel-img').click(function(){
 	document.getElementById("fotodiri").value = "";
 	$('#cancel-img').hide();
 });
+
+$("input[type=file]").bind("change", function() {
+      var file_data = this.files[0];
+      var form_data = new FormData();
+      form_data.append('file', file_data, '1000_'+file_data['name']);
+      
+      //document.getElementById("tambahProduk").innerHTML="Mohon menunggu . . .";
+      //$("#tambahProduk *").attr("disabled", "disabled").off('click');
+      //alert("woe");
+      $.ajax({
+        url: 'upload_batch', // point to server-side PHP script
+        dataType: 'text',  // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(hasil){
+          alert(hasil);
+          window.open('upload_human',"_self");
+        }
+      });
+
+
+    });
 
 });
 </script>

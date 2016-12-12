@@ -25,10 +25,10 @@ function modal(array $arr){
                 </div>
                 <div class="col-md-6">
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-info"><h4>ID : '.$arr[0].'</h4></li>
-                        <li class="list-group-item">Harga 1 (Rp) : <h3>'.number_format($arr[2]).'</h3></li>
+                        <li class="list-group-item list-group-item-info"><h4>ID : '.$arr[5].'</h4></li>
+                        <li class="list-group-item">Harga 1 (Rp) : <h3>'.$arr[2].'</h3></li>
                         <li class="list-group-item">Promo &nbsp;&nbsp;(%) : <h3>'.$arr[3].'</h3></li>
-                        <li class="list-group-item">Harga 2 (Rp) : <h3>'.number_format($arr[4]).'</h3></li>
+                        <li class="list-group-item">Harga 2 (Rp) : <h3>'.$arr[4].'</h3></li>
                     </ul>
                 </div>
             </div>
@@ -42,27 +42,25 @@ function modal(array $arr){
 </div>';
 }
 
-for ($i=1; $i < 20 ; $i++) {
+$dataSingleItem=$this->db->query("SELECT * FROM produk LIMIT 20 ;"); // hanya 20
+$sup = array("Mie Sedap", "Beng-Beng", "Coca-Cola", "Other");
+$i=1;
+foreach ($dataSingleItem->result_array() as $key) {
 
-    $cod = substr(md5($i), 0, 5);
-    $prod = $sup[rand(0,3)];
-    $harga1 = rand(10000,5000000);
-    $diskon = rand(0,100);
-    $harga2 = $harga1-($harga1*$diskon/100);
-    $arr = array($cod,$prod,$harga1,$diskon,$harga2);
+    $arr = array($key['item_name'],$key['npp'],$key['local_name'],$key['nsp'],$key['id_produk']);
 
     echo '
-    <tr>
-        <td>'.$i.'</td>
-        <td><a data-toggle="modal" href="#modal'.$cod.'" title="Detail">'.$cod.'</a></td>
-        <td>'.$prod.'</td>
-        <td>'.number_format($harga1).'</td>
-        <td>'.$diskon.'</td>
-        <td>'.number_format($harga2).'</td>
-        '.modal($arr).'
-    </tr>
-    ';
+     <tr id="dataItem">
+         <td>'.$i.'</td>
+         <td>'.$key['id_produk'].'</td>
+         <td>'.$key['item_name'].'</td>
+         <td>'.$key['npp'].'</td>
+         <td>'.$key['local_name'].'</td>
+         <td>'.$key['nsp'].'</td>
+     </tr>
+     ';
 
+    $i++;
 }
 
 ?>

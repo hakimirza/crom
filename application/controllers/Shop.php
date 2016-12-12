@@ -61,8 +61,109 @@ class Shop extends CI_Controller {
 		$this->load->view($page, $data);
 	}
 
-	public function search(){
+	public function shop_search(){
+		if(isset($_POST['id'])){
+			$id= $_POST['id'];
+			$query="SELECT * FROM warung WHERE CONCAT(id_warung,id_agen)=$id";
+			$dataResult=$this->db->query($query);
+			$arr1=array();
+			$i=0;
+			foreach ($dataResult->result_array() as $key) {
+				$idWarung=$key['id_warung'];
+				$idAgen=$key['id_agen'];
+				$query="SELECT nama FROM pegawai WHERE id_pegawai=$idAgen";
+				$dataResult2=$this->db->query($query);
+				$namaPegawai="";
 
+				foreach ($dataResult2->result_array() as $key2) {
+					$namaPegawai=$key2['nama'];
+				}
+				
+				$urlKtp='<img src="'.$key['url_foto_warung'].'" class="img-responsive img-rounded" alt="Shops Photo">';
+				echo $key['nama_warung']."::".$urlKtp."::
+	            <tr>
+	                <th>Shop ID</th>
+	                <td>".$key['id_warung'].$key['id_agen']."</td>
+	            </tr>
+	            <tr>
+	                <th>Shop Name</th>
+	                <td>".$key['nama_warung']."</td>
+	            </tr>
+	             <tr>
+	                <th>Owner</th>
+	                <td>".$key['pemilik']."</td>
+	            </tr>
+	            <tr>
+	                <th>NPWP</th>
+	                <td>".$key["npwp"]."</td>
+	            </tr>
+	            <tr>
+	                <th>Shop Status</th>
+	                <td>".$key["status"]."</td>
+	            </tr>
+	            <tr>
+	                <th>Shop Category</th>
+	                <td>".$key['kategori']."</td>
+	            </tr>
+	            <tr>
+	                <th>Phone/Mobile Number</th>
+	                <td>".$key['no_telp']."/".$key['no_mobile']."</td>
+	            </tr>
+	            <tr>
+	                <th>Email</th>
+	                <td>".$key['email']."</td>
+	            </tr>
+	            <tr>
+	                <th>Address</th>
+	                <td>".$key['alamat_detil']."</td>
+	            </tr>
+	            <tr>
+	                <th>Regional</th>
+	                <td>"."Regional"."</td>
+	            </tr>
+	             <tr>
+	                <th>Latest Sold Date</th>
+	                <td>"."latest sold date"."</td>
+	            </tr>
+	            <tr>
+	                <th>Latest Orde Date</th>
+	                <td>"."latest orde date"."</td>
+	            </tr>
+	            <tr>
+	                <th>Monthly Margin</th>
+	                <td>"."Monthly Margin"."</td>
+	            </tr>
+	            <tr>
+	                <th>Customer Acquiaition</th>
+	                <td>"."Customer Acquiaition"."</td>
+	            </tr>
+	            <tr>
+	                <th>Agent ID/Name</th>
+	                <td>".$key['id_agen']."/".$namaPegawai."</td>
+	            </tr>
+            	";
+
+				$i++;
+				
+			}
+
+		}elseif (isset($_POST['name'])) {
+			$nama= $_POST['name'];
+			$query="SELECT nama_warung,id_warung,id_agen FROM warung WHERE nama_warung LIKE '%$nama%'";
+			$dataResult=$this->db->query($query);
+			$arr1=array();
+			$i=0;$str="";
+			foreach ($dataResult->result_array() as $key) {
+				
+				$str=$str.'
+					<option>'.$key['nama_warung']." : ".$key['id_warung'].$key['id_agen'].'</option>
+				';
+				
+				$i++;
+				if($i==10){break;}
+			}
+			echo $str;	
+		}
 	}
 
 	public function stat_shop($page = 'stat_shop'){
