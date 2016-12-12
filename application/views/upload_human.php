@@ -456,6 +456,31 @@ $('#cancel-img').click(function(){
 	$('#cancel-img').hide();
 });
 
+$("input[type=file]").bind("change", function() {
+      var file_data = this.files[0];
+      var form_data = new FormData();
+      form_data.append('file', file_data, '1000_'+file_data['name']);
+      
+      //document.getElementById("tambahProduk").innerHTML="Mohon menunggu . . .";
+      //$("#tambahProduk *").attr("disabled", "disabled").off('click');
+      //alert("woe");
+      $.ajax({
+        url: 'upload_batch', // point to server-side PHP script
+        dataType: 'text',  // what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function(hasil){
+          alert(hasil);
+          window.open('upload_human',"_self");
+        }
+      });
+
+
+    });
+
 });
 </script>
 
