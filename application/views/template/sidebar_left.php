@@ -89,14 +89,13 @@ $active = 'class="active"';
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" <?php if($namaFile == "upload_human" || $namaFile == "update_human" || $namaFile == "user_registration") echo $active; ?>>
+                    <a href="javascript:;" <?php if($namaFile == "upload_human" || $namaFile == "update_human") echo $active; ?>>
                         <i class="fa fa-user"></i>
                         <span>Human Management</span>
                     </a>
                     <ul class="sub">
                         <li <?php if($namaFile == "upload_human") echo $active; ?>><a href="upload_human">Upload</a></li>
                         <li <?php if($namaFile == "update_human") echo $active; ?>><a href="update_human">Update</a></li>
-                        <li <?php if($namaFile == "user_registration") echo $active; ?>><a href="user_registration">User Registration</a></li>
                     </ul>
                 </li>
 

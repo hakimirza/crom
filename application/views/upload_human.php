@@ -115,7 +115,7 @@
 								<p>Personal Information</p>
 								<br>
 								<div class="row">
-									<?= form_open(base_url('human/upload'), 'class = "form-horizontal"'); ?>
+									<?= form_open(base_url('human/upload'), array('class' => 'form-horizontal', 'id' => 'form-human')); ?>
 
 									<div class="col-md-6"> <!-- left main col -->
 

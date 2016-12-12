@@ -700,6 +700,7 @@
 			});
 
 			// $('#form-nego input, select, textarea, button').attr('readonly', true).attr('disabled', true);
+
 		});
 	</script>
 
