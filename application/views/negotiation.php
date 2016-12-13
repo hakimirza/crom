@@ -22,6 +22,8 @@
 
 	<!-- datepicker -->
 	<link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css" />
+	<link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -210,7 +212,24 @@
 									</div>
 
 									<div class="col-md-6"> <!-- top right panel -->
-										
+
+										<div class="form-group">
+											<label class="control-label col-md-3">Effective Date</label>
+											<div class="col-md-3">
+												<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
+													<input type="text" maxlength="0" placeholder="dd-mm-yyyy" size="16" class="form-control" name="start-date">
+													<span class="input-group-btn add-on"></span>
+												</div>
+											</div>
+											<label class="control-label col-md-1">TO</label>
+											<div class="col-md-3">
+												<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
+													<input type="text" maxlength="0" placeholder="dd-mm-yyyy" size="16" class="form-control" name="end-date">
+													<span class="input-group-btn add-on"></span>
+												</div>
+											</div>
+										</div>
+
 										<div class="form-group">
 											<label class="col-md-3 control-label">Address</label>
 											<div class="col-md-5">
@@ -600,7 +619,7 @@
 
 										<div class="form-group">
 											<label class="col-md-4 control-label">Start Stop</label>
-											<div class="col-md-6">
+											<div class="col-md-5">
 												<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
 													<input type="text" placeholder ="dd-mm-yyyy" size="16" maxlength="0" class="form-control" name="start-stop">
 													<span class="input-group-btn add-on">
@@ -613,7 +632,7 @@
 
 										<div class="form-group">
 											<label class="col-md-4 control-label">End Stop</label>
-											<div class="col-md-6">
+											<div class="col-md-5">
 												<div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
 													<input type="text" placeholder ="dd-mm-yyyy" size="16" maxlength="0" class="form-control" name="end-stop">
 													<span class="input-group-btn add-on">
@@ -631,7 +650,7 @@
 						</section>
 					</div>
 
-					<div class="col-md-12" id="stop-panels"> <!-- submit panels -->
+					<div class="col-md-12" id="submit-panels"> <!-- submit panels -->
 						<section class="panel">
 							<div class="panel-body">
 								<div class="row">
@@ -683,6 +702,8 @@
 
 	<!-- date picker -->
 	<script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/moment.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 	<!--editable table-->
 	<script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
@@ -708,33 +729,33 @@
 			// $('#form-nego input, select, textarea, button').attr('readonly', true).attr('disabled', true);
 
 			$("input[type=file]").bind("change", function() {
-		      var file_data = this.files[0];
-		      var form_data = new FormData();
-		      form_data.append('file', file_data, '1000_'+file_data['name']);
+				var file_data = this.files[0];
+				var form_data = new FormData();
+				form_data.append('file', file_data, '1000_'+file_data['name']);
 
-		      $.ajax({
-		        url: 'upload_negotiation_batch', 
-		        dataType: 'text', 
-		        cache: false,
-		        contentType: false,
-		        processData: false,
-		        data: form_data,
-		        type: 'post',
-		        success: function(hasil){
-		          alert(hasil);
-		          window.open('negotiation',"_self");
-		        }
-		      });
-		    });
+				$.ajax({
+					url: 'upload_negotiation_batch', 
+					dataType: 'text', 
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					type: 'post',
+					success: function(hasil){
+						alert(hasil);
+						window.open('negotiation',"_self");
+					}
+				});
+			});
 
-		     $( "#form-nego" ).submit(function(e) {
-		    	e.preventDefault();
-		    	
+			$( "#form-nego" ).submit(function(e) {
+				e.preventDefault();
+
 		    	//$('#check_id').val();
-				var data="";
+		    	var data="";
 
-				data= data+"selSuppType="+$("#selSuppType option:selected" ).text();
-				data=data+"&idSupplier="+$("input[name=idSupplier]").val();
+		    	data= data+"selSuppType="+$("#selSuppType option:selected" ).text();
+		    	data=data+"&idSupplier="+$("input[name=idSupplier]").val();
 		    	data=data+"&npwp="+$("input[name=npwp]").val();
 		    	data=data+"&selSuppSpec="+$( "#selSuppSpec option:selected" ).text();
 		    	data=data+"&remit="+$("input[name=remit]").val();
@@ -795,24 +816,24 @@
 
 	    		//alert(data);
 
-	  			$.ajax({
-		        url : 'upload_single_negotiation', 
-		        data : data,
-		        type : 'POST',
-		        success: function(hasil){
-		          alert(hasil);
+	    		$.ajax({
+	    			url : 'upload_single_negotiation', 
+	    			data : data,
+	    			type : 'POST',
+	    			success: function(hasil){
+	    				alert(hasil);
 		          //window.open('single_item',"_self");
-		        }
-		      });
-			
-			});
-		
-		});
+		      }
+		  });
 
-		
-	</script>
+	    	});
 
-	<!-- END JAVASCRIPTS -->
+});
+
+
+</script>
+
+<!-- END JAVASCRIPTS -->
 
 </body>
 </html>

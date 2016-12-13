@@ -42,13 +42,14 @@ $active = 'class="active"';
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;" <?php if($namaFile == "supplier" || $namaFile == "negotiation") echo $active; ?>>
+                    <a href="javascript:;" <?php if($namaFile == "supplier" || $namaFile == "negotiation" || $namaFile == "nego_approve") echo $active; ?>>
                         <i class="fa fa-building-o"></i>
                         <span>Supplier Management</span>
                     </a>
                     <ul class="sub">
                         <li <?php if($namaFile == "supplier") echo $active; ?>><a href="supplier">Supplier Profile</a></li>
-                        <li <?php if($namaFile == "negotiation") echo $active; ?>><a href="negotiation">Upload Negotiation</a></li>
+                        <li <?php if($namaFile == "negotiation") echo $active; ?>><a href="negotiation">Negotiation Upload</a></li>
+                        <li <?php if($namaFile == "nego_approve") echo $active; ?>><a href="nego_approve">Negotiation Approval</a></li>
                     </ul>
                 </li>
 

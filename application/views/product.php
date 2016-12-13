@@ -102,13 +102,13 @@
                                                                 <li><a href="#">Export to Excel</a></li>
                                                             </ul>
                                                         </div>
-<form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
-<input type="hidden" id="dataCetak" name="dataCetak" value="" />
-<input type="hidden" id="headerCetak" name="headerCetak" value="" />
-<input type="hidden" id="judulCetak" name="judulCetak" value="" />
-<input type="hidden" id="wCol" name="wCol" value="" />
-<input type="hidden" id="hCol" name="hCol" value="" />
-</form>
+                                                        <form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
+                                                            <input type="hidden" id="dataCetak" name="dataCetak" value="" />
+                                                            <input type="hidden" id="headerCetak" name="headerCetak" value="" />
+                                                            <input type="hidden" id="judulCetak" name="judulCetak" value="" />
+                                                            <input type="hidden" id="wCol" name="wCol" value="" />
+                                                            <input type="hidden" id="hCol" name="hCol" value="" />
+                                                        </form>
                                                     </div>
                                                     <div class="space15"><br></div>
                                                     <table class="table table-striped table-hover table-bordered" id="table-sortable">
@@ -194,7 +194,7 @@
                                                         <div class="col-md-6">
 
                                                             <div class="form-group">
-                                                            <label class="col-md-3 control-label">Address</label>
+                                                                <label class="col-md-3 control-label">Address</label>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control" name="provinsi">
                                                                         <option value="11">DKI Jakarta</option>
@@ -225,7 +225,7 @@
                                                         <div class="col-md-6">
 
                                                             <div class="form-group">
-                                                            <label class="col-md-3 control-label">Address</label>
+                                                                <label class="col-md-3 control-label">Address</label>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control" name="provinsi">
                                                                         <option value="11">DKI Jakarta</option>
@@ -393,81 +393,82 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- page end-->
-                </section>
+                <!-- page end-->
             </section>
-            <!--main content end-->
-            <!--right sidebar start-->
-            <!--right sidebar end-->
-
         </section>
+        <!--main content end-->
+        <!--right sidebar start-->
+        <!--right sidebar end-->
 
-        <!-- Placed js at the end of the document so the pages load faster -->
+    </section>
 
-        <!--Core js-->
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/jquery-migrate.js"></script>
+    <!-- Placed js at the end of the document so the pages load faster -->
 
-        <script src="assets/bs3/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-        <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <!--Easy Pie Chart-->
-        <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
-        <!--Sparkline Chart-->
-        <script src="assets/js/sparkline/jquery.sparkline.js"></script>
+    <!--Core js-->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-migrate.js"></script>
 
-        <!--editable table-->
-        <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
+    <script src="assets/bs3/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <!--Easy Pie Chart-->
+    <script src="assets/js/easypiechart/jquery.easypiechart.js"></script>
+    <!--Sparkline Chart-->
+    <script src="assets/js/sparkline/jquery.sparkline.js"></script>
 
-        <!--common script init for all pages-->
-        <script src="assets/js/scripts.js"></script>
+    <!--editable table-->
+    <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
-        <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
+    <!--common script init for all pages-->
+    <script src="assets/js/scripts.js"></script>
 
-        <!-- jQuery File Upload Dependencies -->
-        <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
-        <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
-        <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
+    <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
-        <!-- Our main JS file -->
-        <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+    <!-- jQuery File Upload Dependencies -->
+    <script src="assets/js/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
+    <script src="assets/js/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
+    <script src="assets/js/mini-upload-form/assets/js/jquery.fileupload.js"></script>
 
-        <!--script for this page only-->
-        <script src="assets/js/table-order.js"></script>
+    <!-- Our main JS file -->
+    <script src="assets/js/mini-upload-form/assets/js/script.js"></script>
+
+    <!--script for this page only-->
+    <script src="assets/js/table-order-search.js"></script>
 
     <!-- END JAVASCRIPTS -->
     <script>
         jQuery(document).ready(function() {
-            EditableTable.init();
+            OrderSearchTable.init();
 
             $('#cetak_pdf').click(function(e){
                 e.preventDefault();
-              var test=getDataTabelforPrint();
-              var testData="";
-              for(i=0; i<test.length; i++){
-                if(i !=test.length-1){
-                testData +=test[i]+":";}
-                else{testData +=test[i];}
-              }
+                var test=getDataTabelforPrint();
+                var testData="";
+                for(i=0; i<test.length; i++){
+                    if(i !=test.length-1){
+                        testData +=test[i]+":";}
+                        else{testData +=test[i];}
+                    }
 
-              document.getElementById("dataCetak").value=testData;
-              document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
-              document.getElementById("judulCetak").value="Data Produk";
-              document.getElementById("wCol").value="8;20;20;50;15;20";
-              document.getElementById("hCol").value="5;5;5;5;5;5";
+                    document.getElementById("dataCetak").value=testData;
+                    document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
+                    document.getElementById("judulCetak").value="Data Produk";
+                    document.getElementById("wCol").value="8;20;20;50;15;20";
+                    document.getElementById("hCol").value="5;5;5;5;5;5";
 
-              window.open('', 'TheWindow');
-              document.getElementById('TheForm').submit();
-            })
+                    window.open('', 'TheWindow');
+                    document.getElementById('TheForm').submit();
+                })
 
             function getDataTabelforPrint(){
                 var lengthTable = document.getElementById("table-sortable").rows.length;
-                  var dataTabel=[];
-                  for(j=1; j<lengthTable; j++){
+                var dataTabel=[];
+                for(j=1; j<lengthTable; j++){
                     var dataItem="";
                     var x = document.getElementById("table-sortable").rows[j].cells;
                     for(i=0; i<6; i++){ // ==================perlu diubah setiap pdf yg baru
@@ -475,12 +476,12 @@
                     }
                     dataItem=dataItem.substr(1);
                     dataTabel[j-1]=dataItem;
-                  }
+                }
                 return(dataTabel);
             }
 
         });
     </script>
 
-    </body>
-    </html>
+</body>
+</html>
