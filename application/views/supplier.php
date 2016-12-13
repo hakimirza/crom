@@ -100,7 +100,7 @@
                                 <!-- tampilkan row ini jika data supplier belum mendapat APPROVAL -->
                                 <div class="row">
                                     <div class="col-md-10 col-md-offset-1 alert alert-warning">
-                                        <strong>Warning!</strong> This supplier data is not approved yet. <a role="button" data-toggle="modal" href="#modal-appr" href="#" title="Klik untuk melakukan approval"><strong>Approve now?</strong></a>
+                                        <strong>Warning!</strong> This supplier data is not approved yet. <a href="nego_approve" title="Klik untuk melakukan approval"><strong>Approve now?</strong></a>
                                     </div>
                                 </div>
                             </div>
@@ -601,40 +601,6 @@
                 </div>
                 <?= form_close()?> 
                 <!-- single form end -->
-
-                <!-- modal approval -->
-                <div class="modal fade bs-example-modal-sm" id="modal-appr" tabindex="-1" role="dialog" >
-                  <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Supplier Approval</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="#">
-                            <div class="row">
-                                <div class="form-group">
-                                    <label class="col-md-4 col-md-offset-1 control-label">User ID</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="text" name="supername" placeholder="supervisor's id">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 col-md-offset-1 control-label">Password</label>
-                                    <div class="col-md-6">
-                                        <input class="form-control" type="password" name="superpass" placeholder="supervisor's password">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Approve</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- page end-->
     </section>

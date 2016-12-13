@@ -64,8 +64,6 @@ class Human extends CI_Controller {
 		echo $option;
 	}
 
-	public function upload_batch() {
-=======
 	public function upload_batch(){
 		//echo "ok";
 		$fileOp=explode("_", $_FILES["file"]["name"]);

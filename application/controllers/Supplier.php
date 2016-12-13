@@ -845,4 +845,10 @@ class Supplier extends CI_Controller {
 		return "'".$data."'";
 	}
 
+    public function nego_approve($page = 'nego_approve'){
+        $data['namaFile'] = $page;
+        $this->load->view($page, $data);
+    }
+
+
 }
