@@ -60,99 +60,116 @@ class Logistic extends CI_Controller {
 	public function search(){
 		if(isset($_POST['id'])){
 			$id= $_POST['id'];
-			$query="SELECT * FROM warung WHERE CONCAT(id_warung,id_agen)=$id";
+			$query="SELECT * FROM logistik WHERE id_logistik=$id";
 			$dataResult=$this->db->query($query);
 			$arr1=array();
 			$i=0;
-			foreach ($dataResult->result_array() as $key) {
-				$idWarung=$key['id_warung'];
-				$idAgen=$key['id_agen'];
-				$query="SELECT nama FROM pegawai WHERE id_pegawai=$idAgen";
-				$dataResult2=$this->db->query($query);
-				$namaPegawai="";
+			$col1=array(1,2,3,4,5,6,7,8,9,10,11,12);
+			$col2=array('shop-1','shop-2','shop-3','shop-4','shop-5','shop-6','shop-7','shop-8','shop-9','shop-10','shop-11','shop-12');
+			$col3=array(31,22,43,14,35,56,77,88,95,40,61,42);
+			$img1='"assets/images/product_img.png"';
+			$stat1="34.32";
+			$stat2="32720";
+			$CoverageArea='Jakarta, Bogor, Depok';
+			$summary=$img1.",".$stat1.",".$stat2;
+			//tag <table> coba dipindahkan e html pas gk jalan fungsinya
+			$strSortTable='<table class="table table-striped table-hover table-bordered" id="table-sortable">
+			<thead>
+                <tr>
+                    <th>Shop ID</th>
+                    <th>Shop Name</th>
+                    <th>Order Ratio</th>
+                </tr>
+            </thead>
+            <tbody>';
+                
+            for ($j=0; $j<count($col1); $j++) {
 
-				foreach ($dataResult2->result_array() as $key2) {
-					$namaPegawai=$key2['nama'];
-				}
-				
-				$urlKtp='<img src="'.$key['url_foto_warung'].'" class="img-responsive img-rounded" alt="Shops Photo">';
-				echo $key['nama_warung']."::".$urlKtp."::
+                $strSortTable .="
+                <tr>
+                    <td>".$col1[$i]."</td>
+                    <td>".$col2[$i]."</td>
+                    <td>".$col3[$i]."</td>
+                </tr>
+                ";
+            }
+                
+            $strSortTable .='</tbody></table>';
+
+			foreach ($dataResult->result_array() as $key) {
+				$arrGps="52.1:11.3,51.2:22.2,49.4:35.9"; //ambil dari db
+				//ambil dari db
+				//$urlKtp='<img src="'.$key['url_foto_warung'].'" class="img-responsive img-rounded" alt="Shops Photo">';
+				echo $key['nama']."::
 	            <tr>
-	                <th>Shop ID</th>
-	                <td>".$key['id_warung'].$key['id_agen']."</td>
+	                <th>Logistic ID</th>
+	                <td>".$key['id_logistik']."</td>
 	            </tr>
 	            <tr>
-	                <th>Shop Name</th>
-	                <td>".$key['nama_warung']."</td>
+	                <th>Logistic Name</th>
+	                <td>".$key['nama']."</td>
 	            </tr>
 	             <tr>
-	                <th>Owner</th>
-	                <td>".$key['pemilik']."</td>
-	            </tr>
-	            <tr>
-	                <th>NPWP</th>
-	                <td>".$key["npwp"]."</td>
-	            </tr>
-	            <tr>
-	                <th>Shop Status</th>
-	                <td>".$key["status"]."</td>
-	            </tr>
-	            <tr>
-	                <th>Shop Category</th>
-	                <td>".$key['kategori']."</td>
-	            </tr>
-	            <tr>
-	                <th>Phone/Mobile Number</th>
-	                <td>".$key['no_telp']."/".$key['no_mobile']."</td>
-	            </tr>
-	            <tr>
-	                <th>Email</th>
-	                <td>".$key['email']."</td>
-	            </tr>
-	            <tr>
-	                <th>Address</th>
+	                <th>Address 1</th>
 	                <td>".$key['alamat_detil']."</td>
 	            </tr>
+	             <tr>
+	                <th>Address 2</th>
+	                <td>".$key['alamat_kel']."</td>
+	            </tr>
 	            <tr>
-	                <th>Regional</th>
-	                <td>"."Regional"."</td>
+	                <th>Coverage Area</th>
+	                <td>".$key["nama_region"]."</td>
+	            </tr>
+	            <tr>
+	                <th>Lead Time</th>
+	                <td>5.000.000 - 7.000.000</td>
+	            </tr>
+	            <tr>
+	                <th>Shipment Period</th>
+	                <td>22/12/21 - 23/12/22</td>
+	            </tr>
+	            <tr>
+	                <th>PIC NAME</th>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th>PIC Phone Number</th>
+	                <td>".$key['no_telp']."</td>
+	            </tr>
+	            <tr>
+	                <th>Type of Business</th>
+	                <td>Cash</td>
+	            </tr>
+	            <tr>
+	                <th>Lead Time this Month</th>
+	                <td>2 days</td>
 	            </tr>
 	             <tr>
-	                <th>Latest Sold Date</th>
-	                <td>"."latest sold date"."</td>
+	                <th>Total Order this Month</th>
+	                <td>2000 orders</td>
 	            </tr>
 	            <tr>
-	                <th>Latest Orde Date</th>
-	                <td>"."latest orde date"."</td>
+	                <th>Order Ratio this Month</th>
+	                <td>90 %</td>
 	            </tr>
-	            <tr>
-	                <th>Monthly Margin</th>
-	                <td>"."Monthly Margin"."</td>
-	            </tr>
-	            <tr>
-	                <th>Customer Acquiaition</th>
-	                <td>"."Customer Acquiaition"."</td>
-	            </tr>
-	            <tr>
-	                <th>Agent ID/Name</th>
-	                <td>".$key['id_agen']."/".$namaPegawai."</td>
-	            </tr>
-            	";
+            	"."::".$arrGps."::".$strSortTable."::".$summary."::".$CoverageArea;
 
 				$i++;
 				
 			}
 
 		}elseif (isset($_POST['name'])) {
+
 			$nama= $_POST['name'];
-			$query="SELECT nama_warung,id_warung,id_agen FROM warung WHERE nama_warung LIKE '%$nama%'";
+			$query="SELECT nama,id_logistik FROM logistik WHERE nama LIKE '%$nama%'";
 			$dataResult=$this->db->query($query);
 			$arr1=array();
 			$i=0;$str="";
 			foreach ($dataResult->result_array() as $key) {
 				
 				$str=$str.'
-					<option>'.$key['nama_warung']." : ".$key['id_warung'].$key['id_agen'].'</option>
+					<option>'.$key['nama']." : ".$key['id_logistik'].'</option>
 				';
 				
 				$i++;

@@ -96,6 +96,7 @@ $route['upload_batch'] = 'human/upload_batch';
 //ticketing
 $route['ticket'] = 'ticket';
 $route['cetakpdf_ticket']='ticket/cetakpdf_ticket';
+$route['exportExcel'] = 'ticket/exportExcel';
 
 $route['tracking_order'] = 'logistic/trackingOrder';
 $route['user_registration'] = 'human/userRegistration';

@@ -63,6 +63,36 @@
                                 </ul>
                             </header>
                             <div class="panel-body">
+        
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                    <!-- search form -->
+                                        <?= form_open(base_url('logistic/search'), 'class = "form-inline"'); ?>
+                                        <div class="col-md-9">
+                                            <i class="fa fa-search fa-lg"></i>  
+                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-Shop" autofocus name="idcust">
+                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Shop's Name" name="namecust">
+                                            <datalist id="languages">
+
+                                            </datalist>
+                                        </div>
+                                        <?= form_close()?>
+                                        <div class="col-md-3">
+                                            <div class="btn-group">
+                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Upload</a></li>
+                                                    <li><a href="#">Export to Excel</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content">
                                     <div id="main" class="tab-pane active">
                                         <section class="panel">
@@ -76,20 +106,9 @@
                                                         <div class="row">
 
                                                             <!-- title -->
-                                                            <div class="col-md-12">
-                                                                <h1 id="shop_title" >
-                                                                    <?= $identitas['Shop Name'] ?>
-                                                                </h1>
+                                                            <div id="tab-summary">
+                                                                
                                                             </div>
-
-                                                            <!-- thumbnail -->
-                                                            <div id="img1" class="col-md-6">
-                                                                <img src=<?= $imgsrc1 ?> class="img-responsive img-rounded" alt="Shop's Photo">
-                                                            </div>
-                                                            <div id="img2" class="col-md-6">
-                                                                <img src=<?= $imgsrc2 ?> class="img-responsive img-rounded" alt="Owner Photo">
-                                                            </div>
-
                                                             <div class="col-md-12"><br></div> <!-- blankspace -->
 
                                                             <div class="col-md-6"> 
@@ -102,33 +121,13 @@
                                                                     <option>Minus Stock List</option>
                                                                     <option>Recent Customer Register</option>
                                                                 </select>
-                                                                <br>
+                                                                <hr>
                                                             </div>
 
-                                                            <div class="col-md-12">
-                                                                <table class="table table-striped table-hover table-bordered" id="table-sortable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Item Code</th>
-                                                                            <th>Product Name</th>
-                                                                            <th>Sales</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        for ($i=0; $i < count($col1) ; $i++) {
+                                                            
 
-                                                                            echo "
-                                                                            <tr>
-                                                                                <td>".$col1[$i]."</td>
-                                                                                <td>".$col2[$i]."</td>
-                                                                                <td>".$col3[$i]."</td>
-                                                                            </tr>
-                                                                            ";
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
+                                                            <div id="top-ten">
+
                                                             </div>
                                                         </div>
 
@@ -139,77 +138,28 @@
 
                                                      <div class="row">
 
-                                                        <!-- search form -->
-                                                        <?= form_open(base_url('shop/search'), 'class = "form-inline"'); ?>
-                                                        <div class="col-md-9">
-                                                            <i class="fa fa-search fa-lg"></i>  
-                                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-customer" autofocus name="idcust">
-                                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Customer's Name" name="namecust">
-                                                            <datalist id="languages">
-
-                                                            </datalist>
-                                                        </div>
-                                                        <?= form_close()?>
-                                                        <div class="col-md-3">
-                                                            <div class="btn-group">
-                                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
-                                                                </button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#">Edit</a></li>
-                                                                    <li><a href="#">Upload</a></li>
-                                                                    <li><a href="#">Export to Excel</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="col-md-12"><br></div> <!-- blankspace -->
-
                                                         <!-- summary -->
-                                                        <div class="col-md-4">
-                                                            <div class="mini-stat clearfix">
-                                                                <span class="mini-stat-icon pink"><i class="fa fa-shopping-cart"></i></span>
-                                                                <div class="mini-stat-info">
-                                                                    <span><?= $stat1 ?></span>
-                                                                    Sales this Month
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mini-stat clearfix">
-                                                                <span class="mini-stat-icon green"><i class="fa fa-tags"></i></span>
-                                                                <div class="mini-stat-info">
-                                                                    <span><?= $stat2 ?></span>
-                                                                    Orders this Month
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="mini-stat clearfix">
-                                                                <a href="#location"><span class="mini-stat-icon orange" title="location"><i class="fa fa-map-marker"></i></span></a>
-                                                                <div class="mini-stat-info">
-                                                                    <span>Map</span>
-                                                                    Show the location
-                                                                </div>
-                                                            </div>
+                                                        <div id="tab-summary2">
+
                                                         </div>
 
                                                         <!-- identitas -->
+                                                       
+
                                                         <div class="col-md-12">
-                                                            <h3>Identity</h3>
+                                                            
+                                                                <div class="row">
+                                                                    <div  class="col-md-12">
+                                                                        <a href="#basic-panels"><h3 ><i class="fa fa-book"> </i> Identity </h3></a>
+                                                                        
+                                                                        <hr> <!-- blankspace -->
+                                                                    </div>
+                                                                   
+                                                                </div>
+
                                                             <table class="table table-striped table-hover table-bordered">
                                                                 <tbody id="searchResult">
-                                                                    <?php
-                                                                    foreach ($identitas as $key => $value) {
-
-                                                                        echo "
-                                                                        <tr>
-                                                                            <th>".$key."</th>
-                                                                            <td>".$value."</td>
-                                                                        </tr>
-                                                                        ";
-                                                                    }
-                                                                    ?>
+                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -218,14 +168,17 @@
                                                 </div>
 
                                             </div> <!-- end main row -->
-
-                                            <!-- 2nd row -->
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <h3 id="location">Shop Location</h3>
-                                                    <div id="gmap-list"></div>
+                                                <div class="col-md-9">
+                                                    <a href="#basic-panels"><h3><i class="fa fa-truck"> </i> Shop Location </h3></a>
                                                 </div>
+                                            </div> 
+                                            <hr> 
+                                            <div id="gmap" class="col-md-12">
+                                                
                                             </div>
+                                            <!-- 2nd row -->
+                                           
 
                                         </div> <!-- end panel -->
                                     </section>
@@ -295,27 +248,8 @@
         EditableTable.init();
 
         //list lokasi
-        var locs = [
-        {
-            lat: 52.1,
-            lon: 11.3,
-            title: '<?= $identitas['Shop Name'] ?>',
-            html: [
-            '<h3><?= $identitas['Shop Name'] ?></h3>',
-            '<p><?= $identitas['Address'] ?></p>'
-            ].join(''),
-            zoom: 8
-        }
-        ];
 
-        new Maplace({
-            locations: locs,
-            map_div: '#gmap-list',
-            controls_type: 'list',
-            controls_title: 'Choose a location:'
-        }).Load();
-
-         $( "#search_id" ).keyup(function(e) {
+        $( "#search_id" ).keyup(function(e) {
         e.preventDefault();
         var data=document.getElementById("search_id").value;
         $.ajax({
@@ -324,9 +258,36 @@
             type : 'POST',
             success : function(hasil){
                     res=hasil.split("::");
+                    //document.getElementById("img1").innerHTML=res[1];
+                    document.getElementById("searchResult").innerHTML=res[3];
+                    var summary=res[6].split(",");
+                    document.getElementById("tab-summary").innerHTML ='<div class="col-md-12"><h1 id="shop_title" ></h1></div><div id="img1" class="col-md-6"><img src='+res[1]+'class="img-responsive img-rounded" alt="Shops Photo"></div><div id="img2" class="col-md-6"><img src='+res[2]+' class="img-responsive img-rounded" alt="Owner Photo"></div>';
+
+                    document.getElementById("tab-summary2").innerHTML ='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-shopping-cart"></i></span><div class="mini-stat-info"><span>'+summary[0]+'</span>Sales this Month</div></div></div>';
+                    document.getElementById("tab-summary2").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-tags"></i></span><div class="mini-stat-info"><span>'+summary[1]+'</span>Orders this Month</div></div></div>';
+                    document.getElementById("tab-summary2").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><a href="#location"><span class="mini-stat-icon orange" title="location"><i class="fa fa-map-marker"></i></span></a><div class="mini-stat-info"><span>'+summary[2]+'</span>Show the location</div></div></div>';
+                    document.getElementById("top-ten").innerHTML=res[5];
                     document.getElementById("shop_title").innerHTML=res[0];
-                    document.getElementById("img1").innerHTML=res[1];
-                    document.getElementById("searchResult").innerHTML=res[2];
+                    document.getElementById("gmap").innerHTML='<div id="gmap-list" style="height: 222px"></div>';
+                    var arrGps=res[4].split(",");           
+                    var loct=[];
+                    for (i= 0; i<arrGps.length; i++) {
+                        var arrTemp=arrGps[i].split(":");
+                        loct[i]={
+                            lat: parseFloat(arrTemp[0]),
+                            lon: parseFloat(arrTemp[1]),
+                            html: [
+                            '<h3>'+res[7]+'</h3>',
+                            ].join(''),
+                            zoom: 8
+                        }
+                    };
+
+                       
+                    new Maplace({
+                        locations: loct,
+                        map_div: '#gmap-list',
+                    }).Load();
             },
         });
 
@@ -369,11 +330,42 @@
                     type : 'POST',
                     success : function(hasil){
                             res=hasil.split("::");
-                            document.getElementById("shop_title").innerHTML=res[0];
-                            document.getElementById("img1").innerHTML=res[1];
-                            document.getElementById("searchResult").innerHTML=res[2];
+                            //document.getElementById("shop_title").innerHTML=res[0];
+                            //document.getElementById("img1").innerHTML=res[1];
+                            document.getElementById("searchResult").innerHTML=res[3];
                             document.getElementById("search_name").value=data[0];
                             document.getElementById("search_id").value=data[1];
+
+                            var summary=res[6].split(",");
+                            document.getElementById("tab-summary").innerHTML ='<div class="col-md-12"><h1 id="shop_title" ></h1></div><div id="img1" class="col-md-6"><img src='+res[1]+'class="img-responsive img-rounded" alt="Shops Photo"></div><div id="img2" class="col-md-6"><img src='+res[2]+' class="img-responsive img-rounded" alt="Owner Photo"></div>';
+
+                            document.getElementById("tab-summary2").innerHTML ='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-shopping-cart"></i></span><div class="mini-stat-info"><span>'+summary[0]+'</span>Sales this Month</div></div></div>';
+                            document.getElementById("tab-summary2").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-tags"></i></span><div class="mini-stat-info"><span>'+summary[1]+'</span>Orders this Month</div></div></div>';
+                            document.getElementById("tab-summary2").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><a href="#location"><span class="mini-stat-icon orange" title="location"><i class="fa fa-map-marker"></i></span></a><div class="mini-stat-info"><span>'+summary[2]+'</span>Show the location</div></div></div>';
+                            document.getElementById("top-ten").innerHTML=res[5];
+                            document.getElementById("shop_title").innerHTML=res[0];
+                            document.getElementById("gmap").innerHTML='<div id="gmap-list" style="height: 222px"></div>';
+                            var arrGps=res[4].split(",");           
+                            var loct=[];
+                            for (i= 0; i<arrGps.length; i++) {
+                                var arrTemp=arrGps[i].split(":");
+                                loct[i]={
+                                    lat: parseFloat(arrTemp[0]),
+                                    lon: parseFloat(arrTemp[1]),
+                                    html: [
+                                    '<h3>'+res[7]+'</h3>',
+                                    ].join(''),
+                                    zoom: 8
+                                }
+                            };
+
+                               
+                            new Maplace({
+                                locations: loct,
+                                map_div: '#gmap-list',
+                            }).Load();
+
+
                     },
                 });
 
@@ -381,6 +373,9 @@
             }
           }
         }
+
+      
+
         });
     </script>
 

@@ -80,7 +80,7 @@
                                                             <ul class="dropdown-menu pull-right">
                                                                 <li><a href="#">Print</a></li>
                                                                 <li><a id="cetak_pdf" href="javascript:;">Save as PDF</a></li>
-                                                                <li><a href="#">Export to Excel</a></li>
+                                                                 <li><a id="exportExcel" href="javascript:;">Export To Excel</a></li>
                                                             </ul>
                                                         </div>
 <form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
@@ -89,6 +89,7 @@
 <input type="hidden" id="judulCetak" name="judulCetak" value="" />
 <input type="hidden" id="wCol" name="wCol" value="" />
 <input type="hidden" id="hCol" name="hCol" value="" />
+<input type="hidden" id="coded" name="coded" value="" />
 </form>
                                                     </div>
                                                     <div class="space15"><br></div>
@@ -203,6 +204,7 @@
               document.getElementById("judulCetak").value="Data Produk";
               document.getElementById("wCol").value="8;20;20;50;15;20";
               document.getElementById("hCol").value="5;5;5;5;5;5";
+              document.getElementById("coded").value="";
 
               window.open('', 'TheWindow');
               document.getElementById('TheForm').submit();
@@ -222,6 +224,25 @@
                   }
                 return(dataTabel);
             }
+
+            $('#exportExcel').click(function(e){
+                     e.preventDefault();
+                var test=getDataTabelforPrint();
+                var testData="";
+                for(i=0; i<test.length; i++){
+                if(i !=test.length-1){
+                testData +=test[i]+":";}
+                else{testData +=test[i];}
+                }
+                //alert(testData);//data yang akan dicetak ke excel
+                document.getElementById("dataCetak").value=testData;
+                  document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
+                  document.getElementById("judulCetak").value="Data Produk";
+                document.getElementById("coded").value="exportExcel";
+
+                window.open('', 'TheWindow');
+                document.getElementById('TheForm').submit();
+            });
 
         });
     </script>

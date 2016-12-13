@@ -68,7 +68,43 @@ class Shop extends CI_Controller {
 			$dataResult=$this->db->query($query);
 			$arr1=array();
 			$i=0;
+			$col1=array(1,2,3,4,5,6,7,8,9,10,11,12);
+			$col2=array('shop-1','shop-2','shop-3','shop-4','shop-5','shop-6','shop-7','shop-8','shop-9','shop-10','shop-11','shop-12');
+			$col3=array(31,22,43,14,35,56,77,88,95,40,61,42);
+			$img1='"assets/images/product_img.png"';
+			$img2='"assets/images/product_img.png"';
+			$stat1="34.32";
+			$stat2="32720";
+			$stat3="32720";
+			$Regional='Jabodetabek';
+			$summary=$stat1.",".$stat2.",".$stat3;
+			//tag <table> coba dipindahkan e html pas gk jalan fungsinya
+            
+			$strSortTable='<div class="col-md-12"><table class="table table-striped table-hover table-bordered" id="table-sortable">
+			<thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Product Name</th>
+                    <th>Sales</th>
+                </tr>
+            </thead>
+            <tbody>';
+                
+            for ($j=0; $j<count($col1); $j++) {
+
+                $strSortTable .="
+                <tr>
+                    <td>".$col1[$i]."</td>
+                    <td>".$col2[$i]."</td>
+                    <td>".$col3[$i]."</td>
+                </tr>
+                ";
+            }
+
+            $strSortTable .='</tbody></table></div>';
+
 			foreach ($dataResult->result_array() as $key) {
+				$arrGps="52.1:11.3,51.2:22.2,49.4:35.9";
 				$idWarung=$key['id_warung'];
 				$idAgen=$key['id_agen'];
 				$query="SELECT nama FROM pegawai WHERE id_pegawai=$idAgen";
@@ -79,8 +115,8 @@ class Shop extends CI_Controller {
 					$namaPegawai=$key2['nama'];
 				}
 				
-				$urlKtp='<img src="'.$key['url_foto_warung'].'" class="img-responsive img-rounded" alt="Shops Photo">';
-				echo $key['nama_warung']."::".$urlKtp."::
+				//$urlKtp='<img src="'.$key['url_foto_warung'].'" class="img-responsive img-rounded" alt="Shops Photo">';
+				echo $key['nama_warung']."::".$img1."::".$img2."::
 	            <tr>
 	                <th>Shop ID</th>
 	                <td>".$key['id_warung'].$key['id_agen']."</td>
@@ -141,7 +177,7 @@ class Shop extends CI_Controller {
 	                <th>Agent ID/Name</th>
 	                <td>".$key['id_agen']."/".$namaPegawai."</td>
 	            </tr>
-            	";
+            	"."::".$arrGps."::".$strSortTable."::".$summary."::".$Regional;
 
 				$i++;
 				
