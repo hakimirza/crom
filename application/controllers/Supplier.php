@@ -511,7 +511,7 @@ class Supplier extends CI_Controller {
 
                         <section class="panel">
                             <div class="panel-body">
-                                <a href="#stop-panels"><h3><i class="fa fa-power-off"> </i> Stop Payment / Business Data</h3></a>
+                                <a href="#stop-panels"><h3><i class="fa fa-minus-circle"> </i> Stop Payment / Business Data</h3></a>
                                 <hr>
                                 <div class="row">
 

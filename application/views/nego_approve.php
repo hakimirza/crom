@@ -106,18 +106,18 @@
                                                                 <td><a data-toggle="modal" href="#modalku" title="approve">PT Blabla</a></td>
                                                                 <td>7</td>
                                                                 <td>22-01-2016</td>
-                                                                <td class="signature">1</td>
-                                                                <td class="signature">0</td>
-                                                                <td class="signature">0</td>
+                                                                <td class="signature">1970-01-01 00:00:01</td>
+                                                                <td class="signature">1970-01-01 00:00:01</td>
+                                                                <td class="signature"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
                                                                 <td><a data-toggle="modal" href="#modalku" title="approve">PT Balonku</a></td>
                                                                 <td>9</td>
                                                                 <td>22-02-2016</td>
-                                                                <td class="signature">1</td>
-                                                                <td class="signature">0</td>
-                                                                <td class="signature">1</td>
+                                                                <td class="signature">1970-01-01 00:00:01</td>
+                                                                <td class="signature"></td>
+                                                                <td class="signature">1970-01-01 00:00:01</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -228,10 +228,10 @@
             var txF = '<span class="label label-default" title="Not Approved Yet"><i class="fa fa-minus"></i></span><input type="hidden" value="0">';
             sign.each(function(i, obj) {
 
-                if ($(this).text()=='1') {
-                    $(this).empty().append(txT);
-                } else if ($(this).text()=='0') {
+                if ($(this).text()=='') {
                     $(this).empty().append(txF);
+                } else {
+                    $(this).empty().append(txT);
                 }
 
             });

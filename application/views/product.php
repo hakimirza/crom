@@ -21,6 +21,9 @@
     <!--editable table-->
     <link rel="stylesheet" href="assets/js/data-tables/DT_bootstrap.css" />
 
+    <!-- datepicker -->
+    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css" />
+
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet" />
@@ -63,9 +66,6 @@
         $this->load->view('template/header');
         $this->load->view('template/sidebar_left');
 
-        $sup = array("Mie Sedap", "Beng-Beng", "Coca-Cola", "Very Long Named Item");
-        $price = array("111", "222", "333", "444");
-
         ?>
         <!--sidebar end-->
         
@@ -91,6 +91,9 @@
                                     <div id="tab1" class="tab-pane active">
                                         <section class="panel">
                                             <div class="panel-body">
+                                                    <div class="well">
+                                                        Click on an <b>ID</b> to show more details
+                                                    </div>
                                                 <div class="adv-table editable-table ">
                                                     <div class="clearfix">
                                                         <div class="btn-group pull-right">
@@ -115,35 +118,37 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>#</th>
-                                                                <th>ID</th>
                                                                 <th>Nama Produk</th>
-                                                                <th>Harga 1 (Rp)</th>
-                                                                <th>Promo</th>
-                                                                <th>Harga 2 (Rp)</th>
+                                                                <th>ID</th>
+                                                                <th>Normal Purchase Price (NPP)</th>
+                                                                <th>Normal Selling Price (NSP)</th>
+                                                                <th>Supplier</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php 
+
+                                                            $prod = array("Mie Sedap", "Beng-Beng", "Coca-Cola", "Very Long Named Item");
+                                                            $sup = array("PT Maju Mundur Sejahtera", "PT Bintang Jaya", "PT Indofood");
+
                                                             for ($i=1; $i < 20 ; $i++) {
 
                                                                 $cod = substr(md5($i), 0, 5);
-                                                                $prod = $sup[rand(0,3)];
+                                                                $p = $prod[rand(0,3)];
                                                                 $harga1 = rand(10000,5000000);
-                                                                $diskon = rand(0,100);
-                                                                $harga2 = $harga1-($harga1*$diskon/100);
-                                                                $arr = array($cod,$prod,$harga1,$diskon,$harga2);
+                                                                $harga2 = rand(10000,5000000);
+                                                                $s = $sup[rand(0,2)];
 
                                                                 echo '
                                                                 <tr>
                                                                     <td>'.$i.'</td>
+                                                                    <td>'.$p.'</td>
                                                                     <td><a data-toggle="modal" href="#modalUpdateItem" title="Detail">'.$cod.'</a></td>
-                                                                    <td>'.$prod.'</td>
                                                                     <td>'.number_format($harga1).'</td>
-                                                                    <td>'.$diskon.'</td>
                                                                     <td>'.number_format($harga2).'</td>
+                                                                    <td>'.$s.'</td>
                                                                 </tr>
                                                                 ';
-
                                                             }
                                                             ?>
                                                         </tbody>
@@ -173,10 +178,10 @@
                                 <header class="tab">
                                     <ul class="nav nav-tabs">
                                         <li class="active">
-                                            <a data-toggle="tab" href="#prodMain">Product Maintenance</a>
+                                            <a data-toggle="tab" href="#prodMain"><h4>Product Maintenance</h4></a>
                                         </li>
                                         <li class="">
-                                            <a data-toggle="tab" href="#supMain">Item Supplier Maintenance</a>
+                                            <a data-toggle="tab" href="#supMain"><h4>Item Supplier Maintenance</h4></a>
                                         </li>
                                     </ul>
                                 </header>
@@ -187,85 +192,282 @@
                                     <div id="prodMain" class="tab-pane active">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                <div class="row">
 
-                                                    <form action="#" class="form-horizontal">
+                                                <form action="#" class="form-horizontal">
 
-                                                        <div class="col-md-6">
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 control-label">Address</label>
-                                                                <div class="col-md-4">
-                                                                    <select class="form-control" name="provinsi">
-                                                                        <option value="11">DKI Jakarta</option>
-                                                                        <option value="12">Banten</option>
-                                                                        <option value="13">Jawa Barat</option>
-                                                                    </select>
-                                                                    <span class="help-block">Provinsi</span>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <select class="form-control" name="kota">
-                                                                        <option value="1112">Bandung</option>
-                                                                        <option value="1113">Serang</option>
-                                                                        <option value="1114">Cirebon</option>
-                                                                    </select>
-                                                                    <span class="help-block">Kota</span>
-                                                                </div>
-                                                            </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6"> <!-- general infos left -->
+                                                            <h4><i class="fa fa-book"></i> General Info</h4>
 
                                                             <div class="form-group">
-                                                                <label class="col-md-3 control-label">CP</label>
-                                                                <div class="col-md-8">
-                                                                    <input type="text" class="form-control input-md" name="cp" maxlength="100" placeholder="Contact Person's Name">
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-md-6">
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 control-label">Address</label>
-                                                                <div class="col-md-4">
-                                                                    <select class="form-control" name="provinsi">
-                                                                        <option value="11">DKI Jakarta</option>
-                                                                        <option value="12">Banten</option>
-                                                                        <option value="13">Jawa Barat</option>
-                                                                    </select>
-                                                                    <span class="help-block">Provinsi</span>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <select class="form-control" name="kota">
-                                                                        <option value="1112">Bandung</option>
-                                                                        <option value="1113">Serang</option>
-                                                                        <option value="1114">Cirebon</option>
-                                                                    </select>
-                                                                    <span class="help-block">Kota</span>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label class="col-md-3 control-label">CP</label>
-                                                                <div class="col-md-8">
-                                                                    <input type="text" class="form-control input-md" name="cp" maxlength="100" placeholder="Contact Person's Name">
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-md-12"> <!-- submit -->
-                                                            <div class="row">
-                                                                <div class="col-md-2 col-md-offset-7">
-                                                                    <button class="btn btn-danger btn-block" type="reset" id="reset"><i class="fa fa-times"></i> Clear</button>
-                                                                </div>
+                                                                <label class="col-md-4 control-label">ID</label>
                                                                 <div class="col-md-3">
-                                                                    <button class="btn btn-primary btn-block" type="submit" id="submit"><i class="fa fa-check"></i> Update</button>
+                                                                    <input type="text" class="form-control input-md" name="id" maxlength="6" placeholder="item-id">
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </form>
 
-                                                </div>
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Item Name</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control input-md" name="item_name" maxlength="40" placeholder="Complete Name">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Short Name</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="text" class="form-control input-md" name="short_name" maxlength="18" placeholder="Short Name">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6"> <!-- general infos right -->
+                                                            <h4><br></h4>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Dept Code</label>
+                                                                <div class="col-md-2">
+                                                                    <input type="text" class="form-control input-md" name="dept_code" maxlength="2" placeholder="00">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Local Name</label>
+                                                                <div class="col-md-7">
+                                                                    <input type="text" class="form-control input-md" name="local_name" maxlength="40" placeholder="Local Name">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h4><i class="fa fa-barcode"></i> Barcode</h4>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">IE Barcode</label>
+                                                                <div class="col-md-2">
+                                                                    <input type="text" class="form-control input-md" name="ie_barcode" maxlength="1" placeholder="I/E">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Barcode Type</label>
+                                                                <div class="col-md-3">
+                                                                    <input type="text" class="form-control input-md" name="bartype" maxlength="3" placeholder="EAN">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Barcode Num 1</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="number" class="form-control input-md" name="barcode1" max="9999999999999" placeholder="1st barcode number">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Barcode Num 2</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="number" class="form-control input-md" name="barcode2" max="9999999999999" placeholder="2nd barcode number">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <h4><i class="fa fa-tags"></i> Pricing</h4>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">NPP</label>
+                                                                <div class="col-md-5">
+                                                                    <input type="number" class="form-control input-md" name="npp" max="99999999" placeholder="Normal Purchase">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">NSP</label>
+                                                                <div class="col-md-5">
+                                                                    <input type="number" class="form-control input-md" name="nsp" max="99999999" placeholder="Normal Selling">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Last Date NPP</label>
+                                                                <div class="col-md-5">
+                                                                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
+                                                                        <input type="text" placeholder ="dd-mm-yyyy" size="16" maxlength="0" class="form-control" name="last_date_npp">
+                                                                        <span class="input-group-btn add-on">
+                                                                            <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <hr>
+
+                                                    <div class="row"> 
+                                                        <div class="col-md-6"> 
+                                                            <h4><i class="fa fa-archive"></i> Measurement</h4>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Lot Size</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="text" class="form-control input-md" name="lot_size" maxlength="20" placeholder="Lot Size">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Quality Pack</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="number" class="form-control input-md" name="qty_pack" max="99999999999" placeholder="000">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Stock Unit</label>
+                                                                <div class="col-md-6">
+                                                                    <input type="number" class="form-control input-md" name="stock_unit" max="99999999999" placeholder="000">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Order Weight</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="number" class="form-control input-md" name="order_wght" max="99999" placeholder="000.0">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Weight</label>
+                                                                <div class="col-md-4">
+                                                                    <input type="number" class="form-control input-md" name="wght" max="99999" placeholder="000.0">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">On Scale</label>
+                                                                <div class="col-md-4">
+                                                                    <select class="form-control" name="on_scale">
+                                                                        <option value="0">Weight</option>
+                                                                        <option value="1">Pieces</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-md-4 control-label">Dc Sup</label>
+                                                                <div class="col-md-3">
+                                                                    <select class="form-control" name="dc_sup">
+                                                                        <option value="1">YES</option>
+                                                                        <option value="0">NO</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+
+                                                            <div class="row"> 
+                                                                <h4><i class="fa fa-star-half-o"></i> Specific</h4>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Specific Item</label>
+                                                                    <div class="col-md-5">
+                                                                        <select class="form-control" name="spec_item">
+                                                                            <option value="b">Branded</option>
+                                                                            <option value="hb">Home Brand</option>
+                                                                            <option value="fp">First Price</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Sensitiveness</label>
+                                                                    <div class="col-md-5">
+                                                                        <select class="form-control" name="sensi">
+                                                                            <option value="r">Red List</option>
+                                                                            <option value="g">Green List</option>
+                                                                            <option value="h">Housewife Basket</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Sale Type</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="text" class="form-control input-md" name="sale_type" maxlength="1" placeholder="E">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Season Code</label>
+                                                                    <div class="col-md-2">
+                                                                        <input type="text" class="form-control input-md" name="season" maxlength="1" placeholder="0">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="row"> 
+                                                                <h4><i class="fa fa-minus-circle"></i> Stop Info</h4>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Stop Month Year Start</label>
+                                                                    <div class="col-md-5">
+                                                                        <div data-date-viewmode="months" data-date-format="mm-yyyy" data-date=""  class="input-append date dpMonths">
+                                                                            <input type="text" placeholder ="mm-yyyy" size="13" maxlength="0" class="form-control" name="stop_month_start">
+                                                                            <span class="input-group-btn add-on">
+                                                                                <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Stop End Date</label>
+                                                                    <div class="col-md-5">
+                                                                        <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date=""  class="input-append date dpYears">
+                                                                            <input type="text" placeholder ="dd-mm-yyyy" size="13" maxlength="0" class="form-control" name="stop_end">
+                                                                            <span class="input-group-btn add-on">
+                                                                                <button class="btn btn-primary" type="button"><i class="fa fa-calendar"></i></button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label">Stop Reason</label>
+                                                                    <div class="col-md-7">
+                                                                        <textarea class="form-control" rows="2" name="stop-reason" maxlength="100" placeholder="Reason goes here..."></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>  
+
+                                                        </div>
+                                                    </div>  
+
+                                                    <div class="row"><h4>.</h4></div>
+
+                                                    <div class="row"> <!-- submit -->
+                                                        <div class="col-md-2 col-md-offset-7">
+                                                            <button class="btn btn-danger btn-block" type="reset" id="reset"><i class="fa fa-times"></i> Reset</button>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary btn-block" type="submit" id="submit"><i class="fa fa-check"></i> Update</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
                                             </div>
                                         </section>
                                     </div>
@@ -324,8 +526,8 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <div class="col-md-3 col-md-offset-5">
-                                                                                    <button class="btn btn-danger btn-sm btn-block" type="reset"><i class="fa fa-times"></i> Clear</button>
+                                                                                <div class="col-md-3 col-md-offset-4">
+                                                                                    <button class="btn btn-danger btn-sm btn-block" type="reset"><i class="fa fa-times"></i> Reset</button>
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                     <button class="btn btn-primary btn-sm btn-block" type="submit"><i class="fa fa-check"></i> Update</button>
@@ -342,7 +544,7 @@
                                                             <li class="list-group-item">
                                                                 <form class="form-horizontal">
                                                                     <div class="form-group">
-                                                                        <label class="col-md-3 control-label">Search</label>
+                                                                        <label class="col-md-1 control-label"><i class="fa fa-search"></i></label>
                                                                         <div class="col-md-5">
                                                                             <input type="text" class="form-control" maxlength="5" name="search-sup" placeholder="Supplier ID">
                                                                         </div>
@@ -424,8 +626,12 @@
     <script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>
     <script type="text/javascript" src="assets/js/data-tables/DT_bootstrap.js"></script>
 
+    <!-- date picker -->
+    <script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
     <!--common script init for all pages-->
     <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/cust-datepicker-init.js"></script>
 
     <script src="assets/js/mini-upload-form/assets/js/jquery.knob.js"></script>
 
