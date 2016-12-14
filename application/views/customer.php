@@ -63,6 +63,36 @@
                                 </ul>
                             </header>
                             <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                <!-- search form -->
+                                        <?= form_open(base_url('customer/search'), 'class = "form-inline"'); ?>
+                                        <div class="col-md-9">
+                                        
+                                            <i class="fa fa-search fa-lg"></i>  
+                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-customer" autofocus name="idcust">
+                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Customer's Name" name="namecust">
+                                            <datalist id="languages">
+
+                                            </datalist>
+                                        </div>
+                                        <?= form_close()?>
+                                        <div class="col-md-3">
+                                            <div class="btn-group">
+                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Upload</a></li>
+                                                    <li><a href="#">Export to Excel</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </div>                
+                                    </div>
+                                                       
                                 <div class="tab-content">
                                     <div id="main" class="tab-pane active">
                                         <section class="panel">
@@ -76,47 +106,38 @@
                                                         <div class="row">
 
                                                             <!-- title -->
-                                                            <div class="col-md-12">
-                                                                <h1 id="customer_title">
-                                                                    <?= $identitas['Name'] ?>
-                                                                </h1>
-                                                            </div>
-
-                                                            <!-- thumbnail -->
-                                                            <div id="img1" class="col-md-6">
-                                                                <img src=<?= $imgsrc1 ?> class="img-responsive img-rounded" alt="Logistic's logo">
-                                                            </div>
-                                                            <div id="img2" class="col-md-6">
-                                                                <img src=<?= $imgsrc2 ?> class="img-responsive img-rounded" alt="Logistic's map area">
-                                                            </div >
+                                                            <section class="panel">
+                                                                <div class="panel-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <a href="#basic-panels"><h3 id="customer_title"><i class="fa fa-book"> </i> Photo : </h3></a>
+                                                                        </div>
+                                                                    </div> 
+                                                                    <hr> 
+                                                                    <div id="tab-summary">
+                                                                
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+                                                            
+                                                            
                                                             <div class="col-md-12"> </div> <!-- blankspace -->
 
-                                                            <div class="col-md-12">
-                                                                <h3>Top Ten Products</h3>
-                                                                <table class="table table-striped table-hover table-bordered" id="table-sortable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Item Code</th>
-                                                                            <th>Product Name</th>
-                                                                            <th>Purchase Qty</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        for ($i=0; $i < count($col1) ; $i++) {
+                                                            <section class="panel">
+                                                                <div class="panel-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <a href="#basic-panels"><h3><i class="fa fa-book"> </i> Top Ten Products </h3></a>
+                                                                        </div>
+                                                                    </div> 
+                                                                    <hr> 
+                                                                    <div id="table2" class="col-md-12">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </section>
 
-                                                                            echo "
-                                                                            <tr>
-                                                                                <td>".$col1[$i]."</td>
-                                                                                <td>".$col2[$i]."</td>
-                                                                                <td>".$col3[$i]."</td>
-                                                                            </tr>
-                                                                            ";
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                            
                                                         </div>
 
                                                     </div>
@@ -125,73 +146,39 @@
                                                     <div class="col-md-6">
 
                                                      <div class="row">
-
-                                                        <!-- search form -->
-                                                        <?= form_open(base_url('customer/search'), 'class = "form-inline"'); ?>
-                                                        <div class="col-md-9">
-                                                        
-                                                            <i class="fa fa-search fa-lg"></i>  
-                                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-customer" autofocus name="idcust">
-                                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Customer's Name" name="namecust">
-                                                            <datalist id="languages">
-
-                                                            </datalist>
-                                                        </div>
-                                                        <?= form_close()?>
-                                                        <div class="col-md-3">
-                                                            <div class="btn-group">
-                                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
-                                                                </button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#">Edit</a></li>
-                                                                    <li><a href="#">Upload</a></li>
-                                                                    <li><a href="#">Export to Excel</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        
-
-                                                        <div class="col-md-12"><br></div> <!-- blankspace -->
-
-                                                        <!-- summary -->
-                                                        <div class="col-md-6">
-                                                            <div class="mini-stat clearfix">
-                                                                <span class="mini-stat-icon pink"><i class="fa fa-tags"></i></span>
-                                                                <div class="mini-stat-info">
-                                                                    <span><?= $stat1 ?></span>
-                                                                    Purchase this Month
+                                                        <section class="panel">
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <a href="#basic-panels"><h3><i class="fa fa-book"> </i> Summary </h3></a>
+                                                                    </div>
+                                                                </div> 
+                                                                <hr> 
+                                                                <div id="tab-summary2">
+                                                                
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mini-stat clearfix">
-                                                                <span class="mini-stat-icon green"><i class="fa fa-shopping-cart"></i></span>
-                                                                <div class="mini-stat-info">
-                                                                    <span><?= $stat2 ?></span>
-                                                                    Shopping this Month
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        </section>
+                                                        
 
                                                         <!-- identitas -->
-                                                        <div class="col-md-12">
-                                                            <h3>Identity</h3>
-                                                            <table class="table table-striped table-hover table-bordered">
-                                                                <tbody id="searchResult">
-                                                                    <?php
-                                                                    foreach ($identitas as $key => $value) {
-
-                                                                        echo "
-                                                                        <tr>
-                                                                            <th>".$key."</th>
-                                                                            <td>".$value."</td>
-                                                                        </tr>
-                                                                        ";
-                                                                    }
-                                                                    ?>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
+                                                        <section class="panel">
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <a href="#basic-panels"><h3><i class="fa fa-book"> </i> Identity </h3></a>
+                                                                    </div>
+                                                                </div> 
+                                                                <hr> 
+                                                                <div class="col-md-12">
+                                                                    <table class="table table-striped table-hover table-bordered">
+                                                                        <tbody id="searchResult" >
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </section>
 
                                                     </div>
                                                 </div>
@@ -270,9 +257,13 @@
                 type : 'POST',
                 success : function(hasil){
                         res=hasil.split("::");
-                        document.getElementById("customer_title").innerHTML=res[0];
-                        document.getElementById("img1").innerHTML=res[1];
-                        document.getElementById("searchResult").innerHTML=res[2];
+                        document.getElementById("customer_title").innerHTML='<i class="fa fa-book"> </i> Photo : '+res[0];
+                        document.getElementById("searchResult").innerHTML=res[3];
+                        document.getElementById("tab-summary").innerHTML ='<!-- thumbnail --><div id="img1" class="col-md-6"><img src='+res[1]+' class="img-responsive img-rounded" alt="ktp"></div><div id="img2" class="col-md-6"><img src='+res[2]+' class="img-responsive img-rounded" alt="other"></div >';
+                        document.getElementById("table2").innerHTML=res[4];
+                        res2=res[5].split(",");
+                        document.getElementById("tab-summary2").innerHTML='<div class="col-md-6"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-tags"></i></span><div class="mini-stat-info"><span>'+res2[0]+'</span>Purchase this Month</div></div></div><div class="col-md-6"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-shopping-cart"></i></span><div class="mini-stat-info"><span>'+res2[1]+'</span>Shopping this Month</div></div></div>';
+
                 },
             });
 
@@ -315,9 +306,15 @@
                     type : 'POST',
                     success : function(hasil){
                             res=hasil.split("::");
-                            document.getElementById("customer_title").innerHTML=res[0];
-                            document.getElementById("img1").innerHTML=res[1];
-                            document.getElementById("searchResult").innerHTML=res[2];
+                            document.getElementById("customer_title").innerHTML='<i class="fa fa-book"> </i> Photo : '+res[0];
+                            document.getElementById("searchResult").innerHTML=res[3];
+                            document.getElementById("tab-summary").innerHTML ='<!-- thumbnail --><div id="img1" class="col-md-6"><img src='+res[1]+' class="img-responsive img-rounded" alt="ktp"></div><div id="img2" class="col-md-6"><img src='+res[2]+' class="img-responsive img-rounded" alt="other"></div >';
+                            document.getElementById("table2").innerHTML=res[4];
+                            res2=res[5].split(",");
+
+                            document.getElementById("tab-summary2").innerHTML='<div class="col-md-6"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-tags"></i></span><div class="mini-stat-info"><span>'+res2[0]+'</span>Purchase this Month</div></div></div><div class="col-md-6"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-shopping-cart"></i></span><div class="mini-stat-info"><span>'+res2[1]+'</span>Shopping this Month</div></div></div>';
+
+
                             document.getElementById("search_name").value=data[0];
                             document.getElementById("search_id").value=data[1];
                     },

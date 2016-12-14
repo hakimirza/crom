@@ -22,8 +22,6 @@
 
 	<!-- datepicker -->
 	<link rel="stylesheet" type="text/css" href="assets/js/bootstrap-datepicker/css/datepicker.css" />
-	<link rel="stylesheet" type="text/css" href="assets/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
-
 
 	<!-- Custom styles for this template -->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -143,12 +141,17 @@
 
 										<div class="form-group">
 											<label class="col-md-3 control-label">Supplier Type</label>
-											<div class="col-md-9">
+											<div class="col-md-4">
 												<select id="selSuppType" class="form-control" name="supp-type" style="width: initial;">
 													<option value="C">C - Commercial</option>
 													<option value="I">I - Internal</option>
 													<option value="E">E - Expense</option>
 												</select>
+												<span class="help-block">Type</span>
+											</div>
+											<div class="col-md-3">
+												<input type="text" maxlength="2" class="form-control input-md" name="dept_code" placeholder="00">
+												<span class="help-block">Dept Code</span>
 											</div>
 										</div>
 
@@ -523,7 +526,7 @@
 
 						<section class="panel">
 							<div class="panel-body">
-								<a href="#stop-panels"><h3><i class="fa fa-power-off"> </i> Stop Payment / Business Data</h3></a>
+								<a href="#stop-panels"><h3><i class="fa fa-minus-circle"> </i> Stop Payment / Business Data</h3></a>
 								<hr>
 								<div class="row">
 
@@ -702,8 +705,6 @@
 
 	<!-- date picker -->
 	<script type="text/javascript" src="assets/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="assets/js/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 	<!--editable table-->
 	<script type="text/javascript" src="assets/js/data-tables/jquery.dataTables.js"></script>

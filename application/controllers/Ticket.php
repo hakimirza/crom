@@ -36,34 +36,80 @@ class Ticket extends CI_Controller {
 	}
 
 	public function cetakpdf_ticket(){
+		
+		if($_POST['coded']=="exportExcel"){
+			$dataCetak=$_POST['dataCetak'];
+			$arrDataCetak=explode(":",$dataCetak);
 
-		include 'cetakPdf.php';
-		$dataCetak=$_POST['dataCetak'];
-		$arrDataCetak=explode(":",$dataCetak);
-		$arrMulti=array();
-		$arrHeaderCetak=explode(";",$_POST['headerCetak']);
+			$arrHeaderCetak=explode(";",$_POST['headerCetak']);
+			header("Content-type: application/vnd-ms-excel");
+			 
+			// Mendefinisikan nama file ekspor "hasil-export.xls"
+			header("Content-Disposition: attachment; filename=tutorialweb-export.xls");
+			$str='
+			<html lang="en">
+				<head></head>
+				<body>
+					<table border="1">
+						<thead>
+                            <tr>';
+                            for ($j=1; $j <count($arrHeaderCetak) ; $j++) { 
+                            	$str .='<th>'.$arrHeaderCetak[$j].'</th>';
+                                
+                            }
+                                
+                            $str .='</tr>
+                        </thead>
+                    	<tbody>';
+			for($i=0; $i<count($arrDataCetak); $i++){
+				$arrTemp=explode(";",$arrDataCetak[$i]);
+					$str .='<tr>';
+						for ($j=1; $j <count($arrTemp) ; $j++) { 
+							$str .='<td>'.$arrTemp[$j].'</td>';
+						}
+					$str .='</tr>';
+			}
 
-		for($i=0; $i<count($arrDataCetak); $i++){
-			$arrTemp=explode(";",$arrDataCetak[$i]);
-			array_push($arrMulti,$arrTemp);
+			$str .="      
+                    		</tbody>
+                		</table>
+                	</body>
+                </html>";
+			echo $str;
+			
+		}else{
+			include 'cetakPdf.php';
+			$dataCetak=$_POST['dataCetak'];
+			$arrDataCetak=explode(":",$dataCetak);
+			$arrMulti=array();
+			$arrHeaderCetak=explode(";",$_POST['headerCetak']);
+
+			for($i=0; $i<count($arrDataCetak); $i++){
+				$arrTemp=explode(";",$arrDataCetak[$i]);
+				array_push($arrMulti,$arrTemp);
+			}
+
+			$pdf=new cetakpf();
+				$headers=array();
+				$wCol=explode(";",$_POST['wCol']);
+				$hCol=explode(";",$_POST['hCol']);;
+
+			for($i=0; $i<count($arrHeaderCetak); $i++){
+				$arrTemp=array("label"=>$arrHeaderCetak[$i], "length"=>30, "align"=>"L");
+				array_push($headers,$arrTemp);
+			}
+
+			$pdf->setJudul($_POST['judulCetak']);
+			$pdf->setOptionCol($wCol,$hCol);
+			$pdf->setData($arrMulti);
+			$pdf->setHeader($headers);
+			$pdf->makePdf();
 		}
+	}
 
 
-		$pdf=new cetakpf();
-			$headers=array();
-			$wCol=explode(";",$_POST['wCol']);
-			$hCol=explode(";",$_POST['hCol']);;
-
-		for($i=0; $i<count($arrHeaderCetak); $i++){
-			$arrTemp=array("label"=>$arrHeaderCetak[$i], "length"=>30, "align"=>"L");
-			array_push($headers,$arrTemp);
-		}
-
-		$pdf->setJudul($_POST['judulCetak']);
-		$pdf->setOptionCol($wCol,$hCol);
-		$pdf->setData($arrMulti);
-		$pdf->setHeader($headers);
-		$pdf->makePdf();
+	public function exportExcel(){
+		
 	}
 
 }

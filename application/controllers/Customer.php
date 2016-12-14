@@ -65,17 +65,52 @@ class Customer extends CI_Controller {
 			$dataResult=$this->db->query($query);
 			$arr1=array();
 			$i=0;
+
+			$col1=array(1,2,3,4,5,6,7,8,9,10,11,12);
+			$col2=array('shop-1','shop-2','shop-3','shop-4','shop-5','shop-6','shop-7','shop-8','shop-9','shop-10','shop-11','shop-12');
+			$col3=array(31,22,43,14,35,56,77,88,95,40,61,42);
+			
+			$stat1="34.32";
+			$stat2="32720";
+			$summary=$stat1.",".$stat2;
+
+
+			$strSortTable='<table class="table table-striped table-hover table-bordered" id="table-sortable">
+			<thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Product Name</th>
+                    <th>Purchase Qty</th>
+                </tr>
+            </thead>
+            <tbody>';
+                
+            for ($j=0; $j<count($col1); $j++) {
+
+                $strSortTable .="
+                <tr>
+                    <td>".$col1[$i]."</td>
+                    <td>".$col2[$i]."</td>
+                    <td>".$col3[$i]."</td>
+                </tr>
+                ";
+            }
+
+            $strSortTable .='</tbody></table>';
+
 			foreach ($dataResult->result_array() as $key) {
 				$idWarung=$key['id_warung'];
 				$idAgen=$key['id_agen'];
 				$query="SELECT nama_warung FROM warung WHERE id_warung=$idWarung AND id_agen=$idAgen";
 				$dataResult2=$this->db->query($query);
 				$namaWarung="";
+				$img1='"'.$key['url_ktp'].'"';
+				$img2='"assets/images/product_img.png"';
 				foreach ($dataResult2->result_array() as $key2) {
 					$namaWarung=$key2['nama_warung'];
 				}
-				$urlKtp='<img src='.$key['url_ktp'].' class="img-responsive img-rounded" alt="Logistics logo">';
-				echo $key['nama']."::".$urlKtp."::
+				
+				echo $key['nama']."::".$img1."::".$img2."::
 	            <tr>
 	                <th>Customer ID</th>
 	                <td>".$key['id_customer']."</td>
@@ -124,7 +159,7 @@ class Customer extends CI_Controller {
 	                <th>Shop ID</th>
 	                <td>".$idWarung."</td>
 	            </tr>
-            	";
+            	"."::".$strSortTable."::".$summary;
 
 				$i++;
 				

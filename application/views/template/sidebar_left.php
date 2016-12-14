@@ -96,7 +96,7 @@ $active = 'class="active"';
                     </a>
                     <ul class="sub">
                         <li <?php if($namaFile == "upload_human") echo $active; ?>><a href="upload_human">Upload</a></li>
-                        <li <?php if($namaFile == "update_human") echo $active; ?>><a href="update_human">Update</a></li>
+                        <li <?php if($namaFile == "update_human") echo $active; ?>><a href="update_human">Account Management</a></li>
                     </ul>
                 </li>
 

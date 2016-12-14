@@ -511,7 +511,7 @@ class Supplier extends CI_Controller {
 
                         <section class="panel">
                             <div class="panel-body">
-                                <a href="#stop-panels"><h3><i class="fa fa-power-off"> </i> Stop Payment / Business Data</h3></a>
+                                <a href="#stop-panels"><h3><i class="fa fa-minus-circle"> </i> Stop Payment / Business Data</h3></a>
                                 <hr>
                                 <div class="row">
 
@@ -850,5 +850,14 @@ class Supplier extends CI_Controller {
         $this->load->view($page, $data);
     }
 
+//iki bagianku lek
+    public function cek_status_approve(){
+        $id = $this->input->post('id');
+        $this->load->model('model_human');
+        $data= $this->model_human->getStatusApprov($id);
+        foreach ($data->result() as $key ) {
+            echo $key->status;
+        }
+    }
 
 }

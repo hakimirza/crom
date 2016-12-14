@@ -74,6 +74,8 @@ $route['nego_approve'] = 'supplier/nego_approve';
 
 //logistic management
 $route['logistic'] = 'logistic/profile';
+$route['upload_single_logistic'] = 'logistic/upload_single_logistic';
+$route['upload_logistic_batch'] = 'logistic/upload_logistic_batch';
 $route['logistic_search'] = 'logistic/search';
 $route['upload_logistic'] = 'logistic/upload';
 $route['inventory'] = 'logistic/inventory';
@@ -97,6 +99,7 @@ $route['upload_batch'] = 'human/upload_batch';
 //ticketing
 $route['ticket'] = 'ticket';
 $route['cetakpdf_ticket']='ticket/cetakpdf_ticket';
+$route['exportExcel'] = 'ticket/exportExcel';
 
 $route['tracking_order'] = 'logistic/trackingOrder';
 $route['user_registration'] = 'human/userRegistration';
