@@ -91,9 +91,9 @@
                                     <div id="tab1" class="tab-pane active">
                                         <section class="panel">
                                             <div class="panel-body">
-                                                    <div class="well">
-                                                        Click on an <b>ID</b> to show more details
-                                                    </div>
+                                                <div class="well">
+                                                    Click on an <b>ID</b> to show more details
+                                                </div>
                                                 <div class="adv-table editable-table ">
                                                     <div class="clearfix">
                                                         <div class="btn-group pull-right">
@@ -102,18 +102,18 @@
                                                             <ul class="dropdown-menu pull-right">
                                                                 <li><a href="#">Print</a></li>
                                                                 <li><a id="cetak_pdf" href="javascript:;">Save as PDF</a></li>
-                                                                 <li><a id="exportExcel" href="javascript:;">Export To Excel</a></li>
+                                                                <li><a id="exportExcel" href="javascript:;">Export To Excel</a></li>
                                                             </ul>
                                                         </div>
 
-<form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
-<input type="hidden" id="dataCetak" name="dataCetak" value="" />
-<input type="hidden" id="headerCetak" name="headerCetak" value="" />
-<input type="hidden" id="judulCetak" name="judulCetak" value="" />
-<input type="hidden" id="wCol" name="wCol" value="" />
-<input type="hidden" id="hCol" name="hCol" value="" />
-<input type="hidden" id="coded" name="coded" value="" />
-</form>
+                                                        <form id="TheForm" method="post" action="cetakpdf_produk" target="TheWindow">
+                                                            <input type="hidden" id="dataCetak" name="dataCetak" value="" />
+                                                            <input type="hidden" id="headerCetak" name="headerCetak" value="" />
+                                                            <input type="hidden" id="judulCetak" name="judulCetak" value="" />
+                                                            <input type="hidden" id="wCol" name="wCol" value="" />
+                                                            <input type="hidden" id="hCol" name="hCol" value="" />
+                                                            <input type="hidden" id="coded" name="coded" value="" />
+                                                        </form>
                                                     </div>
                                                     <div class="space15"><br></div>
                                                     <table class="table table-striped table-hover table-bordered" id="table-sortable">
@@ -128,31 +128,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php 
-
-                                                            $prod = array("Mie Sedap", "Beng-Beng", "Coca-Cola", "Very Long Named Item");
-                                                            $sup = array("PT Maju Mundur Sejahtera", "PT Bintang Jaya", "PT Indofood");
-
-                                                            for ($i=1; $i < 20 ; $i++) {
-
-                                                                $cod = substr(md5($i), 0, 5);
-                                                                $p = $prod[rand(0,3)];
-                                                                $harga1 = rand(10000,5000000);
-                                                                $harga2 = rand(10000,5000000);
-                                                                $s = $sup[rand(0,2)];
-
-                                                                echo '
-                                                                <tr>
-                                                                    <td>'.$i.'</td>
-                                                                    <td>'.$p.'</td>
-                                                                    <td><a data-toggle="modal" href="#modalUpdateItem" title="Detail">'.$cod.'</a></td>
-                                                                    <td>'.number_format($harga1).'</td>
-                                                                    <td>'.number_format($harga2).'</td>
-                                                                    <td>'.$s.'</td>
-                                                                </tr>
-                                                                ';
-                                                            }
-                                                            ?>
+                                                            <?php $this->load->view('data/dataProduct') ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -656,24 +632,24 @@
             $('#cetak_pdf').click(function(e){
                 e.preventDefault();
 
-              var test=getDataTabelforPrint();
-              var testData="";
-              for(i=0; i<test.length; i++){
-                if(i !=test.length-1){
-                testData +=test[i]+":";}
-                else{testData +=test[i];}
-              }
+                var test=getDataTabelforPrint();
+                var testData="";
+                for(i=0; i<test.length; i++){
+                    if(i !=test.length-1){
+                        testData +=test[i]+":";}
+                        else{testData +=test[i];}
+                    }
 
-              document.getElementById("dataCetak").value=testData;
-              document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
-              document.getElementById("judulCetak").value="Data Produk";
-              document.getElementById("wCol").value="8;20;20;50;15;20";
-              document.getElementById("hCol").value="5;5;5;5;5;5";
-              document.getElementById("coded").value="";
+                    document.getElementById("dataCetak").value=testData;
+                    document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
+                    document.getElementById("judulCetak").value="Data Produk";
+                    document.getElementById("wCol").value="8;20;20;50;15;20";
+                    document.getElementById("hCol").value="5;5;5;5;5;5";
+                    document.getElementById("coded").value="";
 
-              window.open('', 'TheWindow');
-              document.getElementById('TheForm').submit();
-            })
+                    window.open('', 'TheWindow');
+                    document.getElementById('TheForm').submit();
+                })
 
             function getDataTabelforPrint(){
                 var lengthTable = document.getElementById("table-sortable").rows.length;
@@ -691,18 +667,18 @@
             }
 
             $('#exportExcel').click(function(e){
-                     e.preventDefault();
-                var test=getDataTabelforPrint();
-                var testData="";
-                for(i=0; i<test.length; i++){
+               e.preventDefault();
+               var test=getDataTabelforPrint();
+               var testData="";
+               for(i=0; i<test.length; i++){
                 if(i !=test.length-1){
-                testData +=test[i]+":";}
-                else{testData +=test[i];}
+                    testData +=test[i]+":";}
+                    else{testData +=test[i];}
                 }
                 //alert(testData);//data yang akan dicetak ke excel
                 document.getElementById("dataCetak").value=testData;
-                  document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
-                  document.getElementById("judulCetak").value="Data Produk";
+                document.getElementById("headerCetak").value="No;ID;Nama Produk;Harga1;Promo;Harga2";
+                document.getElementById("judulCetak").value="Data Produk";
                 document.getElementById("coded").value="exportExcel";
 
                 window.open('', 'TheWindow');
