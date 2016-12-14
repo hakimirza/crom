@@ -70,6 +70,7 @@ $route['negotiation'] = 'supplier/negotiation';
 $route['supplier_search'] = 'supplier/supplier_search';
 $route['upload_negotiation_batch'] = 'supplier/upload_batch';
 $route['upload_single_negotiation'] = 'supplier/upload_single_negotiation';
+$route['nego_approve'] = 'supplier/nego_approve';
 
 //logistic management
 $route['logistic'] = 'logistic/profile';

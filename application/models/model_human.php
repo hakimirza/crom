@@ -45,6 +45,7 @@ class model_human extends CI_Model {
 	function simpan_data($data) {
 		$this->db->insert('pegawai', $data);
 	}
+  
 	function getStatusApprov($id){
 		$this->db->select('status');
 		$this->db->from('supplier');

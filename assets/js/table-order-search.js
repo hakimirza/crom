@@ -1,4 +1,4 @@
-var EditableTable = function () {
+var OrderSearchTable = function () {
 
     return {
 
@@ -12,7 +12,8 @@ var EditableTable = function () {
                     ],
                 // set the initial value
                 "iDisplayLength": 10,
-                "sDom": "<'row'<'col-lg-6'><'col-lg-6'>r>t<'row'<'col-lg-6'><'col-lg-12'p>>",
+                "sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-6'i><'col-lg-6'p>>",
+                "sDom": "<'row'<'col-lg-6'l><'col-lg-6'f>r>t<'row'<'col-lg-6'i><'col-lg-6'p>>",
                 "sPaginationType": "bootstrap",
                 "oLanguage": {
                     "sLengthMenu": "_MENU_ records per page",
@@ -28,9 +29,11 @@ var EditableTable = function () {
                 ]
             });
 
+            jQuery('#table-sortable_wrapper .dataTables_filter input').addClass("form-control medium"); // modify table search input
+            jQuery('#table-sortable_wrapper .dataTables_length select').addClass("form-control xsmall"); // modify table per page dropdown
+
         }
 
     };
 
 }();
-
