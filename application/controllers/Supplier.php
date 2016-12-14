@@ -845,4 +845,20 @@ class Supplier extends CI_Controller {
 		return "'".$data."'";
 	}
 
+    public function nego_approve($page = 'nego_approve'){
+        $data['namaFile'] = $page;
+        $this->load->view($page, $data);
+    }
+
+//iki bagianku lek
+    public function cek_status_approve(){
+        $id = $this->input->post('id');
+        $this->load->model('model_human');
+        $data= $this->model_human->getStatusApprov($id);
+        foreach ($data->result() as $key ) {
+            echo $key->status;
+        }
+    }
+
+
 }

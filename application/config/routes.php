@@ -73,6 +73,8 @@ $route['upload_single_negotiation'] = 'supplier/upload_single_negotiation';
 
 //logistic management
 $route['logistic'] = 'logistic/profile';
+$route['upload_single_logistic'] = 'logistic/upload_single_logistic';
+$route['upload_logistic_batch'] = 'logistic/upload_logistic_batch';
 $route['logistic_search'] = 'logistic/search';
 $route['upload_logistic'] = 'logistic/upload';
 $route['inventory'] = 'logistic/inventory';
