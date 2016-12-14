@@ -152,8 +152,45 @@ require_once('assets/PHPExcel/IOFactory.php');
 				echo "30 row data berhasil diupload";
 			}
 
-		}
-		else{
+		}elseif ($kode=="logistic"){
+			$query="INSERT INTO logistik(id_logistik,nama,no_telp,email,alamat_detil,alamat_kel,id_pegawai,nama_region) value";
+			for ($startRow = 2; $startRow <= $chunkSize; $startRow +=$chunkSize) {
+				$chunkFilter->setRows($startRow,$chunkSize);
+				$objPHPExcel = $objReader->load($fileName);
+				$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+				$o=1;$p=2;
+				for($u=2; $u<=count($sheetData); $u++){
+					$dd=$sheetData[$u];
+					$sheetData[$u]=array_filter($sheetData[$u], function($value) { return $value !== NULL; });
+					$sheetData[$u] = array_values($sheetData[$u]);
+					if(empty($sheetData[$u])){
+						break;
+					}else{
+						$query = $query."(".cekNull($sheetData[$u][0]).",".cekNull($sheetData[$u][1]).",".cekNull($sheetData[$u][2]).",".cekNull($sheetData[$u][3]).",".cekNull($sheetData[$u][4]).",".cekNull($sheetData[$u][5]).",".cekNull($sheetData[$u][6]).",".cekNull($sheetData[$u][7])."),";
+						if($p==31){
+							$query=substr($query, 0,(strlen($query)-1)).";"; //harus titik koma kalo multiple query
+							$this->db->query($query);
+							$query="INSERT INTO logistik(id_logistik,nama,no_telp,email,alamat_detil,alamat_kel,id_pegawai,nama_region) value";
+							$p=1;
+							$is_30=true;
+							break;
+						}else{
+							$is_30=false;
+						}
+						$p++;
+					}	
+				}
+				$arrData=$sheetData;
+				$i++;
+			}
+			if(!$is_30){
+				$query=substr($query, 0,(strlen($query)-1)).";";
+				$this->db->query($query);
+				echo "Data berhasil diupload";
+			}else{
+				echo "30 row data berhasil diupload";
+			}
+		}else{
 			// bisa ditambah lagi
 		}
 

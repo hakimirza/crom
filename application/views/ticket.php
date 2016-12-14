@@ -47,9 +47,12 @@
         
         <!--main content start-->
         <section id="main-content">
+
             <section class="wrapper">
+
                 <!-- page start-->
                 <div class="row">
+
                     <div class="col-sm-12">
                         <section class="panel">
                             <header class="panel-heading tab-bg-dark-navy-blue ">
@@ -63,6 +66,7 @@
                                 </ul>
                             </header>
                             <div class="panel-body">
+                               
                                 <div class="tab-content">
                                     <div id="daftarProduk" class="tab-pane active">
                                         <section class="panel">
@@ -85,7 +89,7 @@
                                                         <ul class="dropdown-menu">
                                                             <li><a href="#">Print</a></li>
                                                             <li><a id="cetak_pdf" href="javascript:;">Save as PDF</a></li>
-                                                            <li><a href="#">Export to Excel</a></li>
+                                                            <li><a id="exportExcel" href="javascript:;">Export To Excel</a></li>
                                                         </ul>
                                                     </div>
 <form id="TheForm" method="post" action="cetakpdf_ticket" target="TheWindow">
@@ -94,6 +98,7 @@
 <input type="hidden" id="judulCetak" name="judulCetak" value="" />
 <input type="hidden" id="wCol" name="wCol" value="" />
 <input type="hidden" id="hCol" name="hCol" value="" />
+<input type="hidden" id="coded" name="coded" value="" />
 </form>
                                                 </div>
 
@@ -211,6 +216,7 @@
         });
 
         $('#cetak_pdf').click(function(e){
+
                 e.preventDefault();
               var test=getDataTabelforPrint();
               var testData="";
@@ -226,6 +232,7 @@
               document.getElementById("judulCetak").value="Data Ticket";
               document.getElementById("wCol").value="8;20;15;50;15;20;40;30";
               document.getElementById("hCol").value="5;5;5;5;5;5;5;5";
+              document.getElementById("coded").value="";
               //alert(testData); //data yang dicetak dalam pdf
 
               window.open('', 'TheWindow');
@@ -233,10 +240,9 @@
               
              
             })
-        function getDataTabelforPrint(){
-              
-            var lengthTable = document.getElementById("table-sortable").rows.length;
 
+        function getDataTabelforPrint(){
+            var lengthTable = document.getElementById("table-sortable").rows.length;
               var dataTabel=[];
               for(j=1; j<lengthTable; j++){
                 var dataItem="";
@@ -247,10 +253,29 @@
                 dataItem=dataItem.substr(1);
                 dataTabel[j-1]=dataItem;
               }
-
               return(dataTabel);
+        }
 
+        $('#exportExcel').click(function(e){
+             e.preventDefault();
+            var test=getDataTabelforPrint();
+            var testData="";
+            for(i=0; i<test.length; i++){
+            if(i !=test.length-1){
+            testData +=test[i]+":";}
+            else{testData +=test[i];}
             }
+            //alert(testData);//data yang akan dicetak ke excel
+            document.getElementById("dataCetak").value=testData;
+            document.getElementById("headerCetak").value="No;ID Warung;ID Agent;Nama Agent;Kategori;Date;Title;Status";
+            document.getElementById("judulCetak").value="Data Ticket";
+            document.getElementById("coded").value="exportExcel";
+
+            window.open('', 'TheWindow');
+            document.getElementById('TheForm').submit();
+        });
+
+
     });
 </script>
 

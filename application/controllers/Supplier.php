@@ -850,5 +850,14 @@ class Supplier extends CI_Controller {
         $this->load->view($page, $data);
     }
 
+//iki bagianku lek
+    public function cek_status_approve(){
+        $id = $this->input->post('id');
+        $this->load->model('model_human');
+        $data= $this->model_human->getStatusApprov($id);
+        foreach ($data->result() as $key ) {
+            echo $key->status;
+        }
+    }
 
 }

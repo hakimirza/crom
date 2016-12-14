@@ -63,6 +63,35 @@
                                 </ul>
                             </header>
                             <div class="panel-body">
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                    <!-- search form -->
+                                        <?= form_open(base_url('logistic/search'), 'class = "form-inline"'); ?>
+                                        <div class="col-md-9">
+                                            <i class="fa fa-search fa-lg"></i>  
+                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-Logistic" autofocus name="idcust">
+                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Logistic's Name" name="namecust">
+                                            <datalist id="languages">
+
+                                            </datalist>
+                                        </div>
+                                        <?= form_close()?>
+                                        <div class="col-md-3">
+                                            <div class="btn-group">
+                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li><a href="#">Edit</a></li>
+                                                    <li><a href="#">Upload</a></li>
+                                                    <li><a href="#">Export to Excel</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="tab-content">
                                     <div id="main" class="tab-pane active">
                                         <section class="panel">
@@ -74,70 +103,25 @@
                                                     <div class="col-md-6">
 
                                                         <div class="row">
-
                                                             <!-- title -->
-                                                            <div class="col-md-12">
-                                                                <h1 id="logistic_title">
-                                                                    <?= $identitas['Logistic Name'] ?>
-                                                                </h1>
+                                                            
+                                                            <div id="tab-summary">
+                                                                
                                                             </div>
 
-                                                            <!-- thumbnail -->
-                                                            <div class="col-md-4">
-                                                                <img id="img1" src=<?= $imgsrc1 ?> class="img-responsive img-rounded" alt="Logistic's logo">
-                                                            </div>
-                                                            <!-- summary -->
-                                                            <div class="col-md-4">
-                                                                <div class="mini-stat clearfix">
-                                                                    <span class="mini-stat-icon pink"><i class="fa fa-truck"></i></span>
-                                                                    <div class="mini-stat-info">
-                                                                        <span><?= $stat1 ?></span>
-                                                                        Order Ratio
+                                                            <section class="panel">
+                                                                <div class="panel-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-9">
+                                                                            <a href="#basic-panels"><h3><i class="fa fa-book"> </i> Service Level by Shop </h3></a>
+                                                                        </div>
+                                                                    </div> 
+                                                                    <hr> 
+                                                                    <div id="table2" class="col-md-12">
+                                                                        
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mini-stat clearfix">
-                                                                    <span class="mini-stat-icon green"><i class="fa fa-calendar"></i></span>
-                                                                    <div class="mini-stat-info">
-                                                                        <span><?= $stat2 ?></span>
-                                                                        Lead Time (day)
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- map -->
-                                                            <div class="col-md-12">
-                                                                <h3>Logistic Area</h3>
-                                                                <div id="gmap-list" style="height: 222px"></div>
-                                                            </div>
-
-                                                            <div class="col-md-12">
-                                                                <h3>Service Level by Shop</h3>
-                                                                <table class="table table-striped table-hover table-bordered" id="table-sortable">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Shop ID</th>
-                                                                            <th>Shop Name</th>
-                                                                            <th>Order Ratio</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php
-                                                                        for ($i=0; $i < count($col1) ; $i++) {
-
-                                                                            echo "
-                                                                            <tr>
-                                                                                <td>".$col1[$i]."</td>
-                                                                                <td>".$col2[$i]."</td>
-                                                                                <td>".$col3[$i]."</td>
-                                                                            </tr>
-                                                                            ";
-                                                                        }
-                                                                        ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                            </section>
                                                         </div>
 
                                                     </div>
@@ -147,53 +131,45 @@
 
                                                        <div class="row">
 
-                                                        <!-- search form -->
-                                                        <?= form_open(base_url('logistic/search'), 'class = "form-inline"'); ?>
-                                                        <div class="col-md-9">
-                                                            <i class="fa fa-search fa-lg"></i>  
-                                                            <input id="search_id" type="text" size="10" class="form-control" placeholder="ID-Logistic" autofocus name="idcust">
-                                                            <input id="search_name" type="text" list="languages" class="form-control" placeholder="Logistic's Name" name="namecust">
-                                                            <datalist id="languages">
-
-                                                            </datalist>
-                                                        </div>
-                                                        <?= form_close()?>
-                                                        <div class="col-md-3">
-                                                            <div class="btn-group">
-                                                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">More <i class="fa fa-caret-down"></i>
-                                                                </button>
-                                                                <ul class="dropdown-menu pull-right">
-                                                                    <li><a href="#">Edit</a></li>
-                                                                    <li><a href="#">Upload</a></li>
-                                                                    <li><a href="#">Export to Excel</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-
+                                                        
                                                         <!-- identitas -->
-                                                        <div class="col-md-12">
-                                                            <h3>Identity</h3>
-                                                            <table class="table table-striped table-hover table-bordered">
-                                                                <tbody id="searchResult" >
-                                                                    <?php
-                                                                    foreach ($identitas as $key => $value) {
-
-                                                                        echo "
-                                                                        <tr>
-                                                                            <th>".$key."</th>
-                                                                            <td>".$value."</td>
-                                                                        </tr>
-                                                                        ";
-                                                                    }
-                                                                    ?>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-
+                                                        <section class="panel">
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <a href="#basic-panels"><h3><i class="fa fa-book"> </i> Identity </h3></a>
+                                                                    </div>
+                                                                </div> 
+                                                                <hr> 
+                                                                <div class="col-md-12">
+                                                                    <table class="table table-striped table-hover table-bordered">
+                                                                        <tbody id="searchResult" >
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                         
                                                     </div>
                                                 </div>
 
                                             </div> <!-- end main row -->
+
+                                            <!-- map -->
+                                                           
+                                                                
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <a href="#basic-panels"><h3><i class="fa fa-truck"> </i> Logistic Area </h3></a>
+                                                </div>
+                                            </div> 
+                                            <hr> 
+                                            <div id="gmap" class="col-md-12">
+                                                
+                                            </div>
+                                                              
+                                                         
 
                                         </div> <!-- end panel -->
                                     </section>
@@ -262,39 +238,6 @@
 
         EditableTable.init();
 
-            //list lokasi
-            var locs = [
-            {
-                lat: 52.1,
-                lon: 11.3,
-                html: [
-                '<h3><?= $identitas['Coverage Area'] ?></h3>',
-                ].join(''),
-                zoom: 5
-            },
-            {
-                lat: 51.2,
-                lon: 22.2,
-                html: [
-                '<h3><?= $identitas['Coverage Area'] ?></h3>',
-                ].join(''),
-                zoom: 5
-            },
-            {
-                lat: 49.4,
-                lon: 35.9,
-                html: [
-                '<h3><?= $identitas['Coverage Area'] ?></h3>',
-                ].join(''),
-                zoom: 5
-            }
-            ];
-
-            new Maplace({
-                locations: locs,
-                map_div: '#gmap-list',
-            }).Load();
-
             $( "#search_id" ).keyup(function(e) {
                 e.preventDefault();
                 var data=document.getElementById("search_id").value;
@@ -304,9 +247,39 @@
                     type : 'POST',
                     success : function(hasil){
                             res=hasil.split("::");
+                            //document.getElementById("img1").innerHTML=res[1];
+                            //document.getElementById("searchResult").innerHTML=res[2];
+                            document.getElementById("searchResult").innerHTML=res[1];
+
+                            var summary=res[4].split(",");
+                            document.getElementById("tab-summary").innerHTML ='<div class="col-md-12"><h2 id="logistic_title">Summary</h2></div>';
+                            document.getElementById("tab-summary").innerHTML +='<div id="logistic-summary"><div class="col-md-4"><img id="img1" src='+summary[0]+' class="img-responsive img-rounded" alt="Logistics logo"></div>';
+                            document.getElementById("tab-summary").innerHTML +='<div class="col-md-3"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-truck"></i></span><div class="mini-stat-info"><span>'+summary[1]+'</span>Order Ratio</div></div></div>';
+                            document.getElementById("tab-summary").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-calendar"></i></span><div class="mini-stat-info"><span>'+summary[2]+'</span>Lead Time (day)</div></div></div></div>';
+
                             document.getElementById("logistic_title").innerHTML=res[0];
-                            document.getElementById("img1").innerHTML=res[1];
-                            document.getElementById("searchResult").innerHTML=res[2];
+                            document.getElementById("table2").innerHTML=res[3];
+                            document.getElementById("gmap").innerHTML='<div id="gmap-list" style="height: 222px"></div>';
+                            var arrGps=res[2].split(",");           
+                            var loct=[];
+                            for (i= 0; i<arrGps.length; i++) {
+                                var arrTemp=arrGps[i].split(":");
+                                loct[i]={
+                                    lat: parseFloat(arrTemp[0]),
+                                    lon: parseFloat(arrTemp[1]),
+                                    html: [
+                                    '<h3>'+res[5]+'</h3>',
+                                    ].join(''),
+                                    zoom: 8
+                                }
+                            };
+
+                               
+                            new Maplace({
+                                locations: loct,
+                                map_div: '#gmap-list',
+                            }).Load();
+                           
                     },
                 });
 
@@ -324,7 +297,7 @@
                     data : 'name='+data,
                     type : 'POST',
                     success : function(hasil){
-                        alert(hasil);
+                        //alert(hasil);
                             document.getElementById("languages").innerHTML=hasil;
                       //      document.getElementById("search_name").value=data;
                     },
@@ -349,11 +322,41 @@
                         type : 'POST',
                         success : function(hasil){
                                 res=hasil.split("::");
-                                document.getElementById("logistic_title").innerHTML=res[0];
-                                document.getElementById("img1").innerHTML=res[1];
-                                document.getElementById("searchResult").innerHTML=res[2];
+                                //document.getElementById("img1").innerHTML=res[1];
+                                //document.getElementById("searchResult").innerHTML=res[2];
+                                document.getElementById("searchResult").innerHTML=res[1];
                                 document.getElementById("search_name").value=data[0];
                                 document.getElementById("search_id").value=data[1];
+
+                                var summary=res[4].split(",");
+                                document.getElementById("tab-summary").innerHTML ='<div class="col-md-12"><h2 id="logistic_title">Summary</h2></div>';
+                                document.getElementById("tab-summary").innerHTML +='<div id="logistic-summary"><div class="col-md-4"><img id="img1" src='+summary[0]+' class="img-responsive img-rounded" alt="Logistics logo"></div>';
+                                document.getElementById("tab-summary").innerHTML +='<div class="col-md-3"><div class="mini-stat clearfix"><span class="mini-stat-icon pink"><i class="fa fa-truck"></i></span><div class="mini-stat-info"><span>'+summary[1]+'</span>Order Ratio</div></div></div>';
+                                document.getElementById("tab-summary").innerHTML +='<div class="col-md-4"><div class="mini-stat clearfix"><span class="mini-stat-icon green"><i class="fa fa-calendar"></i></span><div class="mini-stat-info"><span>'+summary[2]+'</span>Lead Time (day)</div></div></div></div>';
+
+                                document.getElementById("logistic_title").innerHTML=res[0];
+                                document.getElementById("table2").innerHTML=res[3];
+                                document.getElementById("gmap").innerHTML='<div id="gmap-list" style="height: 222px"></div>';
+                                var arrGps=res[2].split(",");
+                                
+                                var loct=[];
+                                for (i= 0; i<arrGps.length; i++) {
+                                    var arrTemp=arrGps[i].split(":");
+                                    loct[i]={
+                                        lat: parseFloat(arrTemp[0]),
+                                        lon: parseFloat(arrTemp[1]),
+                                        html: [
+                                        '<h3><?= $identitas['Coverage Area'] ?></h3>',
+                                        ].join(''),
+                                        zoom: 8
+                                    }
+                                };
+
+                                   
+                                new Maplace({
+                                    locations: loct,
+                                    map_div: '#gmap-list',
+                                }).Load();
                         },
                     });
 
