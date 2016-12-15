@@ -264,7 +264,8 @@ foreach ($suplierUnapprove as $s) {
 
             // $('#approve').click(function(){
             //     alert('approved');
-            // });
+            // });            
+
 
         });
     </script>
