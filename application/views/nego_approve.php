@@ -23,7 +23,6 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet" />
-
     <style type="text/css">
         th{
             vertical-align: middle;
@@ -33,7 +32,26 @@
             float : right;
         }
     </style>
+    <script>
+    function loadModal(id_supplier, nama_supplier) {
+        $("#nama_supplier").html(nama_supplier);
+        $('#modal_approve').modal('show');
+        $('#approve').click(function(){
+        $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url() . 'supplier/approveSupplier'; ?>",
+                        data: "id=" +id_supplier,
+                        success: function(response) {
+                            $("#alertSuccess").html('<div class="alert alert-success" id="alert">Approval berhasil !!</div>');
+                            $('#modal_approve').modal('hide');
+                            document.location.reload();
+      }});
 
+
+
+        })};
+
+</script>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]>
     <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -49,12 +67,12 @@
 
     <section id="container" >
         <!--header start-->
-        <?php 
-        $this->load->view('template/header');
-        $this->load->view('template/sidebar_left');
-        ?>
+        <?php
+$this->load->view('template/header');
+$this->load->view('template/sidebar_left');
+?>
         <!--sidebar end-->
-        
+
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
@@ -77,8 +95,8 @@
                                     <div id="daftarProduk" class="tab-pane active">
                                         <section class="panel">
                                             <div class="panel-body">
+                                            <div class="col-md-12"><div id="alertSuccess"></div></div>
                                                 <div class="adv-table editable-table ">
-
                                                     <div class="well">
                                                         Click on a <b>Supplier's Name</b> to approve it
                                                     </div>
@@ -101,24 +119,32 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a data-toggle="modal" href="#modalku" title="approve">PT Blabla</a></td>
-                                                                <td>7</td>
-                                                                <td>22-01-2016</td>
-                                                                <td class="signature">1970-01-01 00:00:01</td>
-                                                                <td class="signature">1970-01-01 00:00:01</td>
-                                                                <td class="signature"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><a data-toggle="modal" href="#modalku" title="approve">PT Balonku</a></td>
-                                                                <td>9</td>
-                                                                <td>22-02-2016</td>
-                                                                <td class="signature">1970-01-01 00:00:01</td>
-                                                                <td class="signature"></td>
-                                                                <td class="signature">1970-01-01 00:00:01</td>
-                                                            </tr>
+
+                                                                <?php $i = 1;
+foreach ($suplierUnapprove as $s) {
+	?>
+     <tr>
+                                                                <td><?php echo $i; ?></td>
+                                                                <td><a href="#" onclick="<?php echo "loadModal('" . $s->id_supplier . "','" . $s->english_name . "')" ?>" data-toggle="modal"><?php echo $s->english_name; ?></a></td>
+                                                                <td><?php echo $s->id_supplier; ?></td>
+                                                                <td><?php echo $s->started_date; ?></td>
+                                                                <td class="signature"><?php if ($s->financialManager == NULL) {
+		echo "0";
+	} else {
+		echo "1";
+	}?></td>
+                                                                    <td class="signature"><?php if ($s->supplyChainManager == NULL) {
+		echo "0";
+	} else {
+		echo "1";
+	}?></td>
+                                                                    <td class="signature"><?php if ($s->logisticManager == NULL) {
+		echo "0";
+	} else {
+		echo "1";
+	}?></td></tr>
+                                                                    <?php }?>
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -137,7 +163,7 @@
                 </div>
 
                 <!-- modal donk -->
-                <div class="modal bs-example-modal-sm" id="modalku" tabindex="-1" role="dialog" data-backdrop="static">
+                <div class="modal bs-example-modal-sm" id="modal_approve" tabindex="-1" role="dialog" data-backdrop="static">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header cust-modal-header">
@@ -151,7 +177,7 @@
                                             <div class="col-md-12"> <!-- yes/no -->
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        Approve <strong><a href="supplier" target="_blank">PT Blablabla</a></strong>'s negotiation?
+                                                        Approve <strong><a href="supplier" target="_blank"><span id="nama_supplier"></span></a></strong>'s negotiation?
                                                     </div>
                                                     <div class="col-md-12">
                                                         <br>
@@ -236,9 +262,9 @@
 
             });
 
-            $('#approve').click(function(){
-                alert('approved');
-            });            
+            // $('#approve').click(function(){
+            //     alert('approved');
+            // });
 
         });
     </script>
