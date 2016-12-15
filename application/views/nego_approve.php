@@ -236,9 +236,9 @@
 
             });
 
-            $('#approve').click(function(){
-                alert('approved');
-            });            
+            // $('#approve').click(function(){
+            //     alert('approved');
+            // });            
 
         });
     </script>

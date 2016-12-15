@@ -133,7 +133,7 @@ $this->load->view('template/sidebar_left');
 								<div class="row">
 									<?=form_open(base_url('human/upload_batch'), 'class = "form"');?>
 									<div class="col-md-6">
-										<input type="file" name="batchupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="file" />
+										<input type="file" id="aplotbatch" name="batchupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="file" />
 										<div class="input-group">
 											<span class="input-group-btn">
 												<button class="browse btn btn-primary input-md" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
@@ -492,7 +492,7 @@ $('#cancel-img').click(function(){
 	$('#cancel-img').hide();
 });
 
-$("input[type=file]").bind("change", function() {
+$("#aplotbatch").bind("change", function() {
       var file_data = this.files[0];
       var form_data = new FormData();
       form_data.append('file', file_data, '1000_'+file_data['name']);
