@@ -254,10 +254,10 @@ foreach ($suplierUnapprove as $s) {
             var txF = '<span class="label label-default" title="Not Approved Yet"><i class="fa fa-minus"></i></span><input type="hidden" value="0">';
             sign.each(function(i, obj) {
 
-                if ($(this).text()=='1') {
-                    $(this).empty().append(txT);
-                } else if ($(this).text()=='0') {
+                if ($(this).text()=='') {
                     $(this).empty().append(txF);
+                } else {
+                    $(this).empty().append(txT);
                 }
 
             });
